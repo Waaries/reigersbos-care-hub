@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import CovidNotice from "./CovidNotice";
+import Mededelingen from "./Mededelingen";
 import FloatingSideButtons from "./FloatingSideButtons";
 
 interface LayoutProps {
@@ -14,7 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Header />
       <main className="flex-1 pt-16 lg:pt-20">
         {children}
-        <CovidNotice />
+        <Mededelingen />
       </main>
       <Footer />
       <FloatingSideButtons />
