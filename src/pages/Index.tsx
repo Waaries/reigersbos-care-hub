@@ -43,10 +43,11 @@ const Index = () => {
           style={{
             top: "40%",
             right: "15%",
-            width: "150px",
-            height: "150px",
+            width: "200px",
+            height: "200px",
             borderRadius: "50%",
             background: "rgba(255,255,255,0.06)",
+            opacity: 0.5,
           }}
         />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in">
@@ -56,12 +57,35 @@ const Index = () => {
           <h1 className="font-serif font-bold text-4xl sm:text-5xl lg:text-6xl text-primary-foreground mb-5 leading-tight">
             Reigersbos Medical Center
           </h1>
-          <p className="text-primary-foreground/90 text-xl sm:text-2xl italic mb-10">
+          <p className="text-primary-foreground/90 text-xl sm:text-2xl italic mb-8">
             "Because the greatest wealth is health"
           </p>
           <button
             onClick={() => openModal("inschrijven")}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-primary-foreground text-primary font-bold text-lg rounded-xl hover:bg-primary-foreground/90 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+            style={{
+              background: "#0EA5A0",
+              color: "white",
+              border: "none",
+              borderRadius: "50px",
+              padding: "14px 36px",
+              fontSize: "18px",
+              fontWeight: 600,
+              boxShadow: "0 4px 20px rgba(14,165,160,0.4)",
+              transition: "all 0.3s ease",
+              cursor: "pointer",
+            }}
+            onMouseEnter={e => {
+              const el = e.currentTarget;
+              el.style.background = "#0B8F8A";
+              el.style.transform = "translateY(-2px)";
+              el.style.boxShadow = "0 8px 25px rgba(14,165,160,0.5)";
+            }}
+            onMouseLeave={e => {
+              const el = e.currentTarget;
+              el.style.background = "#0EA5A0";
+              el.style.transform = "translateY(0)";
+              el.style.boxShadow = "0 4px 20px rgba(14,165,160,0.4)";
+            }}
           >
             Schrijf je nu in
           </button>
