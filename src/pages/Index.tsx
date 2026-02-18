@@ -1,21 +1,49 @@
 import Layout from "@/components/Layout";
 import { useModal } from "@/contexts/ModalContext";
 
-const HERO_IMAGE = "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1920&q=80";
-
 const Index = () => {
   const { openModal } = useModal();
 
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-        <img
-          src={HERO_IMAGE}
-          alt="Reigersbos Medical Center"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+      <section
+        className="relative min-h-[85vh] flex items-center justify-center overflow-hidden"
+        style={{
+          backgroundColor: "#1B4F8A",
+          backgroundImage: `
+            radial-gradient(circle at 20px 20px, rgba(255,255,255,0.05) 2px, transparent 2px),
+            radial-gradient(circle at 50px 50px, rgba(14,165,160,0.15) 2px, transparent 2px)
+          `,
+          backgroundSize: "60px 60px",
+        }}
+      >
+        {/* Decorative circle top-left */}
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            top: "-80px",
+            left: "-80px",
+            width: "400px",
+            height: "400px",
+            borderRadius: "50%",
+            border: "2px solid rgba(14,165,160,0.15)",
+          }}
         />
-        <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.55)" }} />
+        {/* Decorative cross bottom-right */}
+        <div
+          className="absolute pointer-events-none select-none"
+          style={{
+            bottom: "-60px",
+            right: "-20px",
+            fontSize: "300px",
+            lineHeight: 1,
+            color: "rgba(255,255,255,0.04)",
+            fontWeight: "bold",
+          }}
+        >
+          ✚
+        </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in">
           <p className="text-primary-foreground/80 text-sm font-medium uppercase tracking-widest mb-4">
             Welkom op onze website
