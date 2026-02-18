@@ -1,6 +1,7 @@
-import heroMedical from "@/assets/hero-medical.jpg";
 import Layout from "@/components/Layout";
 import { useModal } from "@/contexts/ModalContext";
+
+const HERO_IMAGE = "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1920&q=80";
 
 const Index = () => {
   const { openModal } = useModal();
@@ -9,11 +10,12 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroMedical})` }}
+        <img
+          src={HERO_IMAGE}
+          alt="Reigersbos Medical Center"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 hero-overlay" />
+        <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.55)" }} />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in">
           <p className="text-primary-foreground/80 text-sm font-medium uppercase tracking-widest mb-4">
             Welkom op onze website
