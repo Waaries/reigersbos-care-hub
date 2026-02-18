@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo.png";
 import logoFooter from "@/assets/logo-footer.png";
 import { Clock, Globe } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const medischeLinks = [
   { label: "thuisarts.nl", url: "https://www.thuisarts.nl" },
@@ -33,46 +33,48 @@ const nieuws = [
 ];
 
 const Footer = () => {
+  const { t, isRTL } = useLanguage();
+
   return (
     <footer className="bg-foreground text-primary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className={`grid grid-cols-1 md:grid-cols-3 gap-10 ${isRTL ? "text-right" : ""}`}>
           {/* Column 1: Logo + Hours */}
           <div>
             <div className="mb-4">
               <img src={logoFooter} alt="Reigersbos Medical Center" className="h-14 w-auto" />
             </div>
             <p className="text-primary-foreground/70 text-xs italic mb-5">
-              "Because the greatest wealth is health"
+              {t("footer.tagline")}
             </p>
 
             <div className="space-y-3">
-              <div className="flex items-start gap-2">
+              <div className={`flex items-start gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
                 <Clock className="w-4 h-4 text-primary-mid mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-xs font-semibold text-primary-foreground/90 uppercase tracking-wide mb-1">
-                    Openingstijden praktijk
+                    {t("footer.hours.practice")}
                   </p>
                   <p className="text-sm text-primary-foreground/80">Ma-Vr 08:00–17:00</p>
                 </div>
               </div>
-              <div className="flex items-start gap-2">
+              <div className={`flex items-start gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
                 <Clock className="w-4 h-4 text-primary-mid mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-xs font-semibold text-primary-foreground/90 uppercase tracking-wide mb-1">
-                    Openingstijden fysiotherapie
+                    {t("footer.hours.physio")}
                   </p>
                   <p className="text-sm text-primary-foreground/80">Ma-Vr 09:00–18:00</p>
-                  <p className="text-sm text-primary-foreground/80">Weekend op afspraak</p>
+                  <p className="text-sm text-primary-foreground/80">{t("footer.hours.weekend")}</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Column 2: Medische websites */}
+          {/* Column 2: Medical websites */}
           <div>
             <h4 className="font-serif font-bold text-sm uppercase tracking-wide mb-4 text-primary-foreground/90 border-b border-primary-foreground/20 pb-2">
-              Medische websites
+              {t("footer.medical_sites")}
             </h4>
             <ul className="space-y-1.5">
               {medischeLinks.map((link) => (
@@ -81,7 +83,7 @@ const Footer = () => {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-primary-foreground/70 hover:text-primary-mid transition-colors flex items-center gap-1.5"
+                    className={`text-sm text-primary-foreground/70 hover:text-primary-mid transition-colors flex items-center gap-1.5 ${isRTL ? "flex-row-reverse" : ""}`}
                   >
                     <Globe className="w-3 h-3 flex-shrink-0" />
                     {link.label}
@@ -91,10 +93,10 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3: Online ondersteuning + Nieuws */}
+          {/* Column 3: Support + News */}
           <div>
             <h4 className="font-serif font-bold text-sm uppercase tracking-wide mb-4 text-primary-foreground/90 border-b border-primary-foreground/20 pb-2">
-              Online ondersteuning
+              {t("footer.support")}
             </h4>
             <ul className="space-y-1.5 mb-7">
               {supportLinks.map((link) => (
@@ -112,7 +114,7 @@ const Footer = () => {
             </ul>
 
             <h4 className="font-serif font-bold text-sm uppercase tracking-wide mb-4 text-primary-foreground/90 border-b border-primary-foreground/20 pb-2">
-              Laatste nieuws
+              {t("footer.news")}
             </h4>
             <ul className="space-y-3">
               {nieuws.map((item) => (
@@ -132,12 +134,8 @@ const Footer = () => {
       <div className="border-t border-primary-foreground/10 bg-foreground/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-primary-foreground/50 text-center sm:text-left">
-            Copyright © 2026 Reigersbos Medical Center | Powered by MWB Services
+            {t("footer.copyright")}
           </p>
-          <div className="flex items-center gap-1 border border-primary-foreground/20 rounded-md overflow-hidden text-xs">
-            <button className="px-2.5 py-1 bg-primary text-primary-foreground font-medium">NL</button>
-            <button className="px-2.5 py-1 text-primary-foreground/60 hover:text-primary-foreground transition-colors">EN</button>
-          </div>
         </div>
       </div>
     </footer>
