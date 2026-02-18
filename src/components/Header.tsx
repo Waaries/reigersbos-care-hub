@@ -69,10 +69,10 @@ const Header = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className={`flex items-center justify-between h-16 lg:h-20 ${isRTL ? "flex-row-reverse" : ""}`}>
+        <div className={`flex items-center justify-between h-20 lg:h-24 ${isRTL ? "flex-row-reverse" : ""}`}>
           {/* Logo */}
           <Link to="/" className="flex items-center flex-shrink-0">
-            <img src={logo} alt="Reigersbos Medical Center" className="h-12 lg:h-14 w-auto" />
+            <img src={logo} alt="Reigersbos Medical Center" className="h-16 lg:h-20 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
