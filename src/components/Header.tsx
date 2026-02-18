@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, ChevronDown, Globe, Menu, X } from "lucide-react";
+import { Phone, ChevronDown, Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navItems = [
   {
@@ -52,14 +53,8 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 flex-shrink-0">
-            <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">R</span>
-            </div>
-            <div className="hidden sm:block">
-              <p className="font-serif font-bold text-primary text-sm leading-tight">Reigersbos</p>
-              <p className="text-muted-foreground text-xs leading-tight">Medical Center</p>
-            </div>
+          <Link to="/" className="flex items-center flex-shrink-0">
+            <img src={logo} alt="Reigersbos Medical Center" className="h-12 lg:h-14 w-auto" />
           </Link>
 
           {/* Desktop Nav */}

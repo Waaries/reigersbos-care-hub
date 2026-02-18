@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo.png";
 import { Clock, Globe } from "lucide-react";
 
 const medischeLinks = [
@@ -37,14 +38,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Column 1: Logo + Hours */}
           <div>
-            <div className="flex items-center gap-2 mb-5">
-              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-                <span className="text-primary-foreground font-bold text-sm">R</span>
-              </div>
-              <div>
-                <p className="font-serif font-bold text-sm leading-tight">Reigersbos</p>
-                <p className="text-primary-foreground/60 text-xs leading-tight">Medical Center</p>
-              </div>
+            <div className="mb-4">
+              <img src={logo} alt="Reigersbos Medical Center" className="h-14 w-auto brightness-0 invert" />
             </div>
             <p className="text-primary-foreground/70 text-xs italic mb-5">
               "Because the greatest wealth is health"
