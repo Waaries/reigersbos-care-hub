@@ -19,10 +19,10 @@ const Index = () => {
       <section
         className="relative flex items-center justify-center overflow-hidden"
         style={{
-          paddingTop: "60px",
-          paddingBottom: "60px",
+          paddingTop: "100px",
+          paddingBottom: "100px",
           marginBottom: "0",
-          minHeight: "70vh",
+          minHeight: "auto",
           background: "linear-gradient(135deg, #1B4F8A 0%, #0D3B6E 50%, #0EA5A0 100%)",
         }}
       >
