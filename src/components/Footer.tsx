@@ -80,7 +80,7 @@ const Footer = () => {
           {/* Column 1: Logo + Hours */}
           <div>
             <div className="mb-4">
-              <img src={logoFooter} alt="Reigersbos Medical Center" className="h-14 w-auto" />
+              <img src={logoFooter} alt="Reigersbos Medical Center" style={{ width: "160px", height: "auto", marginBottom: "12px" }} />
             </div>
             <p className="text-primary-foreground/70 text-xs italic mb-5">
               {t("footer.tagline")}

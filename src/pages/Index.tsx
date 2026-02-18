@@ -19,8 +19,9 @@ const Index = () => {
       <section
         className="relative flex items-center justify-center overflow-hidden"
         style={{
-        paddingTop: "60px",
+          paddingTop: "60px",
           paddingBottom: "60px",
+          marginBottom: "0",
           minHeight: "70vh",
           background: "linear-gradient(135deg, #1B4F8A 0%, #0D3B6E 50%, #0EA5A0 100%)",
         }}
@@ -105,7 +106,7 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section className="page-section bg-background">
+      <section className="page-section bg-background" style={{ marginTop: "0", paddingTop: "48px" }}>
         <div className="page-container">
           <h2 className={`page-heading ${isRTL ? "text-right" : ""}`}>{t("about.heading")}</h2>
           <div className={`grid grid-cols-1 lg:grid-cols-5 gap-10 items-start ${isRTL ? "direction-rtl" : ""}`}>
@@ -129,7 +130,7 @@ const Index = () => {
               {/* Contact info card */}
               <div
                 style={{
-                  background: "white",
+                  background: "#FFFFFF",
                   borderRadius: "16px",
                   boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
                   padding: "32px",
@@ -245,7 +246,7 @@ const Index = () => {
               <div
                 key={titleKey}
                 style={{
-                  background: "white",
+                  background: "#FFFFFF",
                   borderRadius: "16px",
                   boxShadow: "0 4px 20px rgba(0,0,0,0.10)",
                   padding: "32px 24px",
