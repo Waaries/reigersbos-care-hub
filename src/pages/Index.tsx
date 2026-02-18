@@ -146,19 +146,80 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services strip */}
-      <section className="bg-secondary py-10">
+      {/* Services section */}
+      <section style={{ background: "#F8FAFC", padding: "60px 0" }}>
         <div className="page-container px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+          {/* Section header */}
+          <div className="text-center mb-10">
+            <p
+              style={{
+                fontSize: "12px",
+                fontWeight: 700,
+                letterSpacing: "0.15em",
+                color: "#0EA5A0",
+                textTransform: "uppercase",
+                marginBottom: "10px",
+              }}
+            >
+              WAT WIJ BIEDEN
+            </p>
+            <h2
+              style={{
+                fontSize: "clamp(1.75rem, 4vw, 2.25rem)",
+                fontWeight: 700,
+                color: "#1B4F8A",
+                margin: 0,
+              }}
+            >
+              Onze Diensten
+            </h2>
+          </div>
+
+          {/* Cards grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: "🩺", label: "Huisarts" },
-              { icon: "🥗", label: "Diëtetiek" },
-              { icon: "🏃", label: "Fysiotherapie" },
-              { icon: "💊", label: "Chronische Zorg" },
-            ].map(({ icon, label }) => (
-              <div key={label} className="flex flex-col items-center gap-3 p-4 bg-card rounded-xl border border-border shadow-card">
-                <span className="text-4xl">{icon}</span>
-                <span className="font-semibold text-foreground text-sm">{label}</span>
+              { icon: "🩺", label: "Huisarts", desc: "Voor al uw medische vragen en zorg" },
+              { icon: "🥗", label: "Diëtetiek", desc: "Professioneel voedingsadvies op maat" },
+              { icon: "🏃", label: "Fysiotherapie", desc: "Moderne behandelingen, 30 min per sessie" },
+              { icon: "💊", label: "Chronische Zorg", desc: "Begeleiding bij langdurige aandoeningen" },
+            ].map(({ icon, label, desc }) => (
+              <div
+                key={label}
+                style={{
+                  background: "white",
+                  borderRadius: "16px",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+                  padding: "32px 24px",
+                  textAlign: "center",
+                  borderTop: "4px solid transparent",
+                  transition: "all 0.3s ease",
+                  cursor: "default",
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget;
+                  el.style.borderTop = "4px solid #0EA5A0";
+                  el.style.transform = "translateY(-6px)";
+                  el.style.boxShadow = "0 12px 30px rgba(0,0,0,0.12)";
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget;
+                  el.style.borderTop = "4px solid transparent";
+                  el.style.transform = "translateY(0)";
+                  el.style.boxShadow = "0 4px 20px rgba(0,0,0,0.08)";
+                }}
+              >
+                <div style={{ fontSize: "48px", marginBottom: "16px" }}>{icon}</div>
+                <div
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: 700,
+                    color: "#1B4F8A",
+                    marginBottom: "8px",
+                  }}
+                >
+                  {label}
+                </div>
+                <p style={{ fontSize: "14px", color: "#64748B", margin: 0 }}>{desc}</p>
               </div>
             ))}
           </div>
