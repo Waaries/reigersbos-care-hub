@@ -96,8 +96,9 @@ const Index = () => {
       <section className="page-section bg-background">
         <div className="page-container">
           <h2 className="page-heading">Wie zijn wij! Reigersbos Medical Center</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            <div className="space-y-4">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
+            {/* Left column — 60% (3/5) */}
+            <div className="lg:col-span-3 space-y-4">
               <p className="page-text">
                 Welkom bij Reigersbos Medical Center, een kleinschalige huisartspraktijk gelegen aan
                 de Reigersbos 100K op de 3e etage. Wij streven naar persoonlijke en kwalitatieve zorg
@@ -114,8 +115,6 @@ const Index = () => {
                 en fysiotherapeuten werken nauw samen met onze huisartsen om u te helpen uw
                 gezondheidsdoelen te bereiken en u te ondersteunen bij het beheersen van uw aandoening.
               </p>
-            </div>
-            <div className="space-y-4">
               <p className="page-text">
                 Wij vinden het belangrijk dat onze patiënten zich op hun gemak voelen bij ons en
                 daarom streven we naar een warme en gastvrije sfeer. Onze praktijk is gemakkelijk
@@ -128,11 +127,6 @@ const Index = () => {
                 ons op via 020 737 14 26, onze website of door een inschrijfformulier op te halen op
                 de praktijk.
               </p>
-              <p className="page-text">
-                Ons team staat iedere werkdag van 08.00 uur tot 17.00 uur klaar om u de zorg te
-                verlenen die u nodig heeft. We kijken ernaar uit om u te ontmoeten en u te helpen bij
-                uw gezondheidsbehoeften.
-              </p>
               <div className="mt-6">
                 <button
                   onClick={() => openModal("inschrijven")}
@@ -142,9 +136,93 @@ const Index = () => {
                 </button>
               </div>
             </div>
+
+            {/* Right column — 40% (2/5) */}
+            <div className="lg:col-span-2 flex flex-col gap-4">
+              {/* Contact info card */}
+              <div
+                style={{
+                  background: "white",
+                  borderRadius: "16px",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+                  padding: "32px",
+                  borderTop: "4px solid #0EA5A0",
+                }}
+              >
+                <h3 style={{ fontWeight: 700, color: "#1B4F8A", marginBottom: "24px", fontSize: "18px" }}>
+                  Contactgegevens
+                </h3>
+
+                {/* Address */}
+                <div style={{ display: "flex", gap: "12px", marginBottom: "16px", paddingBottom: "16px", borderBottom: "1px solid #F1F5F9" }}>
+                  <span style={{ fontSize: "20px", flexShrink: 0 }}>📍</span>
+                  <div style={{ fontSize: "14px", color: "#374151", lineHeight: "1.6" }}>
+                    Reigersbos 100 K (3e etage)<br />
+                    1107 ES Amsterdam
+                  </div>
+                </div>
+
+                {/* Phone */}
+                <div style={{ display: "flex", gap: "12px", marginBottom: "16px", paddingBottom: "16px", borderBottom: "1px solid #F1F5F9" }}>
+                  <span style={{ fontSize: "20px", flexShrink: 0 }}>📞</span>
+                  <div style={{ fontSize: "14px", color: "#374151" }}>
+                    <a href="tel:0207371426" style={{ color: "#0EA5A0", fontWeight: 600, textDecoration: "none" }}>
+                      020 737 14 26
+                    </a>
+                  </div>
+                </div>
+
+                {/* Fax */}
+                <div style={{ display: "flex", gap: "12px", marginBottom: "16px", paddingBottom: "16px", borderBottom: "1px solid #F1F5F9" }}>
+                  <span style={{ fontSize: "20px", flexShrink: 0 }}>📠</span>
+                  <div style={{ fontSize: "14px", color: "#374151" }}>020 737 03 79</div>
+                </div>
+
+                {/* Email */}
+                <div style={{ display: "flex", gap: "12px", marginBottom: "16px", paddingBottom: "16px", borderBottom: "1px solid #F1F5F9" }}>
+                  <span style={{ fontSize: "20px", flexShrink: 0 }}>📧</span>
+                  <div style={{ fontSize: "14px" }}>
+                    <a
+                      href="mailto:Info@reigersbosmedicalcenter.nl"
+                      style={{ color: "#0EA5A0", fontWeight: 600, textDecoration: "none", wordBreak: "break-all" }}
+                    >
+                      Info@reigersbosmedicalcenter.nl
+                    </a>
+                  </div>
+                </div>
+
+                {/* Opening hours */}
+                <div style={{ display: "flex", gap: "12px" }}>
+                  <span style={{ fontSize: "20px", flexShrink: 0 }}>🕐</span>
+                  <div style={{ fontSize: "14px", color: "#374151", lineHeight: "1.8" }}>
+                    <div style={{ fontWeight: 600, marginBottom: "4px" }}>Openingstijden:</div>
+                    <div>Maandag - Vrijdag: 08:00 - 17:00</div>
+                    <div style={{ color: "#94A3B8" }}>Zaterdag - Zondag: Gesloten</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Open badge */}
+              <div>
+                <span
+                  style={{
+                    display: "inline-block",
+                    background: "#ECFDF5",
+                    color: "#059669",
+                    borderRadius: "50px",
+                    padding: "8px 16px",
+                    fontSize: "14px",
+                    fontWeight: 600,
+                  }}
+                >
+                  ✓ Open voor nieuwe patiënten
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
 
       {/* Services section */}
       <section style={{ background: "#F8FAFC", padding: "60px 0" }}>
