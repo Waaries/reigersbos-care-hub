@@ -1,8 +1,17 @@
 import Layout from "@/components/Layout";
 import { useModal } from "@/contexts/ModalContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
   const { openModal } = useModal();
+  const { t, isRTL } = useLanguage();
+
+  const services = [
+    { icon: "🩺", titleKey: "services.gp.title" as const, descKey: "services.gp.desc" as const },
+    { icon: "🥗", titleKey: "services.diet.title" as const, descKey: "services.diet.desc" as const },
+    { icon: "🏃", titleKey: "services.physio.title" as const, descKey: "services.physio.desc" as const },
+    { icon: "💊", titleKey: "services.chronic.title" as const, descKey: "services.chronic.desc" as const },
+  ];
 
   return (
     <Layout>
@@ -53,15 +62,15 @@ const Index = () => {
             opacity: 0.5,
           }}
         />
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in">
+        <div className={`relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in ${isRTL ? "text-right" : "text-center"}`}>
           <p className="text-primary-foreground/80 text-sm font-medium uppercase tracking-widest mb-4">
-            Welkom op onze website
+            {t("hero.welcome")}
           </p>
           <h1 className="font-serif font-bold text-4xl sm:text-5xl lg:text-6xl text-primary-foreground mb-5 leading-tight">
             Reigersbos Medical Center
           </h1>
           <p className="text-primary-foreground/90 text-xl sm:text-2xl italic mb-8">
-            "Because the greatest wealth is health"
+            {t("hero.tagline")}
           </p>
           <button
             onClick={() => openModal("inschrijven")}
@@ -90,7 +99,7 @@ const Index = () => {
               el.style.boxShadow = "0 4px 20px rgba(14,165,160,0.4)";
             }}
           >
-            Schrijf je nu in
+            {t("hero.cta")}
           </button>
         </div>
       </section>
@@ -98,32 +107,19 @@ const Index = () => {
       {/* About Section */}
       <section className="page-section bg-background">
         <div className="page-container">
-          <h2 className="page-heading">Wie zijn wij! Reigersbos Medical Center</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
+          <h2 className={`page-heading ${isRTL ? "text-right" : ""}`}>{t("about.heading")}</h2>
+          <div className={`grid grid-cols-1 lg:grid-cols-5 gap-10 items-start ${isRTL ? "direction-rtl" : ""}`}>
             {/* Left column — 60% (3/5) */}
-            <div className="lg:col-span-3 space-y-4">
-              <p className="page-text">
-                Welkom bij Reigersbos Medical Center, een kleinschalige huisartspraktijk gelegen aan
-                de Reigersbos 100K op de 3e etage. Wij streven naar persoonlijke en kwalitatieve zorg
-                en werken nauw samen met onze diëtist en fysiotherapeuten om u de beste zorg te bieden.
-              </p>
-              <p className="page-text">
-                Bij ons kunt u terecht voor diverse medische diensten, waaronder algemene
-                huisartsenzorg, bloedafname, preventieve zorg en chronische zorg. Ons team van
-                zorgverleners staat voor u klaar om u te helpen bij uw gezondheidsbehoeften en vragen.
-              </p>
-              <p className="page-text">
-                We begrijpen dat elke patiënt uniek is en daarom vinden wij het belangrijk om
-                persoonlijke zorg te bieden die is afgestemd op uw individuele behoeften. Onze diëtist
-                en fysiotherapeuten werken nauw samen met onze huisartsen om u te helpen uw
-                gezondheidsdoelen te bereiken en u te ondersteunen bij het beheersen van uw aandoening.
-              </p>
+            <div className={`lg:col-span-3 space-y-4 ${isRTL ? "text-right" : ""}`}>
+              <p className="page-text">{t("about.p1")}</p>
+              <p className="page-text">{t("about.p2")}</p>
+              <p className="page-text">{t("about.p3")}</p>
               <div className="mt-6">
                 <button
                   onClick={() => openModal("inschrijven")}
                   className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors shadow-card"
                 >
-                  Schrijf u in als patiënt
+                  {t("about.cta")}
                 </button>
               </div>
             </div>
@@ -141,7 +137,7 @@ const Index = () => {
                 }}
               >
                 <h3 style={{ fontWeight: 700, color: "#1B4F8A", marginBottom: "24px", fontSize: "18px" }}>
-                  Contactgegevens
+                  {t("contact.title")}
                 </h3>
 
                 {/* Address */}
@@ -186,9 +182,9 @@ const Index = () => {
                 <div style={{ display: "flex", gap: "12px" }}>
                   <span style={{ fontSize: "20px", flexShrink: 0 }}>🕐</span>
                   <div style={{ fontSize: "14px", color: "#374151", lineHeight: "1.8" }}>
-                    <div style={{ fontWeight: 600, marginBottom: "4px" }}>Openingstijden:</div>
-                    <div>Maandag - Vrijdag: 08:00 - 17:00</div>
-                    <div style={{ color: "#94A3B8" }}>Zaterdag - Zondag: Gesloten</div>
+                    <div style={{ fontWeight: 600, marginBottom: "4px" }}>{t("contact.hours.label")}</div>
+                    <div>{t("contact.hours.weekdays")}</div>
+                    <div style={{ color: "#94A3B8" }}>{t("contact.hours.weekend")}</div>
                   </div>
                 </div>
               </div>
@@ -206,14 +202,13 @@ const Index = () => {
                     fontWeight: 600,
                   }}
                 >
-                  ✓ Open voor nieuwe patiënten
+                  {t("contact.open")}
                 </span>
               </div>
             </div>
           </div>
         </div>
       </section>
-
 
       {/* Services section */}
       <section style={{ background: "#F8FAFC", padding: "60px 0" }}>
@@ -230,7 +225,7 @@ const Index = () => {
                 marginBottom: "10px",
               }}
             >
-              WAT WIJ BIEDEN
+              {t("services.label")}
             </p>
             <h2
               style={{
@@ -240,20 +235,15 @@ const Index = () => {
                 margin: 0,
               }}
             >
-              Onze Diensten
+              {t("services.heading")}
             </h2>
           </div>
 
           {/* Cards grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: "🩺", label: "Huisarts", desc: "Voor al uw medische vragen en zorg" },
-              { icon: "🥗", label: "Diëtetiek", desc: "Professioneel voedingsadvies op maat" },
-              { icon: "🏃", label: "Fysiotherapie", desc: "Moderne behandelingen, 30 min per sessie" },
-              { icon: "💊", label: "Chronische Zorg", desc: "Begeleiding bij langdurige aandoeningen" },
-            ].map(({ icon, label, desc }) => (
+            {services.map(({ icon, titleKey, descKey }) => (
               <div
-                key={label}
+                key={titleKey}
                 style={{
                   background: "white",
                   borderRadius: "16px",
@@ -287,9 +277,9 @@ const Index = () => {
                     marginBottom: "8px",
                   }}
                 >
-                  {label}
+                  {t(titleKey)}
                 </div>
-                <p style={{ fontSize: "14px", color: "#64748B", margin: 0 }}>{desc}</p>
+                <p style={{ fontSize: "14px", color: "#64748B", margin: 0 }}>{t(descKey)}</p>
               </div>
             ))}
           </div>
