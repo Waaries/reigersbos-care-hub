@@ -8,8 +8,11 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <section
-        className="relative min-h-[85vh] flex items-center justify-center overflow-hidden"
+        className="relative flex items-center justify-center overflow-hidden"
         style={{
+          paddingTop: "80px",
+          paddingBottom: "80px",
+          minHeight: "70vh",
           background: "linear-gradient(135deg, #1B4F8A 0%, #0D3B6E 50%, #0EA5A0 100%)",
         }}
       >
@@ -114,18 +117,6 @@ const Index = () => {
                 persoonlijke zorg te bieden die is afgestemd op uw individuele behoeften. Onze diëtist
                 en fysiotherapeuten werken nauw samen met onze huisartsen om u te helpen uw
                 gezondheidsdoelen te bereiken en u te ondersteunen bij het beheersen van uw aandoening.
-              </p>
-              <p className="page-text">
-                Wij vinden het belangrijk dat onze patiënten zich op hun gemak voelen bij ons en
-                daarom streven we naar een warme en gastvrije sfeer. Onze praktijk is gemakkelijk
-                bereikbaar en er is voldoende parkeergelegenheid. Het metrostation Reigersbos ligt op
-                enkele minuten loopafstand.
-              </p>
-              <p className="page-text">
-                Onze huisartsenpraktijk is open voor nieuwe patiënten en wij verwelkomen u graag.
-                Wilt u liever eerst een kennismakingsgesprek? Dat is ook mogelijk. Neem contact met
-                ons op via 020 737 14 26, onze website of door een inschrijfformulier op te halen op
-                de praktijk.
               </p>
               <div className="mt-6">
                 <button
@@ -266,9 +257,10 @@ const Index = () => {
                 style={{
                   background: "white",
                   borderRadius: "16px",
-                  boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.10)",
                   padding: "32px 24px",
                   textAlign: "center",
+                  border: "1px solid #E2E8F0",
                   borderTop: "4px solid transparent",
                   transition: "all 0.3s ease",
                   cursor: "default",
@@ -277,13 +269,13 @@ const Index = () => {
                   const el = e.currentTarget;
                   el.style.borderTop = "4px solid #0EA5A0";
                   el.style.transform = "translateY(-6px)";
-                  el.style.boxShadow = "0 12px 30px rgba(0,0,0,0.12)";
+                  el.style.boxShadow = "0 12px 30px rgba(0,0,0,0.15)";
                 }}
                 onMouseLeave={e => {
                   const el = e.currentTarget;
                   el.style.borderTop = "4px solid transparent";
                   el.style.transform = "translateY(0)";
-                  el.style.boxShadow = "0 4px 20px rgba(0,0,0,0.08)";
+                  el.style.boxShadow = "0 4px 20px rgba(0,0,0,0.10)";
                 }}
               >
                 <div style={{ fontSize: "48px", marginBottom: "16px" }}>{icon}</div>
