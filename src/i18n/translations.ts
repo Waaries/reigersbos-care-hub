@@ -1,12 +1,12 @@
 export type Language = "NL" | "EN" | "TW" | "YO" | "TR" | "AR";
 
 export const languages: { code: Language; flag: string; label: string; rtl?: boolean }[] = [
-  { code: "NL", flag: "🇳🇱", label: "NL" },
-  { code: "EN", flag: "🇬🇧", label: "EN" },
-  { code: "TW", flag: "🇬🇭", label: "TW" },
-  { code: "YO", flag: "🇳🇬", label: "YO" },
-  { code: "TR", flag: "🇹🇷", label: "TR" },
-  { code: "AR", flag: "🇲🇦", label: "AR", rtl: true },
+  { code: "NL", flag: "🇳🇱", label: "Nederlands" },
+  { code: "EN", flag: "🇬🇧", label: "English" },
+  { code: "TW", flag: "🇬🇭", label: "Twi" },
+  { code: "YO", flag: "🇳🇬", label: "Yoruba" },
+  { code: "TR", flag: "🇹🇷", label: "Türkçe" },
+  { code: "AR", flag: "🇲🇦", label: "العربية", rtl: true },
 ];
 
 export type TranslationKey =
