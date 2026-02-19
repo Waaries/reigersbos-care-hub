@@ -17,6 +17,7 @@ import Omgangsregels from "./pages/Omgangsregels";
 import Privacyreglement from "./pages/Privacyreglement";
 import Fysiotherapie from "./pages/Fysiotherapie";
 import OnsTeam from "./pages/OnsTeam";
+import OverigZorgaanbod from "./pages/OverigZorgaanbod";
 import Vacatures from "./pages/Vacatures";
 import Contact from "./pages/Contact";
 
@@ -40,6 +41,7 @@ const App = () => (
               <Route path="/omgangsregels" element={<Omgangsregels />} />
               <Route path="/privacyreglement" element={<Privacyreglement />} />
               <Route path="/fysiotherapie" element={<Fysiotherapie />} />
+              <Route path="/overig-zorgaanbod" element={<OverigZorgaanbod />} />
               <Route path="/ons-team" element={<OnsTeam />} />
               <Route path="/vacatures" element={<Vacatures />} />
               <Route path="/contact" element={<Contact />} />
