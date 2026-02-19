@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 
-export type ModalType = "inschrijven" | "herhaalrecept" | "spoed" | "fysiotherapie" | "dietetiek" | null;
+export type ModalType = "inschrijven" | "herhaalrecept" | "spoed" | "fysiotherapie" | null;
 
 interface ModalContextType {
   activeModal: ModalType;

@@ -4,7 +4,6 @@ import InschrijvenModal from "./modals/InschrijvenModal";
 import HerhaalreceptModal from "./modals/HerhaalreceptModal";
 import SpoedModal from "./modals/SpoedModal";
 import FysiotherapieModal from "./modals/FysiotherapieModal";
-import DietetiekModal from "./modals/DietetiekModal";
 
 const FloatingSideButtons = () => {
   const { openModal } = useModal();
@@ -30,11 +29,6 @@ const FloatingSideButtons = () => {
       labelKey: "btn.fysiotherapie" as const,
       modal: "fysiotherapie" as const,
       color: "bg-primary hover:bg-primary/90 text-primary-foreground",
-    },
-    {
-      labelKey: "btn.dietetiek" as const,
-      modal: "dietetiek" as const,
-      color: "bg-accent hover:bg-accent/90 text-accent-foreground",
     },
   ];
 
@@ -67,7 +61,6 @@ const FloatingSideButtons = () => {
       <HerhaalreceptModal />
       <SpoedModal />
       <FysiotherapieModal />
-      <DietetiekModal />
     </>
   );
 };
