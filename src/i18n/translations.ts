@@ -38,6 +38,7 @@ export type TranslationKey =
   // Navigation
   | "nav.huisartspraktijk"
   | "nav.fysiotherapie"
+  | "nav.overigzorgaanbod"
   | "nav.onsteam"
   | "nav.vacatures"
   | "nav.contact"
@@ -90,6 +91,7 @@ export const translations: Translations = {
     "nav.huisartspraktijk": "Huisartspraktijk",
     
     "nav.fysiotherapie": "Fysiotherapie",
+    "nav.overigzorgaanbod": "Overig Zorgaanbod",
     "nav.onsteam": "Ons Team",
     "nav.vacatures": "Vacatures",
     "nav.contact": "Contact",
@@ -138,6 +140,7 @@ export const translations: Translations = {
     "nav.huisartspraktijk": "GP Practice",
     
     "nav.fysiotherapie": "Physiotherapy",
+    "nav.overigzorgaanbod": "Other Care Services",
     "nav.onsteam": "Our Team",
     "nav.vacatures": "Vacancies",
     "nav.contact": "Contact",
@@ -186,6 +189,7 @@ export const translations: Translations = {
     "nav.huisartspraktijk": "Ɔdɔkono Dwumadi",
     
     "nav.fysiotherapie": "Honam Aduro",
+    "nav.overigzorgaanbod": "Ahofado Ahoɔden Mu",
     "nav.onsteam": "Yɛn Team",
     "nav.vacatures": "Adwuma",
     "nav.contact": "Kyer me",
@@ -234,6 +238,7 @@ export const translations: Translations = {
     "nav.huisartspraktijk": "Iṣẹ Dọkita",
     
     "nav.fysiotherapie": "Itọju Ara",
+    "nav.overigzorgaanbod": "Awọn Iṣẹ Ilera Miiran",
     "nav.onsteam": "Ẹgbẹ Wa",
     "nav.vacatures": "Awọn Iṣẹ",
     "nav.contact": "Kan Si",
@@ -282,6 +287,7 @@ export const translations: Translations = {
     "nav.huisartspraktijk": "Aile Hekimliği",
     
     "nav.fysiotherapie": "Fizyoterapi",
+    "nav.overigzorgaanbod": "Diğer Sağlık Hizmetleri",
     "nav.onsteam": "Ekibimiz",
     "nav.vacatures": "İş İlanları",
     "nav.contact": "İletişim",
@@ -330,6 +336,7 @@ export const translations: Translations = {
     "nav.huisartspraktijk": "الممارسة العامة",
     
     "nav.fysiotherapie": "العلاج الطبيعي",
+    "nav.overigzorgaanbod": "خدمات رعاية أخرى",
     "nav.onsteam": "فريقنا",
     "nav.vacatures": "الوظائف",
     "nav.contact": "اتصل بنا",
