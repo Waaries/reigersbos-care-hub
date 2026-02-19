@@ -4,14 +4,14 @@ import { ExternalLink, Phone, Mail, Clock, MapPin } from "lucide-react";
 const zorgverleners = [
   {
     emoji: "🤰",
-    naam: "Verloskundige Praktijk De Poort",
+    naam: "Verloskundigenpraktijk De Poort",
     categorie: "Verloskunde",
-    beschrijving: "Een zelfstandige verloskundigepraktijk gevestigd in ons pand. De Poort biedt persoonlijke begeleiding tijdens zwangerschap, bevalling en de kraamperiode. De verloskundigen werken nauw samen met onze huisartsen.",
-    diensten: ["Zwangerschapsbegeleiding", "Begeleiding bevalling", "Kraamzorg & nazorg", "Echo-onderzoek", "Prenatale screening"],
-    contact: null,
-    website: null,
+    beschrijving: "Een kleinschalige verloskundigenpraktijk gevestigd in ons pand. Persoonlijke begeleiding, professionaliteit en aandacht staan centraal. Vanaf de eerste maanden van de zwangerschap tot en met de eerste weken na de geboorte staan zij voor u klaar.",
+    diensten: ["Zwangerschapsbegeleiding", "Begeleiding bevalling", "Kraamzorg & nazorg", "Echo-onderzoek", "Prenatale screening", "Anticonceptiezorg"],
+    contact: "020 358 58 47",
+    website: "https://www.verloskundigenpraktijkdepoort.nl",
     openingstijden: null,
-    opmerking: "Voor afspraken en informatie kunt u direct contact opnemen met Verloskundige Praktijk De Poort.",
+    opmerking: "Voor aanmelden en afspraken kunt u direct contact opnemen met De Poort via telefoon of via hun website.",
     kleur: "#0EA5A0",
   },
   {
