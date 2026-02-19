@@ -1,4 +1,4 @@
-import { Phone, AlertTriangle, X, ExternalLink } from "lucide-react";
+import { Phone, AlertTriangle, X, ExternalLink, Clock } from "lucide-react";
 import { useModal } from "@/contexts/ModalContext";
 
 const SpoedModal = () => {
@@ -7,53 +7,208 @@ const SpoedModal = () => {
   if (activeModal !== "spoed") return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-foreground/70 backdrop-blur-sm" onClick={closeModal}>
-      <div className="bg-card rounded-xl shadow-modal w-full max-w-md modal-animate" onClick={e => e.stopPropagation()}>
-        <div className="flex items-center justify-between p-5 border-b border-border bg-destructive rounded-t-xl">
-          <div className="flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-destructive-foreground" />
-            <h2 className="font-serif font-bold text-xl text-destructive-foreground">SPOED</h2>
-          </div>
-          <button onClick={closeModal} className="p-1.5 rounded-lg hover:bg-destructive-foreground/10 transition-colors">
-            <X className="w-5 h-5 text-destructive-foreground" />
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ background: "rgba(13,59,110,0.6)", backdropFilter: "blur(8px)" }}
+      onClick={closeModal}
+    >
+      <div
+        className="bg-white w-full max-w-md overflow-hidden flex flex-col"
+        style={{ borderRadius: "24px", boxShadow: "0 32px 80px rgba(27,79,138,0.25)" }}
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Red header */}
+        <div style={{
+          background: "linear-gradient(135deg, #DC2626 0%, #991B1B 60%, #7F1D1D 100%)",
+          padding: "28px 32px 24px",
+          position: "relative",
+        }}>
+          <button
+            onClick={closeModal}
+            style={{
+              position: "absolute", top: "20px", right: "20px",
+              background: "rgba(255,255,255,0.15)", border: "none",
+              borderRadius: "50%", width: "36px", height: "36px",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              cursor: "pointer", transition: "all 0.2s",
+            }}
+            onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.25)")}
+            onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.15)")}
+          >
+            <X size={16} color="white" />
           </button>
+
+          <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+            <div style={{
+              width: "48px", height: "48px", borderRadius: "14px",
+              background: "rgba(255,255,255,0.15)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              flexShrink: 0,
+            }}>
+              <AlertTriangle size={24} color="white" />
+            </div>
+            <div>
+              <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "2px" }}>
+                Spoedhulp
+              </p>
+              <h2 style={{ color: "white", fontSize: "26px", fontWeight: 900, margin: 0, letterSpacing: "2px" }}>
+                SPOED
+              </h2>
+            </div>
+          </div>
+
+          {/* 112 banner */}
+          <div style={{
+            marginTop: "20px",
+            background: "rgba(0,0,0,0.25)",
+            borderRadius: "14px",
+            padding: "14px 18px",
+            display: "flex",
+            alignItems: "center",
+            gap: "14px",
+          }}>
+            <span style={{ fontSize: "28px" }}>🚨</span>
+            <div>
+              <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "12px", fontWeight: 600, margin: "0 0 2px 0", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                Levensbedreigende situatie?
+              </p>
+              <a
+                href="tel:112"
+                style={{
+                  color: "#FCA5A5",
+                  fontWeight: 900,
+                  fontSize: "28px",
+                  letterSpacing: "2px",
+                  textDecoration: "none",
+                  lineHeight: 1,
+                  display: "block",
+                }}
+              >
+                Bel 112
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div className="p-6 space-y-5">
-          <div className="bg-destructive/10 border border-destructive/30 rounded-lg p-4 text-center">
-            <p className="font-bold text-destructive text-lg">Bel 112 bij een levensbedreigende situatie!</p>
-          </div>
+        {/* Contact cards */}
+        <div style={{ padding: "24px 28px 28px", display: "flex", flexDirection: "column", gap: "12px" }}>
 
-          <div className="space-y-4">
-            <div className="flex items-start gap-3 p-3 bg-secondary rounded-lg">
-              <Phone className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-sm font-semibold text-foreground">Tot 17:00 – Praktijk</p>
-                <a href="tel:0207371426" className="text-primary font-bold text-lg hover:underline">020 737 14 26</a>
-              </div>
+          {/* Praktijk */}
+          <a
+            href="tel:0207371426"
+            style={{
+              display: "flex", alignItems: "center", gap: "16px",
+              padding: "16px 20px", borderRadius: "16px", textDecoration: "none",
+              background: "#EFF6FF", border: "2px solid #BFDBFE",
+              transition: "all 0.2s",
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.background = "#DBEAFE";
+              e.currentTarget.style.borderColor = "#93C5FD";
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.background = "#EFF6FF";
+              e.currentTarget.style.borderColor = "#BFDBFE";
+            }}
+          >
+            <div style={{
+              width: "44px", height: "44px", borderRadius: "12px",
+              background: "#1B4F8A",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              flexShrink: 0,
+            }}>
+              <Phone size={20} color="white" />
             </div>
-
-            <div className="flex items-start gap-3 p-3 bg-secondary rounded-lg">
-              <Phone className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-sm font-semibold text-foreground">Avond / Nacht / Weekend</p>
-                <a href="tel:0880030600" className="text-primary font-bold text-lg hover:underline">088 003 06 00</a>
-                <p className="text-xs text-muted-foreground mt-0.5">Huisartsenposten Amsterdam</p>
+            <div style={{ flex: 1 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "2px" }}>
+                <Clock size={11} color="#64748B" />
+                <p style={{ fontSize: "12px", color: "#64748B", fontWeight: 600, margin: 0 }}>
+                  Ma–Vr tot 17:00 · Praktijk
+                </p>
               </div>
+              <p style={{ fontSize: "20px", fontWeight: 800, color: "#1B4F8A", margin: 0 }}>
+                020 737 14 26
+              </p>
             </div>
+            <ExternalLink size={16} color="#93C5FD" />
+          </a>
 
-            <div className="p-3 bg-muted rounded-lg">
-              <p className="text-sm font-semibold text-foreground mb-1">Huisartsenpost Amsterdam</p>
-              <p className="text-sm text-muted-foreground">Hoogte Kadijk 143 C</p>
-              <p className="text-sm text-muted-foreground">1018 BH Amsterdam</p>
-              <a href="https://www.huisartsenpostenamsterdam.nl" target="_blank" rel="noopener noreferrer" className="text-sm text-primary flex items-center gap-1 mt-1.5 hover:underline">
-                <ExternalLink className="w-3 h-3" />
-                www.huisartsenpostenamsterdam.nl
+          {/* Huisartsenpost */}
+          <a
+            href="tel:0880030600"
+            style={{
+              display: "flex", alignItems: "center", gap: "16px",
+              padding: "16px 20px", borderRadius: "16px", textDecoration: "none",
+              background: "#FFF7ED", border: "2px solid #FED7AA",
+              transition: "all 0.2s",
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.background = "#FFEDD5";
+              e.currentTarget.style.borderColor = "#FDBA74";
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.background = "#FFF7ED";
+              e.currentTarget.style.borderColor = "#FED7AA";
+            }}
+          >
+            <div style={{
+              width: "44px", height: "44px", borderRadius: "12px",
+              background: "#EA580C",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              flexShrink: 0,
+            }}>
+              <Phone size={20} color="white" />
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "2px" }}>
+                <Clock size={11} color="#64748B" />
+                <p style={{ fontSize: "12px", color: "#64748B", fontWeight: 600, margin: 0 }}>
+                  Avond · Nacht · Weekend
+                </p>
+              </div>
+              <p style={{ fontSize: "20px", fontWeight: 800, color: "#C2410C", margin: 0 }}>
+                088 003 06 00
+              </p>
+              <p style={{ fontSize: "11px", color: "#9A3412", margin: 0 }}>Huisartsenposten Amsterdam</p>
+            </div>
+            <ExternalLink size={16} color="#FDBA74" />
+          </a>
+
+          {/* Adres */}
+          <div style={{
+            display: "flex", alignItems: "flex-start", gap: "14px",
+            padding: "14px 18px", borderRadius: "14px",
+            background: "#F8FAFC", border: "1px solid #E2E8F0",
+          }}>
+            <span style={{ fontSize: "20px", marginTop: "1px" }}>📍</span>
+            <div>
+              <p style={{ fontSize: "13px", fontWeight: 700, color: "#1B4F8A", margin: "0 0 2px 0" }}>
+                Huisartsenpost Amsterdam
+              </p>
+              <p style={{ fontSize: "12px", color: "#64748B", margin: 0 }}>
+                Hoogte Kadijk 143 C · 1018 BH Amsterdam
+              </p>
+              <a
+                href="https://www.huisartsenpostenamsterdam.nl"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: "12px", color: "#0EA5A0", fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: "4px", marginTop: "4px" }}
+              >
+                <ExternalLink size={11} />
+                huisartsenpostenamsterdam.nl
               </a>
             </div>
           </div>
 
-          <button onClick={closeModal} className="w-full py-2.5 border border-border rounded-lg text-foreground hover:bg-muted transition-colors font-medium">
+          <button
+            onClick={closeModal}
+            style={{
+              marginTop: "4px",
+              padding: "12px", borderRadius: "12px", fontSize: "14px", fontWeight: 600,
+              border: "2px solid #E2E8F0", background: "white", color: "#64748B",
+              cursor: "pointer", transition: "all 0.2s", width: "100%",
+            }}
+          >
             Sluiten
           </button>
         </div>
