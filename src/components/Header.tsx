@@ -28,7 +28,6 @@ const Header = () => {
         { label: t("nav.privacyreglement"), href: "/privacyreglement" },
       ],
     },
-    { label: t("nav.dietetiek"), href: "/dietetiek" },
     { label: t("nav.fysiotherapie"), href: "/fysiotherapie" },
     { label: t("nav.onsteam"), href: "/ons-team" },
     { label: t("nav.vacatures"), href: "/vacatures" },

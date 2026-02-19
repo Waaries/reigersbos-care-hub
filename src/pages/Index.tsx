@@ -8,7 +8,6 @@ const Index = () => {
 
   const services = [
     { icon: "🩺", titleKey: "services.gp.title" as const, descKey: "services.gp.desc" as const },
-    { icon: "🥗", titleKey: "services.diet.title" as const, descKey: "services.diet.desc" as const },
     { icon: "🏃", titleKey: "services.physio.title" as const, descKey: "services.physio.desc" as const },
     { icon: "💊", titleKey: "services.chronic.title" as const, descKey: "services.chronic.desc" as const },
   ];

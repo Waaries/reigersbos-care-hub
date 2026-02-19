@@ -31,15 +31,12 @@ export type TranslationKey =
   | "services.heading"
   | "services.gp.title"
   | "services.gp.desc"
-  | "services.diet.title"
-  | "services.diet.desc"
   | "services.physio.title"
   | "services.physio.desc"
   | "services.chronic.title"
   | "services.chronic.desc"
   // Navigation
   | "nav.huisartspraktijk"
-  | "nav.dietetiek"
   | "nav.fysiotherapie"
   | "nav.onsteam"
   | "nav.vacatures"
@@ -55,7 +52,6 @@ export type TranslationKey =
   | "btn.herhaalrecept"
   | "btn.spoed"
   | "btn.fysiotherapie"
-  | "btn.dietetiek"
   // Footer
   | "footer.tagline"
   | "footer.hours.practice"
@@ -87,14 +83,12 @@ export const translations: Translations = {
     "services.heading": "Onze Diensten",
     "services.gp.title": "Huisarts",
     "services.gp.desc": "Voor al uw medische vragen en zorg",
-    "services.diet.title": "Diëtetiek",
-    "services.diet.desc": "Professioneel voedingsadvies op maat",
     "services.physio.title": "Fysiotherapie",
     "services.physio.desc": "Moderne behandelingen, 30 min per sessie",
     "services.chronic.title": "Chronische Zorg",
     "services.chronic.desc": "Begeleiding bij langdurige aandoeningen",
     "nav.huisartspraktijk": "Huisartspraktijk",
-    "nav.dietetiek": "Diëtetiek",
+    
     "nav.fysiotherapie": "Fysiotherapie",
     "nav.onsteam": "Ons Team",
     "nav.vacatures": "Vacatures",
@@ -109,7 +103,7 @@ export const translations: Translations = {
     "btn.herhaalrecept": "Herhaalrecept",
     "btn.spoed": "SPOED",
     "btn.fysiotherapie": "Afspraak Fysiotherapie",
-    "btn.dietetiek": "Afspraak Diëtetiek",
+    
     "footer.tagline": "\"Because the greatest wealth is health\"",
     "footer.hours.practice": "Openingstijden praktijk",
     "footer.hours.physio": "Openingstijden fysiotherapie",
@@ -137,14 +131,12 @@ export const translations: Translations = {
     "services.heading": "Our Services",
     "services.gp.title": "GP Care",
     "services.gp.desc": "For all your medical questions and care",
-    "services.diet.title": "Dietetics",
-    "services.diet.desc": "Professional nutritional advice tailored to you",
     "services.physio.title": "Physiotherapy",
     "services.physio.desc": "Modern treatments, 30 min per session",
     "services.chronic.title": "Chronic Care",
     "services.chronic.desc": "Guidance for long-term conditions",
     "nav.huisartspraktijk": "GP Practice",
-    "nav.dietetiek": "Dietetics",
+    
     "nav.fysiotherapie": "Physiotherapy",
     "nav.onsteam": "Our Team",
     "nav.vacatures": "Vacancies",
@@ -159,7 +151,7 @@ export const translations: Translations = {
     "btn.herhaalrecept": "Repeat prescription",
     "btn.spoed": "EMERGENCY",
     "btn.fysiotherapie": "Physiotherapy",
-    "btn.dietetiek": "Dietetics",
+    
     "footer.tagline": "\"Because the greatest wealth is health\"",
     "footer.hours.practice": "PRACTICE OPENING HOURS",
     "footer.hours.physio": "PHYSIOTHERAPY OPENING HOURS",
@@ -187,14 +179,12 @@ export const translations: Translations = {
     "services.heading": "Yɛn Nnwuma",
     "services.gp.title": "Ɔdɔkono",
     "services.gp.desc": "Ma wo adwene nyinaa",
-    "services.diet.title": "Aduane ho Mmoa",
-    "services.diet.desc": "Aduane nhyehyɛe pa",
     "services.physio.title": "Honam Aduro",
     "services.physio.desc": "Nnwuma foforo, dɔnhwere 30",
     "services.chronic.title": "Yadeɛ a Ɛtena Hɔ",
     "services.chronic.desc": "Mmoa wɔ yadeɛ tenten mu",
     "nav.huisartspraktijk": "Ɔdɔkono Dwumadi",
-    "nav.dietetiek": "Aduane Mmoa",
+    
     "nav.fysiotherapie": "Honam Aduro",
     "nav.onsteam": "Yɛn Team",
     "nav.vacatures": "Adwuma",
@@ -209,7 +199,7 @@ export const translations: Translations = {
     "btn.herhaalrecept": "Dawuro bio",
     "btn.spoed": "BƆNE",
     "btn.fysiotherapie": "Honam",
-    "btn.dietetiek": "Aduane",
+    
     "footer.tagline": "\"Efisem saa na ahoofe ne ahonya\"",
     "footer.hours.practice": "Bere a Ɔdɔkono Wɔ Hɔ",
     "footer.hours.physio": "Bere a Honam Aduro Wɔ Hɔ",
@@ -237,14 +227,12 @@ export const translations: Translations = {
     "services.heading": "Àwọn Iṣẹ́ Wa",
     "services.gp.title": "Dọkita",
     "services.gp.desc": "Fun gbogbo ibeere iṣoogun rẹ",
-    "services.diet.title": "Ounjẹ",
-    "services.diet.desc": "Imọran ounjẹ ọjọgbọn",
     "services.physio.title": "Itọju ara",
     "services.physio.desc": "Awọn itọju ode oni, iṣẹju 30",
     "services.chronic.title": "Itọju Onibaje",
     "services.chronic.desc": "Itọsọna fun awọn ipo igba pipẹ",
     "nav.huisartspraktijk": "Iṣẹ Dọkita",
-    "nav.dietetiek": "Ounjẹ",
+    
     "nav.fysiotherapie": "Itọju Ara",
     "nav.onsteam": "Ẹgbẹ Wa",
     "nav.vacatures": "Awọn Iṣẹ",
@@ -259,7 +247,7 @@ export const translations: Translations = {
     "btn.herhaalrecept": "Oògùn lẹ́ẹ̀kan",
     "btn.spoed": "PAJAWIRI",
     "btn.fysiotherapie": "Itọju",
-    "btn.dietetiek": "Ounjẹ",
+    
     "footer.tagline": "\"Nítorí ìlera ni ọrọ tòótọ́\"",
     "footer.hours.practice": "ÀKÓKÒ ṢÍṢÍ DỌKITA",
     "footer.hours.physio": "ÀKÓKÒ ṢÍṢÍ ITỌJU ARA",
@@ -287,14 +275,12 @@ export const translations: Translations = {
     "services.heading": "Hizmetlerimiz",
     "services.gp.title": "Aile Hekimi",
     "services.gp.desc": "Tüm tıbbi sorularınız için",
-    "services.diet.title": "Diyetetik",
-    "services.diet.desc": "Profesyonel beslenme danışmanlığı",
     "services.physio.title": "Fizyoterapi",
     "services.physio.desc": "Modern tedaviler, 30 dakika",
     "services.chronic.title": "Kronik Bakım",
     "services.chronic.desc": "Uzun süreli hastalıklarda rehberlik",
     "nav.huisartspraktijk": "Aile Hekimliği",
-    "nav.dietetiek": "Diyetetik",
+    
     "nav.fysiotherapie": "Fizyoterapi",
     "nav.onsteam": "Ekibimiz",
     "nav.vacatures": "İş İlanları",
@@ -309,7 +295,7 @@ export const translations: Translations = {
     "btn.herhaalrecept": "Tekrar reçete",
     "btn.spoed": "ACİL",
     "btn.fysiotherapie": "Fizyoterapi",
-    "btn.dietetiek": "Diyetetik",
+    
     "footer.tagline": "\"Çünkü en büyük zenginlik sağlıktır\"",
     "footer.hours.practice": "KLİNİK AÇILIŞ SAATLERİ",
     "footer.hours.physio": "FİZYOTERAPİ AÇILIŞ SAATLERİ",
@@ -337,14 +323,12 @@ export const translations: Translations = {
     "services.heading": "خدماتنا",
     "services.gp.title": "طبيب الأسرة",
     "services.gp.desc": "لجميع أسئلتك الطبية",
-    "services.diet.title": "التغذية",
-    "services.diet.desc": "استشارة غذائية احترافية",
     "services.physio.title": "العلاج الطبيعي",
     "services.physio.desc": "علاجات حديثة، 30 دقيقة",
     "services.chronic.title": "الرعاية المزمنة",
     "services.chronic.desc": "توجيه للحالات طويلة الأمد",
     "nav.huisartspraktijk": "الممارسة العامة",
-    "nav.dietetiek": "التغذية",
+    
     "nav.fysiotherapie": "العلاج الطبيعي",
     "nav.onsteam": "فريقنا",
     "nav.vacatures": "الوظائف",
@@ -359,7 +343,7 @@ export const translations: Translations = {
     "btn.herhaalrecept": "وصفة متكررة",
     "btn.spoed": "طوارئ",
     "btn.fysiotherapie": "علاج طبيعي",
-    "btn.dietetiek": "تغذية",
+    
     "footer.tagline": "\"لأن أعظم ثروة هي الصحة\"",
     "footer.hours.practice": "ساعات عمل العيادة",
     "footer.hours.physio": "ساعات العلاج الطبيعي",

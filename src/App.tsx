@@ -15,7 +15,6 @@ import Praktijkassistente from "./pages/Praktijkassistente";
 import Klachten from "./pages/Klachten";
 import Omgangsregels from "./pages/Omgangsregels";
 import Privacyreglement from "./pages/Privacyreglement";
-import Dietetiek from "./pages/Dietetiek";
 import Fysiotherapie from "./pages/Fysiotherapie";
 import OnsTeam from "./pages/OnsTeam";
 import Vacatures from "./pages/Vacatures";
@@ -40,7 +39,6 @@ const App = () => (
               <Route path="/klachten" element={<Klachten />} />
               <Route path="/omgangsregels" element={<Omgangsregels />} />
               <Route path="/privacyreglement" element={<Privacyreglement />} />
-              <Route path="/dietetiek" element={<Dietetiek />} />
               <Route path="/fysiotherapie" element={<Fysiotherapie />} />
               <Route path="/ons-team" element={<OnsTeam />} />
               <Route path="/vacatures" element={<Vacatures />} />
