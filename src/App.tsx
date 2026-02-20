@@ -20,6 +20,7 @@ import OnsTeam from "./pages/OnsTeam";
 import OverigZorgaanbod from "./pages/OverigZorgaanbod";
 import Vacatures from "./pages/Vacatures";
 import Contact from "./pages/Contact";
+import Expats from "./pages/Expats";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ const App = () => (
               <Route path="/ons-team" element={<OnsTeam />} />
               <Route path="/vacatures" element={<Vacatures />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/expats" element={<Expats />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </ModalProvider>
