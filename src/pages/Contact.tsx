@@ -10,10 +10,22 @@ const Contact = () => {
 
   return (
     <Layout>
+      <section style={{ background: "linear-gradient(135deg, #1B4F8A 0%, #0D3B6E 50%, #0EA5A0 100%)", position: "relative", overflow: "hidden", padding: "80px 0 60px" }}>
+        <div className="page-container" style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,255,255,0.12)", borderRadius: "50px", padding: "6px 16px", marginBottom: "16px" }}>
+            <Phone size={16} color="white" />
+            <span style={{ color: "rgba(255,255,255,0.9)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Reigersbos Medical Center</span>
+          </div>
+          <h1 style={{ color: "white", fontSize: "clamp(1.5rem, 4vw, 2.25rem)", fontFamily: "Merriweather, Georgia, serif", fontWeight: 800, margin: "0 0 12px" }}>Contact</h1>
+          <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "15px", maxWidth: "520px", margin: "0 auto", lineHeight: 1.6 }}>Neem contact met ons op — wij helpen u graag verder.</p>
+        </div>
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: 48 }} xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="hsl(var(--background))" />
+        </svg>
+      </section>
+
       <section className="page-section">
         <div className="page-container">
-          <h2 className="page-heading">Contact gegevens</h2>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
             <div className="info-card">
               <div className="flex items-center gap-2 mb-2">
@@ -50,7 +62,6 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Google Maps */}
           <div className="rounded-xl overflow-hidden border border-border shadow-card mb-10 h-64 sm:h-80">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2439.4867392527447!2d4.967899!3d52.306741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c60a3e4b34e123%3A0x0!2sReigersbos+100%2C+1107+ES+Amsterdam!5e0!3m2!1snl!2snl!4v1234567890"
@@ -64,7 +75,6 @@ const Contact = () => {
             />
           </div>
 
-          {/* Contactformulier */}
           <div className="max-w-2xl">
             <h3 className="font-serif font-bold text-xl text-primary mb-5">Stuur ons een bericht</h3>
             {submitted ? (

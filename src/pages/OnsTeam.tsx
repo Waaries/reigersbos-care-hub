@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
-import { User } from "lucide-react";
+import { User, Users } from "lucide-react";
 
 const team = [
   { name: "Julia van de Pol", title: "Huisarts", big: "BIG: 59919561501" },
@@ -53,71 +53,23 @@ const TeamCard = ({ member }: { member: typeof team[0] }) => {
 
 const OnsTeam = () => (
   <Layout>
-    {/* Hero Banner */}
-    <div
-      style={{
-        background: "linear-gradient(135deg, #1B4F8A 0%, #0EA5A0 100%)",
-        height: 200,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      <p
-        style={{
-          color: "rgba(255,255,255,0.8)",
-          fontSize: 11,
-          fontFamily: "Inter, sans-serif",
-          fontWeight: 600,
-          letterSpacing: "0.2em",
-          textTransform: "uppercase",
-          marginBottom: 10,
-        }}
-      >
-        ONS TEAM
-      </p>
-      <h1
-        style={{
-          color: "#fff",
-          fontSize: "clamp(1.2rem, 3vw, 1.75rem)",
-          fontFamily: "Merriweather, Georgia, serif",
-          fontWeight: 700,
-          textAlign: "center",
-          padding: "0 1rem",
-          margin: 0,
-        }}
-      >
-        Maak kennis met onze zorgprofessionals
-      </h1>
-      {/* Wave divider */}
-      <svg
-        viewBox="0 0 1440 60"
-        preserveAspectRatio="none"
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          width: "100%",
-          height: 48,
-        }}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z"
-          fill="hsl(var(--background))"
-        />
+    <section style={{ background: "linear-gradient(135deg, #1B4F8A 0%, #0D3B6E 50%, #0EA5A0 100%)", position: "relative", overflow: "hidden", padding: "80px 0 60px" }}>
+      <div className="page-container" style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,255,255,0.12)", borderRadius: "50px", padding: "6px 16px", marginBottom: "16px" }}>
+          <Users size={16} color="white" />
+          <span style={{ color: "rgba(255,255,255,0.9)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Reigersbos Medical Center</span>
+        </div>
+        <h1 style={{ color: "white", fontSize: "clamp(1.5rem, 4vw, 2.25rem)", fontFamily: "Merriweather, Georgia, serif", fontWeight: 800, margin: "0 0 12px" }}>Ons Team</h1>
+        <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "15px", maxWidth: "520px", margin: "0 auto", lineHeight: 1.6 }}>Maak kennis met de mensen achter Reigersbos Medical Center.</p>
+      </div>
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: 48 }} xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="hsl(var(--background))" />
       </svg>
-    </div>
+    </section>
 
     {/* Intro text */}
     <div className="flex justify-center px-4 mt-10 mb-2">
-      <p
-        className="text-center text-sm leading-relaxed max-w-[600px]"
-        style={{ color: "#64748B" }}
-      >
+      <p className="text-center text-sm leading-relaxed max-w-[600px]" style={{ color: "#64748B" }}>
         Ons team bestaat uit gedreven zorgprofessionals die klaarstaan om u de beste zorg te bieden. Samen werken wij aan uw gezondheid.
       </p>
     </div>
