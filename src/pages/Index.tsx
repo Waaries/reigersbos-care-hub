@@ -285,6 +285,45 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Ongedocumenteerden Banner */}
+      <section style={{ background: "#EFF6FF", borderTop: "1px solid #BFDBFE", padding: "40px 0" }}>
+        <div className="page-container">
+          <div style={{
+            display: "flex", alignItems: "center",
+            justifyContent: "space-between", gap: "24px", flexWrap: "wrap",
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+              <div style={{
+                width: "56px", height: "56px", borderRadius: "16px",
+                background: "#1B4F8A",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: "26px", flexShrink: 0,
+              }}>💙</div>
+              <div>
+                <p style={{ color: "#1E40AF", fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", margin: "0 0 4px" }}>
+                  GEEN PAPIEREN?
+                </p>
+                <h3 style={{ color: "#1B4F8A", fontSize: "20px", fontWeight: 800, margin: 0 }}>
+                  U heeft recht op zorg — wij helpen u
+                </h3>
+                <p style={{ color: "#3B82F6", fontSize: "14px", margin: "4px 0 0" }}>
+                  Vertrouwelijk · Beroepsgeheim · CAK contract
+                </p>
+              </div>
+            </div>
+            <a href="/ongedocumenteerden" style={{
+              background: "#1B4F8A", color: "white",
+              borderRadius: "50px", padding: "12px 24px",
+              fontSize: "14px", fontWeight: 700, textDecoration: "none",
+              whiteSpace: "nowrap", flexShrink: 0,
+              boxShadow: "0 4px 16px rgba(27,79,138,0.25)",
+            }}>
+              Meer informatie →
+            </a>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 };
