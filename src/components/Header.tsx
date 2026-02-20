@@ -32,6 +32,7 @@ const Header = () => {
     { label: t("nav.overigzorgaanbod"), href: "/overig-zorgaanbod" },
     { label: t("nav.onsteam"), href: "/ons-team" },
     { label: "Expats 🌍", href: "/expats" },
+    { label: "Ongedocumenteerden", href: "/ongedocumenteerden" },
     { label: t("nav.vacatures"), href: "/vacatures" },
     { label: t("nav.contact"), href: "/contact" },
   ];

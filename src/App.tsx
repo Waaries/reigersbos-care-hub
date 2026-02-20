@@ -21,6 +21,7 @@ import OverigZorgaanbod from "./pages/OverigZorgaanbod";
 import Vacatures from "./pages/Vacatures";
 import Contact from "./pages/Contact";
 import Expats from "./pages/Expats";
+import Ongedocumenteerden from "./pages/Ongedocumenteerden";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,7 @@ const App = () => (
               <Route path="/vacatures" element={<Vacatures />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/expats" element={<Expats />} />
+              <Route path="/ongedocumenteerden" element={<Ongedocumenteerden />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </ModalProvider>
