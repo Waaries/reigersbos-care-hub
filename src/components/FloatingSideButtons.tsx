@@ -1,5 +1,7 @@
 import { useModal } from "@/contexts/ModalContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useNavigate } from "react-router-dom";
+import { Heart } from "lucide-react";
 import InschrijvenModal from "./modals/InschrijvenModal";
 import HerhaalreceptModal from "./modals/HerhaalreceptModal";
 import SpoedModal from "./modals/SpoedModal";
@@ -8,6 +10,7 @@ import FysiotherapieModal from "./modals/FysiotherapieModal";
 const FloatingSideButtons = () => {
   const { openModal } = useModal();
   const { t, isRTL } = useLanguage();
+  const navigate = useNavigate();
 
   const buttons = [
     {
@@ -54,6 +57,26 @@ const FloatingSideButtons = () => {
             {t(btn.labelKey)}
           </button>
         ))}
+        {/* Ongedocumenteerden link button */}
+        <button
+          onClick={() => navigate("/ongedocumenteerden")}
+          className={`text-xs font-semibold py-3 px-2 shadow-lg transition-all duration-200 hover:shadow-xl text-white ${
+            isRTL
+              ? "rounded-r-lg hover:translate-x-0.5"
+              : "rounded-l-lg hover:-translate-x-0.5"
+          }`}
+          style={{
+            writingMode: "vertical-rl",
+            textOrientation: "mixed",
+            letterSpacing: "0.05em",
+            background: "#1B4F8A",
+          }}
+        >
+          <span className="flex items-center gap-1">
+            <Heart className="w-3 h-3" />
+            Ongedocumenteerden
+          </span>
+        </button>
       </div>
 
       {/* Modals */}
