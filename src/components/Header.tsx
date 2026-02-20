@@ -28,12 +28,25 @@ const Header = () => {
         { label: t("nav.privacyreglement"), href: "/privacyreglement" },
       ],
     },
-    { label: t("nav.fysiotherapie"), href: "/fysiotherapie" },
-    { label: t("nav.overigzorgaanbod"), href: "/overig-zorgaanbod" },
-    { label: t("nav.onsteam"), href: "/ons-team" },
+    {
+      label: "Zorgaanbod",
+      href: "/fysiotherapie",
+      children: [
+        { label: "Fysiotherapie", href: "/fysiotherapie" },
+        { label: "Overig Zorgaanbod", href: "/overig-zorgaanbod" },
+        { label: "Verloskundige", href: "/verloskundige" },
+      ],
+    },
+    {
+      label: "Over ons",
+      href: "/ons-team",
+      children: [
+        { label: "Ons Team", href: "/ons-team" },
+        { label: "Vacatures", href: "/vacatures" },
+      ],
+    },
     { label: "Expats 🌍", href: "/expats" },
     { label: "Ongedocumenteerden", href: "/ongedocumenteerden" },
-    { label: t("nav.vacatures"), href: "/vacatures" },
     { label: t("nav.contact"), href: "/contact" },
   ];
 
