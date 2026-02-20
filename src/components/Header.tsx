@@ -45,8 +45,8 @@ const Header = () => {
         { label: "Vacatures", href: "/vacatures" },
       ],
     },
-    { label: "Expats 🌍", href: "/expats" },
-    { label: "Ongedocumenteerden", href: "/ongedocumenteerden" },
+    { label: "Expats", href: "/expats" },
+    { label: "Zonder papieren", href: "/ongedocumenteerden" },
     { label: t("nav.contact"), href: "/contact" },
   ];
 
