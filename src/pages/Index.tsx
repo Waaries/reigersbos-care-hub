@@ -9,7 +9,8 @@ const Index = () => {
   const services = [
     { icon: "🩺", titleKey: "services.gp.title" as const, descKey: "services.gp.desc" as const },
     { icon: "🏃", titleKey: "services.physio.title" as const, descKey: "services.physio.desc" as const },
-    { icon: "💊", titleKey: "services.chronic.title" as const, descKey: "services.chronic.desc" as const },
+    { icon: "🤰", title: "Verloskundige", desc: "Verloskundige Praktijk De Poort — in ons gebouw" },
+    { icon: "🩸", title: "Bloedafname", desc: "RHMDC bloedafname service — snel en betrouwbaar" },
   ];
 
   return (
