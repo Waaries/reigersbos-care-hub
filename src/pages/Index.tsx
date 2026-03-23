@@ -106,6 +106,16 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Trust Badge */}
+      <section style={{ background: "#EFF6FF", padding: "16px 0", borderBottom: "1px solid #DBEAFE" }}>
+        <div className="page-container" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "16px", flexWrap: "wrap" }}>
+          <span style={{ fontSize: "13px", fontWeight: 700, color: "#1B4F8A", letterSpacing: "0.02em" }}>Zorgkaart Nederland</span>
+          <span style={{ fontSize: "18px", color: "#F59E0B" }}>⭐</span>
+          <span style={{ fontSize: "20px", fontWeight: 800, color: "#1B4F8A" }}>10.0 / 10</span>
+          <span style={{ fontSize: "13px", color: "#64748B" }}>— Beoordeeld door onze patiënten</span>
+        </div>
+      </section>
+
       {/* About Section */}
       <section className="page-section bg-background" style={{ marginTop: "0", paddingTop: "48px" }}>
         <div className="page-container">
