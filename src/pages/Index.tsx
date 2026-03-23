@@ -326,6 +326,47 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Expats Banner */}
+      <section style={{ background: "linear-gradient(135deg, #F0FDFA 0%, #ECFDF5 100%)", borderTop: "1px solid #99F6E4", padding: "40px 0" }}>
+        <div className="page-container">
+          <div style={{
+            display: "flex", alignItems: "center",
+            justifyContent: "space-between", gap: "24px", flexWrap: "wrap",
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+              <div style={{
+                width: "56px", height: "56px", borderRadius: "16px",
+                background: "linear-gradient(135deg, #0EA5A0, #059669)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                flexShrink: 0,
+              }}>
+                <Globe size={26} color="white" />
+              </div>
+              <div>
+                <p style={{ color: "#0F766E", fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", margin: "0 0 4px" }}>
+                  INTERNATIONAL PATIENTS?
+                </p>
+                <h3 style={{ color: "#065F46", fontSize: "20px", fontWeight: 800, margin: 0 }}>
+                  We welcome expats & English speakers
+                </h3>
+                <p style={{ color: "#0D9488", fontSize: "14px", margin: "4px 0 0" }}>
+                  English spoken · Easy registration · Central Amsterdam Zuidoost
+                </p>
+              </div>
+            </div>
+            <a href="/expats" style={{
+              background: "linear-gradient(135deg, #0EA5A0, #059669)", color: "white",
+              borderRadius: "50px", padding: "12px 24px",
+              fontSize: "14px", fontWeight: 700, textDecoration: "none",
+              whiteSpace: "nowrap", flexShrink: 0,
+              boxShadow: "0 4px 16px rgba(14,165,160,0.3)",
+            }}>
+              More information →
+            </a>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 };
