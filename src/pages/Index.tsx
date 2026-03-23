@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import { useModal } from "@/contexts/ModalContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Globe } from "lucide-react";
 
 const Index = () => {
   const { openModal } = useModal();
