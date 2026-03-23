@@ -107,6 +107,38 @@ const Footer = () => {
                 </div>
               </div>
             </div>
+
+            {/* Zorgkaart Nederland widget */}
+            <a
+              href="https://www.zorgkaartnederland.nl/zorginstelling/huisartsenpraktijk-reigersbos-medical-center-amsterdam-10017001"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'block',
+                marginTop: '16px',
+                padding: '12px',
+                backgroundColor: 'white',
+                borderRadius: '8px',
+                border: '1px solid #e2e8f0',
+                textDecoration: 'none',
+                maxWidth: '220px',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+                <img
+                  src="https://www.zorgkaartnederland.nl/images/logos/zkn-logo.png"
+                  alt="Zorgkaart Nederland"
+                  style={{ height: '32px', objectFit: 'contain' }}
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
+                />
+              </div>
+              <p style={{ color: '#2d3748', fontSize: '13px', margin: '0 0 6px', lineHeight: '1.4' }}>
+                Reigersbos Medical Center is 2 keer gewaardeerd en heeft een gemiddeld cijfer van <strong>10.0</strong>.
+              </p>
+              <span style={{ color: '#3182ce', fontSize: '13px', fontWeight: 500 }}>
+                Bekijk alle waarderingen
+              </span>
+            </a>
           </div>
 
           {/* Column 2: Medical websites */}
