@@ -19,8 +19,8 @@ const Index = () => {
       <section
         className="relative flex items-center justify-center overflow-hidden"
         style={{
-          paddingTop: "100px",
-          paddingBottom: "100px",
+          paddingTop: "120px",
+          paddingBottom: "120px",
           marginBottom: "0",
           minHeight: "auto",
           background: "linear-gradient(135deg, #1B4F8A 0%, #0D3B6E 50%, #0EA5A0 100%)",
