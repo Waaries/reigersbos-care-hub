@@ -14,8 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Merriweather', 'Georgia', 'serif'],
+        sans: ['Inter', '-apple-system', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -44,6 +43,7 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          light: "hsl(var(--accent-light))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -94,9 +94,9 @@ export default {
         "fade-in": "fade-in 0.3s ease-out",
       },
       boxShadow: {
-        header: "0 2px 20px rgba(59, 130, 246, 0.12)",
-        card: "0 4px 20px rgba(59, 130, 246, 0.08)",
-        modal: "0 25px 60px rgba(0,0,0,0.18)",
+        subtle: "0 1px 3px rgba(0,0,0,0.06)",
+        card: "0 1px 3px rgba(0,0,0,0.06)",
+        modal: "0 16px 48px rgba(0,0,0,0.12)",
       },
     },
   },

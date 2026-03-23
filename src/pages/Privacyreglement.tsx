@@ -46,27 +46,36 @@ const Privacyreglement = () => {
 
   return (
     <Layout>
+      <section className="page-hero">
+        <div className="page-container" style={{ textAlign: "center" }}>
+          <p className="page-hero-label mb-3">Huisartspraktijk</p>
+          <h1 className="page-hero-title">Privacyreglement</h1>
+          <p className="page-hero-desc">Hoe wij omgaan met uw persoonsgegevens.</p>
+        </div>
+      </section>
+
       <section className="page-section">
         <div className="page-container">
-          <h2 className="page-heading">Privacyreglement</h2>
-
-          <div className="border border-border rounded-xl overflow-hidden">
-            <div className="bg-secondary px-5 py-3 border-b border-border">
-              <p className="font-semibold text-foreground text-sm">Privacyreglement van onze Medisch Centrum</p>
+          <div className="border border-border rounded-lg overflow-hidden">
+            <div style={{ background: "hsl(210 40% 98%)", padding: "12px 20px", borderBottom: "1px solid hsl(214 32% 91%)" }}>
+              <p style={{ fontWeight: 600, color: "hsl(222 47% 11%)", fontSize: "14px" }}>Privacyreglement van onze Medisch Centrum</p>
             </div>
             {sections.map((section, idx) => (
               <div key={idx} className="border-b border-border last:border-b-0">
                 <button
-                  className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-muted transition-colors"
+                  className="w-full flex items-center justify-between px-5 py-4 text-left transition-colors"
                   onClick={() => setOpen(open === idx ? null : idx)}
+                  onMouseEnter={e => { e.currentTarget.style.background = "hsl(210 40% 98%)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
                 >
-                  <span className="font-medium text-foreground">{section.title}</span>
+                  <span style={{ fontWeight: 500, color: "hsl(222 47% 11%)" }}>{section.title}</span>
                   <ChevronDown
-                    className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${open === idx ? "rotate-180" : ""}`}
+                    className={`w-4 h-4 transition-transform duration-200 ${open === idx ? "rotate-180" : ""}`}
+                    style={{ color: "hsl(215 16% 47%)" }}
                   />
                 </button>
                 {open === idx && (
-                  <div className="px-5 pb-5 text-sm text-foreground/80 leading-relaxed">
+                  <div className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "hsl(220 9% 26%)" }}>
                     {section.content}
                   </div>
                 )}

@@ -10,59 +10,42 @@ const Contact = () => {
 
   return (
     <Layout>
-      <section style={{ background: "linear-gradient(135deg, #1B4F8A 0%, #0D3B6E 50%, #0EA5A0 100%)", position: "relative", overflow: "hidden", padding: "80px 0 60px" }}>
-        <div className="page-container" style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,255,255,0.12)", borderRadius: "50px", padding: "6px 16px", marginBottom: "16px" }}>
-            <Phone size={16} color="white" />
-            <span style={{ color: "rgba(255,255,255,0.9)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Reigersbos Medical Center</span>
-          </div>
-          <h1 style={{ color: "white", fontSize: "clamp(1.5rem, 4vw, 2.25rem)", fontFamily: "Merriweather, Georgia, serif", fontWeight: 800, margin: "0 0 12px" }}>Contact</h1>
-          <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "15px", maxWidth: "520px", margin: "0 auto", lineHeight: 1.6 }}>Neem contact met ons op — wij helpen u graag verder.</p>
+      <section className="page-hero">
+        <div className="page-container" style={{ textAlign: "center" }}>
+          <p className="page-hero-label mb-3">Reigersbos Medical Center</p>
+          <h1 className="page-hero-title">Contact</h1>
+          <p className="page-hero-desc">Neem contact met ons op — wij helpen u graag verder.</p>
         </div>
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: 48 }} xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="hsl(var(--background))" />
-        </svg>
       </section>
 
       <section className="page-section">
         <div className="page-container">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
-            <div className="info-card">
-              <div className="flex items-center gap-2 mb-2">
-                <MapPin className="w-5 h-5 text-primary" />
-                <p className="font-semibold text-foreground text-sm">Adres</p>
-              </div>
-              <p className="text-sm text-foreground/80">Reigersbos 100 K (3e etage)</p>
-              <p className="text-sm text-foreground/80">1107 ES Amsterdam</p>
-            </div>
-            <div className="info-card">
-              <div className="flex items-center gap-2 mb-2">
-                <Mail className="w-5 h-5 text-primary" />
-                <p className="font-semibold text-foreground text-sm">E-mail</p>
-              </div>
-              <a href="mailto:Info@reigersbosmedicalcenter.nl" className="text-sm text-primary hover:underline break-all">
-                Info@reigersbosmedicalcenter.nl
-              </a>
-            </div>
-            <div className="info-card">
-              <div className="flex items-center gap-2 mb-2">
-                <Phone className="w-5 h-5 text-primary" />
-                <p className="font-semibold text-foreground text-sm">Telefoon / Fax</p>
-              </div>
-              <p className="text-sm text-foreground/80">Tel: <a href="tel:0207371426" className="text-primary hover:underline">020 737 14 26</a></p>
-              <p className="text-sm text-foreground/80">Fax: 020 737 03 79</p>
-            </div>
-            <div className="info-card">
-              <div className="flex items-center gap-2 mb-2">
-                <Clock className="w-5 h-5 text-primary" />
-                <p className="font-semibold text-foreground text-sm">Openingstijden</p>
-              </div>
-              <p className="text-sm text-foreground/80">Ma-Vr 08:00–17:00</p>
-              <p className="text-sm text-foreground/80">Za-Zo Gesloten</p>
-            </div>
+            {[
+              { icon: MapPin, label: "Adres", line1: "Reigersbos 100 K (3e etage)", line2: "1107 ES Amsterdam" },
+              { icon: Mail, label: "E-mail", line1: "Info@reigersbosmedicalcenter.nl", href: "mailto:Info@reigersbosmedicalcenter.nl" },
+              { icon: Phone, label: "Telefoon / Fax", line1: "Tel: 020 737 14 26", line2: "Fax: 020 737 03 79" },
+              { icon: Clock, label: "Openingstijden", line1: "Ma-Vr 08:00–17:00", line2: "Za-Zo Gesloten" },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.label} className="info-card">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Icon className="w-5 h-5" style={{ color: "hsl(174 43% 30%)" }} />
+                    <p style={{ fontWeight: 600, color: "hsl(222 47% 11%)", fontSize: "13px" }}>{item.label}</p>
+                  </div>
+                  {item.href ? (
+                    <a href={item.href} style={{ color: "hsl(174 43% 30%)", fontSize: "13px" }} className="hover:underline break-all">{item.line1}</a>
+                  ) : (
+                    <p style={{ fontSize: "13px", color: "hsl(220 9% 26%)" }}>{item.line1}</p>
+                  )}
+                  {item.line2 && <p style={{ fontSize: "13px", color: "hsl(220 9% 26%)" }}>{item.line2}</p>}
+                </div>
+              );
+            })}
           </div>
 
-          <div className="rounded-xl overflow-hidden border border-border shadow-card mb-10 h-64 sm:h-80">
+          <div className="rounded-lg overflow-hidden border border-border mb-10 h-64 sm:h-80" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2439.4867392527447!2d4.967899!3d52.306741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c60a3e4b34e123%3A0x0!2sReigersbos+100%2C+1107+ES+Amsterdam!5e0!3m2!1snl!2snl!4v1234567890"
               width="100%"
@@ -76,42 +59,45 @@ const Contact = () => {
           </div>
 
           <div className="max-w-2xl">
-            <h3 className="font-serif font-bold text-xl text-primary mb-5">Stuur ons een bericht</h3>
+            <h3 style={{ fontWeight: 700, fontSize: "18px", color: "hsl(222 47% 11%)", marginBottom: "20px" }}>Stuur ons een bericht</h3>
             {submitted ? (
               <div className="text-center py-10">
-                <CheckCircle className="w-14 h-14 text-green-500 mx-auto mb-3" />
-                <h4 className="font-serif font-bold text-lg mb-2 text-foreground">Bericht verzonden!</h4>
-                <p className="text-muted-foreground">Wij nemen zo spoedig mogelijk contact met u op.</p>
+                <CheckCircle className="w-14 h-14 mx-auto mb-3" style={{ color: "hsl(174 43% 30%)" }} />
+                <h4 style={{ fontWeight: 700, fontSize: "16px", color: "hsl(222 47% 11%)", marginBottom: "8px" }}>Bericht verzonden!</h4>
+                <p style={{ color: "hsl(215 16% 47%)" }}>Wij nemen zo spoedig mogelijk contact met u op.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-1">Voornaam <span className="text-destructive">*</span></label>
-                    <input required className="w-full border border-input rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" value={form.voornaam} onChange={e => setForm({ ...form, voornaam: e.target.value })} />
+                    <label className="block text-sm font-medium mb-1" style={{ color: "hsl(222 47% 11%)" }}>Voornaam <span style={{ color: "hsl(0 72% 51%)" }}>*</span></label>
+                    <input required className="w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2" style={{ borderColor: "hsl(214 32% 91%)" }} value={form.voornaam} onChange={e => setForm({ ...form, voornaam: e.target.value })} />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-1">E-mailadres <span className="text-destructive">*</span></label>
-                    <input required type="email" className="w-full border border-input rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
+                    <label className="block text-sm font-medium mb-1" style={{ color: "hsl(222 47% 11%)" }}>E-mailadres <span style={{ color: "hsl(0 72% 51%)" }}>*</span></label>
+                    <input required type="email" className="w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2" style={{ borderColor: "hsl(214 32% 91%)" }} value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">Telefoonnummer <span className="text-destructive">*</span></label>
-                  <input required className="w-full border border-input rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" value={form.telefoon} onChange={e => setForm({ ...form, telefoon: e.target.value })} />
+                  <label className="block text-sm font-medium mb-1" style={{ color: "hsl(222 47% 11%)" }}>Telefoonnummer <span style={{ color: "hsl(0 72% 51%)" }}>*</span></label>
+                  <input required className="w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2" style={{ borderColor: "hsl(214 32% 91%)" }} value={form.telefoon} onChange={e => setForm({ ...form, telefoon: e.target.value })} />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">Onderwerp <span className="text-destructive">*</span></label>
-                  <input required className="w-full border border-input rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" value={form.onderwerp} onChange={e => setForm({ ...form, onderwerp: e.target.value })} />
+                  <label className="block text-sm font-medium mb-1" style={{ color: "hsl(222 47% 11%)" }}>Onderwerp <span style={{ color: "hsl(0 72% 51%)" }}>*</span></label>
+                  <input required className="w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2" style={{ borderColor: "hsl(214 32% 91%)" }} value={form.onderwerp} onChange={e => setForm({ ...form, onderwerp: e.target.value })} />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">Bericht <span className="text-destructive">*</span></label>
-                  <textarea required rows={5} className="w-full border border-input rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary resize-none" value={form.bericht} onChange={e => setForm({ ...form, bericht: e.target.value })} />
+                  <label className="block text-sm font-medium mb-1" style={{ color: "hsl(222 47% 11%)" }}>Bericht <span style={{ color: "hsl(0 72% 51%)" }}>*</span></label>
+                  <textarea required rows={5} className="w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 resize-none" style={{ borderColor: "hsl(214 32% 91%)" }} value={form.bericht} onChange={e => setForm({ ...form, bericht: e.target.value })} />
                 </div>
                 <label className="flex items-start gap-2 cursor-pointer">
-                  <input type="checkbox" required checked={form.avg} onChange={e => setForm({ ...form, avg: e.target.checked })} className="accent-primary mt-0.5" />
-                  <span className="text-sm text-muted-foreground">Ik ga akkoord met de privacyverklaring (AVG) <span className="text-destructive">*</span></span>
+                  <input type="checkbox" required checked={form.avg} onChange={e => setForm({ ...form, avg: e.target.checked })} className="mt-0.5" style={{ accentColor: "hsl(174 43% 30%)" }} />
+                  <span style={{ fontSize: "13px", color: "hsl(215 16% 47%)" }}>Ik ga akkoord met de privacyverklaring (AVG) <span style={{ color: "hsl(0 72% 51%)" }}>*</span></span>
                 </label>
-                <button type="submit" className="px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors">
+                <button type="submit" style={{
+                  background: "hsl(222 47% 11%)", color: "white", border: "none",
+                  borderRadius: "6px", padding: "10px 20px", fontSize: "14px", fontWeight: 600, cursor: "pointer",
+                }}>
                   Bericht versturen
                 </button>
               </form>
