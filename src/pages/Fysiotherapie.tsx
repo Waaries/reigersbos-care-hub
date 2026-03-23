@@ -1,5 +1,4 @@
 import Layout from "@/components/Layout";
-import { Activity } from "lucide-react";
 import { useModal } from "@/contexts/ModalContext";
 
 const behandelingen = [
@@ -27,18 +26,12 @@ const Fysiotherapie = () => {
 
   return (
     <Layout>
-      <section style={{ background: "linear-gradient(135deg, #1B4F8A 0%, #0D3B6E 50%, #0EA5A0 100%)", position: "relative", overflow: "hidden", padding: "80px 0 60px" }}>
-        <div className="page-container" style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,255,255,0.12)", borderRadius: "50px", padding: "6px 16px", marginBottom: "16px" }}>
-            <Activity size={16} color="white" />
-            <span style={{ color: "rgba(255,255,255,0.9)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Reigersbos Medical Center</span>
-          </div>
-          <h1 style={{ color: "white", fontSize: "clamp(1.5rem, 4vw, 2.25rem)", fontFamily: "Merriweather, Georgia, serif", fontWeight: 800, margin: "0 0 12px" }}>Fysiotherapie</h1>
-          <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "15px", maxWidth: "520px", margin: "0 auto", lineHeight: 1.6 }}>Moderne behandelingen op maat — 30 minuten per sessie, één-op-één.</p>
+      <section className="page-hero">
+        <div className="page-container" style={{ textAlign: "center" }}>
+          <p className="page-hero-label mb-3">Reigersbos Medical Center</p>
+          <h1 className="page-hero-title">Fysiotherapie</h1>
+          <p className="page-hero-desc">Moderne behandelingen op maat — 30 minuten per sessie, één-op-één.</p>
         </div>
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: 48 }} xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="hsl(var(--background))" />
-        </svg>
       </section>
 
       <section className="page-section">
@@ -56,8 +49,8 @@ const Fysiotherapie = () => {
               <h3 className="page-subheading">Wij behandelen</h3>
               <ul className="space-y-2">
                 {behandelingen.map(item => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-foreground/80">
-                    <span className="w-2 h-2 rounded-full bg-primary flex-shrink-0 mt-1.5" />
+                  <li key={item} className="flex items-start gap-2 text-sm" style={{ color: "hsl(220 9% 26%)" }}>
+                    <span className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5" style={{ background: "hsl(222 47% 11%)" }} />
                     {item}
                   </li>
                 ))}
@@ -67,8 +60,8 @@ const Fysiotherapie = () => {
               <h3 className="page-subheading">Wij bieden ook</h3>
               <ul className="space-y-2">
                 {aanbod.map(item => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-foreground/80">
-                    <span className="w-2 h-2 rounded-full bg-accent flex-shrink-0 mt-1.5" />
+                  <li key={item} className="flex items-start gap-2 text-sm" style={{ color: "hsl(220 9% 26%)" }}>
+                    <span className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5" style={{ background: "hsl(174 43% 30%)" }} />
                     {item}
                   </li>
                 ))}
@@ -78,7 +71,17 @@ const Fysiotherapie = () => {
 
           <button
             onClick={() => openModal("fysiotherapie")}
-            className="mt-8 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors shadow-card"
+            className="mt-8"
+            style={{
+              background: "hsl(222 47% 11%)",
+              color: "white",
+              border: "none",
+              borderRadius: "6px",
+              padding: "12px 24px",
+              fontSize: "14px",
+              fontWeight: 600,
+              cursor: "pointer",
+            }}
           >
             Maak een afspraak Fysiotherapie
           </button>

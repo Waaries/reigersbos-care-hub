@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
-import { Briefcase, ChevronDown, CheckCircle, Upload } from "lucide-react";
+import { ChevronDown, CheckCircle, Upload } from "lucide-react";
 
 const vacatures = [
   {
@@ -33,18 +33,12 @@ const Vacatures = () => {
 
   return (
     <Layout>
-      <section style={{ background: "linear-gradient(135deg, #1B4F8A 0%, #0D3B6E 50%, #0EA5A0 100%)", position: "relative", overflow: "hidden", padding: "80px 0 60px" }}>
-        <div className="page-container" style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,255,255,0.12)", borderRadius: "50px", padding: "6px 16px", marginBottom: "16px" }}>
-            <Briefcase size={16} color="white" />
-            <span style={{ color: "rgba(255,255,255,0.9)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Reigersbos Medical Center</span>
-          </div>
-          <h1 style={{ color: "white", fontSize: "clamp(1.5rem, 4vw, 2.25rem)", fontFamily: "Merriweather, Georgia, serif", fontWeight: 800, margin: "0 0 12px" }}>Vacatures</h1>
-          <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "15px", maxWidth: "520px", margin: "0 auto", lineHeight: 1.6 }}>Kom ons team versterken — wij zijn op zoek naar gedreven zorgprofessionals.</p>
+      <section className="page-hero">
+        <div className="page-container" style={{ textAlign: "center" }}>
+          <p className="page-hero-label mb-3">Reigersbos Medical Center</p>
+          <h1 className="page-hero-title">Vacatures</h1>
+          <p className="page-hero-desc">Kom ons team versterken — wij zijn op zoek naar gedreven zorgprofessionals.</p>
         </div>
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: 48 }} xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="hsl(var(--background))" />
-        </svg>
       </section>
 
       <section className="page-section">
@@ -52,43 +46,42 @@ const Vacatures = () => {
           <h2 className="page-heading">Actuele vacatures</h2>
           <p className="page-text">
             Hieronder vindt u de meest recente vacatures bij Reigersbos Medical Center. Neem gerust een
-            kijkje en ontdek of er een functie is die aansluit bij uw vaardigheden en interesses. Wij zijn
-            altijd op zoek naar gekwalificeerde en gemotiveerde kandidaten die ons team willen versterken en
-            willen bijdragen aan de zorg die wij bieden aan onze patiënten. Solliciteer vandaag nog en wie
-            weet wordt u de nieuwste aanwinst voor ons groeiende team!
+            kijkje en ontdek of er een functie is die aansluit bij uw vaardigheden en interesses.
           </p>
 
-          {/* Vacature Accordions */}
-          <div className="mt-8 border border-border rounded-xl overflow-hidden">
+          <div className="mt-8 border border-border rounded-lg overflow-hidden">
             {vacatures.map((vac, idx) => (
               <div key={idx} className="border-b border-border last:border-b-0">
                 <button
-                  className="w-full flex items-center justify-between p-5 text-left hover:bg-muted transition-colors"
+                  className="w-full flex items-center justify-between p-5 text-left transition-colors"
+                  style={{ background: "transparent" }}
+                  onMouseEnter={e => { e.currentTarget.style.background = "hsl(210 40% 98%)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
                   onClick={() => setOpenVac(openVac === idx ? null : idx)}
                 >
                   <div>
-                    <p className="font-semibold text-foreground">{vac.title}</p>
-                    <p className="text-sm text-muted-foreground mt-0.5">{vac.type} · {vac.location}</p>
+                    <p style={{ fontWeight: 600, color: "hsl(222 47% 11%)" }}>{vac.title}</p>
+                    <p style={{ fontSize: "13px", color: "hsl(215 16% 47%)", marginTop: "2px" }}>{vac.type} · {vac.location}</p>
                   </div>
-                  <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${openVac === idx ? "rotate-180" : ""}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform ${openVac === idx ? "rotate-180" : ""}`} style={{ color: "hsl(215 16% 47%)" }} />
                 </button>
                 {openVac === idx && (
                   <div className="px-5 pb-5 space-y-4">
                     <div>
-                      <p className="text-sm font-semibold text-foreground mb-1">Over de rol:</p>
-                      <p className="text-sm text-foreground/80">{vac.rol}</p>
+                      <p style={{ fontSize: "13px", fontWeight: 600, color: "hsl(222 47% 11%)", marginBottom: "4px" }}>Over de rol:</p>
+                      <p className="page-text">{vac.rol}</p>
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-foreground mb-1">Over jou:</p>
-                      <p className="text-sm text-foreground/80">{vac.jij}</p>
+                      <p style={{ fontSize: "13px", fontWeight: 600, color: "hsl(222 47% 11%)", marginBottom: "4px" }}>Over jou:</p>
+                      <p className="page-text">{vac.jij}</p>
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-foreground mb-1">Opleiding:</p>
-                      <p className="text-sm text-foreground/80">{vac.opleiding}</p>
+                      <p style={{ fontSize: "13px", fontWeight: 600, color: "hsl(222 47% 11%)", marginBottom: "4px" }}>Opleiding:</p>
+                      <p className="page-text">{vac.opleiding}</p>
                     </div>
-                    <p className="text-sm text-foreground/80">
+                    <p className="page-text">
                       <strong>Solliciteren:</strong>{" "}
-                      <a href="mailto:info@reigersbosmedicalcenter.nl" className="text-primary hover:underline">
+                      <a href="mailto:info@reigersbosmedicalcenter.nl" style={{ color: "hsl(174 43% 30%)" }} className="hover:underline">
                         info@reigersbosmedicalcenter.nl
                       </a>
                     </p>
@@ -98,15 +91,12 @@ const Vacatures = () => {
             ))}
           </div>
 
-          {/* Stages */}
           <div className="mt-12">
             <h2 className="page-heading">Stages</h2>
             <p className="page-text">
               Ben jij op zoek naar een uitdagende stageplaats als doktersassistent BBL? Dan ben je bij ons
               aan het juiste adres! Als erkend leerbedrijf zijn wij altijd op zoek naar gemotiveerde
-              stagiaires die onze praktijk komen versterken. Bij ons leer je alles over het vak van
-              doktersassistent en krijg je de kans om praktijkervaring op te doen in een professionele en
-              dynamische omgeving.
+              stagiaires die onze praktijk komen versterken.
             </p>
             <p className="page-text">
               Als stagiaire draai je mee in ons team en assisteer je onze huisartsen bij het uitvoeren van
@@ -115,14 +105,13 @@ const Vacatures = () => {
             </p>
           </div>
 
-          {/* Sollicitatieformulier */}
-          <div className="mt-10 bg-secondary rounded-xl p-6 border border-border">
-            <h3 className="font-serif font-bold text-xl text-primary mb-5">Sollicitatieformulier</h3>
+          <div className="mt-10 rounded-lg p-6 border border-border" style={{ background: "hsl(210 40% 98%)" }}>
+            <h3 style={{ fontWeight: 700, fontSize: "18px", color: "hsl(222 47% 11%)", marginBottom: "20px" }}>Sollicitatieformulier</h3>
             {submitted ? (
               <div className="text-center py-8">
-                <CheckCircle className="w-14 h-14 text-green-500 mx-auto mb-3" />
-                <h4 className="font-serif font-bold text-lg mb-2 text-foreground">Sollicitatie ontvangen!</h4>
-                <p className="text-muted-foreground text-sm">Wij nemen zo spoedig mogelijk contact met u op.</p>
+                <CheckCircle className="w-14 h-14 mx-auto mb-3" style={{ color: "hsl(174 43% 30%)" }} />
+                <h4 style={{ fontWeight: 700, fontSize: "16px", color: "hsl(222 47% 11%)", marginBottom: "8px" }}>Sollicitatie ontvangen!</h4>
+                <p style={{ color: "hsl(215 16% 47%)", fontSize: "14px" }}>Wij nemen zo spoedig mogelijk contact met u op.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -133,13 +122,13 @@ const Vacatures = () => {
                     { label: "Telefoonnummer", key: "telefoon" },
                   ].map(({ label, key, type }) => (
                     <div key={key}>
-                      <label className="block text-sm font-medium text-foreground mb-1">{label} <span className="text-destructive">*</span></label>
-                      <input required type={type || "text"} className="w-full border border-input rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-card" value={(form as any)[key]} onChange={e => setForm({ ...form, [key]: e.target.value })} />
+                      <label className="block text-sm font-medium mb-1" style={{ color: "hsl(222 47% 11%)" }}>{label} <span style={{ color: "hsl(0 72% 51%)" }}>*</span></label>
+                      <input required type={type || "text"} className="w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2" style={{ borderColor: "hsl(214 32% 91%)", background: "white" }} value={(form as any)[key]} onChange={e => setForm({ ...form, [key]: e.target.value })} />
                     </div>
                   ))}
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-1">Vacature <span className="text-destructive">*</span></label>
-                    <select required className="w-full border border-input rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-card" value={form.vacature} onChange={e => setForm({ ...form, vacature: e.target.value })}>
+                    <label className="block text-sm font-medium mb-1" style={{ color: "hsl(222 47% 11%)" }}>Vacature <span style={{ color: "hsl(0 72% 51%)" }}>*</span></label>
+                    <select required className="w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2" style={{ borderColor: "hsl(214 32% 91%)", background: "white" }} value={form.vacature} onChange={e => setForm({ ...form, vacature: e.target.value })}>
                       <option value="">Selecteer vacature</option>
                       <option>Doktersassistent(e)</option>
                       <option>POH-S</option>
@@ -149,27 +138,30 @@ const Vacatures = () => {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-1">Motivatiebrief <span className="text-destructive">*</span></label>
-                    <label className="flex items-center gap-2 border border-input rounded-lg px-3 py-2 text-sm cursor-pointer hover:bg-muted transition-colors bg-card">
-                      <Upload className="w-4 h-4 text-muted-foreground" />
-                      <span className="text-muted-foreground">{form.motivatie ? form.motivatie.name : "Bestand kiezen..."}</span>
+                    <label className="block text-sm font-medium mb-1" style={{ color: "hsl(222 47% 11%)" }}>Motivatiebrief <span style={{ color: "hsl(0 72% 51%)" }}>*</span></label>
+                    <label className="flex items-center gap-2 border rounded-md px-3 py-2 text-sm cursor-pointer" style={{ borderColor: "hsl(214 32% 91%)", background: "white" }}>
+                      <Upload className="w-4 h-4" style={{ color: "hsl(215 16% 47%)" }} />
+                      <span style={{ color: "hsl(215 16% 47%)" }}>{form.motivatie ? form.motivatie.name : "Bestand kiezen..."}</span>
                       <input type="file" required className="hidden" onChange={e => setForm({ ...form, motivatie: e.target.files?.[0] || null })} />
                     </label>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-1">CV <span className="text-destructive">*</span></label>
-                    <label className="flex items-center gap-2 border border-input rounded-lg px-3 py-2 text-sm cursor-pointer hover:bg-muted transition-colors bg-card">
-                      <Upload className="w-4 h-4 text-muted-foreground" />
-                      <span className="text-muted-foreground">{form.cv ? form.cv.name : "Bestand kiezen..."}</span>
+                    <label className="block text-sm font-medium mb-1" style={{ color: "hsl(222 47% 11%)" }}>CV <span style={{ color: "hsl(0 72% 51%)" }}>*</span></label>
+                    <label className="flex items-center gap-2 border rounded-md px-3 py-2 text-sm cursor-pointer" style={{ borderColor: "hsl(214 32% 91%)", background: "white" }}>
+                      <Upload className="w-4 h-4" style={{ color: "hsl(215 16% 47%)" }} />
+                      <span style={{ color: "hsl(215 16% 47%)" }}>{form.cv ? form.cv.name : "Bestand kiezen..."}</span>
                       <input type="file" required className="hidden" onChange={e => setForm({ ...form, cv: e.target.files?.[0] || null })} />
                     </label>
                   </div>
                 </div>
                 <label className="flex items-start gap-2 cursor-pointer">
-                  <input type="checkbox" required checked={form.avg} onChange={e => setForm({ ...form, avg: e.target.checked })} className="accent-primary mt-0.5" />
-                  <span className="text-sm text-muted-foreground">Ik ga akkoord met de privacyverklaring (AVG) <span className="text-destructive">*</span></span>
+                  <input type="checkbox" required checked={form.avg} onChange={e => setForm({ ...form, avg: e.target.checked })} className="mt-0.5" style={{ accentColor: "hsl(174 43% 30%)" }} />
+                  <span style={{ fontSize: "13px", color: "hsl(215 16% 47%)" }}>Ik ga akkoord met de privacyverklaring (AVG) <span style={{ color: "hsl(0 72% 51%)" }}>*</span></span>
                 </label>
-                <button type="submit" className="px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors">
+                <button type="submit" style={{
+                  background: "hsl(222 47% 11%)", color: "white", border: "none",
+                  borderRadius: "6px", padding: "10px 20px", fontSize: "14px", fontWeight: 600, cursor: "pointer",
+                }}>
                   Sollicitatie versturen
                 </button>
               </form>

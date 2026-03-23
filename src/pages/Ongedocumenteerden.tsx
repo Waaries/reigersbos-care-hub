@@ -1,32 +1,14 @@
 import Layout from "@/components/Layout";
-import { Phone, Mail, Shield, Heart, Lock, CheckCircle } from "lucide-react";
+import { Phone, Mail, Lock, CheckCircle } from "lucide-react";
 import { useModal } from "@/contexts/ModalContext";
 
 const faqs = [
-  {
-    v: "Mag ik naar de huisarts zonder verblijfsvergunning?",
-    a: "Ja, absoluut. Iedereen in Nederland heeft recht op medisch noodzakelijke zorg, ongeacht verblijfsstatus. Artsen mogen zorg niet weigeren omdat u geen papieren heeft.",
-  },
-  {
-    v: "Vertelt de huisarts iets aan de politie of overheid over mij?",
-    a: "Nee. Wij hebben beroepsgeheim. Dit betekent dat wij niets mogen en zullen delen zonder uw toestemming — niet uw naam, niet uw situatie, niet waar u woont.",
-  },
-  {
-    v: "Ik heb geen BSN-nummer. Kan ik toch komen?",
-    a: "Ja. Voor een huisartsenconsult heeft u geen BSN-nummer nodig. Kom gewoon langs of bel ons. Wij zorgen dat u geholpen wordt.",
-  },
-  {
-    v: "Ik ben zwanger maar heb geen papieren. Krijg ik zorg?",
-    a: "Ja. Zwangerschap en bevalling worden 100% vergoed via het CAK. U kunt zich ook aanmelden bij Verloskundigenpraktijk De Poort, die bij ons in het pand gevestigd is.",
-  },
-  {
-    v: "Kan ik medicijnen krijgen?",
-    a: "Ja, via een CAK-gecontracteerde apotheek. U betaalt maximaal €5 eigen bijdrage per medicijn. Als u dit niet kunt betalen, laat het ons weten — we zoeken een oplossing.",
-  },
-  {
-    v: "Ik spreek geen Nederlands of Engels. Kan ik toch komen?",
-    a: "Ja. Wij spreken Nederlands, Engels, Twi, Yoruba, Turks en Arabisch. Is uw taal anders? Dan kunnen wij indien nodig gebruik maken van een tolkentelefoon.",
-  },
+  { v: "Mag ik naar de huisarts zonder verblijfsvergunning?", a: "Ja, absoluut. Iedereen in Nederland heeft recht op medisch noodzakelijke zorg, ongeacht verblijfsstatus. Artsen mogen zorg niet weigeren omdat u geen papieren heeft." },
+  { v: "Vertelt de huisarts iets aan de politie of overheid over mij?", a: "Nee. Wij hebben beroepsgeheim. Dit betekent dat wij niets mogen en zullen delen zonder uw toestemming — niet uw naam, niet uw situatie, niet waar u woont." },
+  { v: "Ik heb geen BSN-nummer. Kan ik toch komen?", a: "Ja. Voor een huisartsenconsult heeft u geen BSN-nummer nodig. Kom gewoon langs of bel ons. Wij zorgen dat u geholpen wordt." },
+  { v: "Ik ben zwanger maar heb geen papieren. Krijg ik zorg?", a: "Ja. Zwangerschap en bevalling worden 100% vergoed via het CAK. U kunt zich ook aanmelden bij Verloskundigenpraktijk De Poort, die bij ons in het pand gevestigd is." },
+  { v: "Kan ik medicijnen krijgen?", a: "Ja, via een CAK-gecontracteerde apotheek. U betaalt maximaal €5 eigen bijdrage per medicijn. Als u dit niet kunt betalen, laat het ons weten — we zoeken een oplossing." },
+  { v: "Ik spreek geen Nederlands of Engels. Kan ik toch komen?", a: "Ja. Wij spreken Nederlands, Engels, Twi, Yoruba, Turks en Arabisch. Is uw taal anders? Dan kunnen wij indien nodig gebruik maken van een tolkentelefoon." },
 ];
 
 const Ongedocumenteerden = () => {
@@ -35,230 +17,214 @@ const Ongedocumenteerden = () => {
   return (
     <Layout>
       {/* Hero */}
-      <div
-        className="relative py-20 px-4 overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #1B4F8A 0%, #7C3AED 100%)" }}
-      >
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
-
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="mb-4">
-            <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-white/20">
-              <Shield className="w-4 h-4" />
-              ZORG VOOR IEDEREEN
-            </span>
-          </div>
-
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-            Geen papieren?<br />U heeft recht op zorg.
-          </h1>
-
-          <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed mb-8">
+      <section className="page-hero">
+        <div className="max-w-4xl mx-auto text-center px-4">
+          <p className="page-hero-label mb-3">ZORG VOOR IEDEREEN</p>
+          <h1 className="page-hero-title">Geen papieren?<br />U heeft recht op zorg.</h1>
+          <p className="page-hero-desc" style={{ maxWidth: "600px" }}>
             Bij Reigersbos Medical Center bent u welkom, ongeacht uw verblijfsstatus.
             Wij bieden medisch noodzakelijke zorg aan iedereen die dat nodig heeft —
             vertrouwelijk en zonder oordeel.
           </p>
-
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3 mt-8">
             <a
               href="tel:0207371426"
-              className="flex items-center gap-2 bg-white text-primary font-bold rounded-full px-7 py-3.5 text-sm shadow-lg hover:shadow-xl transition-shadow"
+              className="flex items-center gap-2"
+              style={{
+                background: "hsl(222 47% 11%)", color: "white",
+                borderRadius: "6px", padding: "12px 24px", fontSize: "14px", fontWeight: 600, textDecoration: "none",
+              }}
             >
-              <Phone className="w-5 h-5" />
+              <Phone className="w-4 h-4" />
               Bel ons: 020 737 14 26
             </a>
             <button
               onClick={() => openModal("inschrijven")}
-              className="flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white font-bold rounded-full px-7 py-3.5 text-sm border-2 border-white/30 hover:bg-white/25 transition-colors cursor-pointer"
+              className="flex items-center gap-2"
+              style={{
+                background: "transparent", color: "hsl(222 47% 11%)",
+                border: "1px solid hsl(214 32% 91%)", borderRadius: "6px",
+                padding: "12px 24px", fontSize: "14px", fontWeight: 600, cursor: "pointer",
+              }}
             >
-              <CheckCircle className="w-5 h-5" />
+              <CheckCircle className="w-4 h-4" />
               Schrijf u in
             </button>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Belangrijkste boodschap */}
-      <div className="bg-secondary border-b border-border">
+      {/* Beroepsgeheim banner */}
+      <div style={{ borderBottom: "1px solid hsl(214 32% 91%)", background: "white" }}>
         <div className="max-w-5xl mx-auto px-4 py-5">
           <div className="flex items-center justify-center gap-3 text-center">
-            <Lock className="w-5 h-5 text-accent shrink-0" />
-            <p className="text-sm font-medium text-foreground">
+            <Lock className="w-5 h-5 shrink-0" style={{ color: "hsl(174 43% 30%)" }} />
+            <p style={{ fontSize: "14px", fontWeight: 500, color: "hsl(222 47% 11%)" }}>
               Wij hebben beroepsgeheim — wij delen uw gegevens of verblijfsstatus nooit zonder uw toestemming.
             </p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 py-12">
-        <div className="space-y-16">
+      <div className="max-w-5xl mx-auto px-4 py-12 space-y-16">
 
-          {/* Heeft u recht op zorg */}
-          <section>
-            <p className="text-xs font-bold uppercase tracking-widest text-accent mb-2">UW RECHTEN</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
-              Iedereen heeft recht op medische zorg
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                {
-                  icon: "⚖️",
-                  title: "Wettelijk recht",
-                  desc: "Ook zonder verblijfsvergunning heeft u in Nederland recht op medisch noodzakelijke zorg. Dit is vastgelegd in de wet en in internationale verdragen.",
-                },
-                {
-                  icon: "🔒",
-                  title: "Volledig vertrouwelijk",
-                  desc: "Zorgverleners hebben beroepsgeheim. Wij mogen niets delen over uw verblijfsstatus of waar u verblijft — ook niet met de overheid.",
-                },
-                {
-                  icon: "💙",
-                  title: "Geen oordeel",
-                  desc: "Bij ons wordt u behandeld met respect en waardigheid. Uw situatie is uw zaak. Wij zijn er om u te helpen, zonder vragen over uw papieren.",
-                },
-              ].map(item => (
-                <div key={item.title} className="bg-card border border-border rounded-2xl p-6 text-center shadow-sm">
-                  <p className="text-3xl mb-3">{item.icon}</p>
-                  <h3 className="font-bold text-foreground mb-2">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
+        {/* Rechten */}
+        <section>
+          <p className="page-hero-label mb-2">UW RECHTEN</p>
+          <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 700, color: "hsl(222 47% 11%)", marginBottom: "32px" }}>
+            Iedereen heeft recht op medische zorg
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: "Wettelijk recht", desc: "Ook zonder verblijfsvergunning heeft u in Nederland recht op medisch noodzakelijke zorg. Dit is vastgelegd in de wet en in internationale verdragen." },
+              { title: "Volledig vertrouwelijk", desc: "Zorgverleners hebben beroepsgeheim. Wij mogen niets delen over uw verblijfsstatus of waar u verblijft — ook niet met de overheid." },
+              { title: "Geen oordeel", desc: "Bij ons wordt u behandeld met respect en waardigheid. Uw situatie is uw zaak. Wij zijn er om u te helpen, zonder vragen over uw papieren." },
+            ].map(item => (
+              <div key={item.title} style={{
+                background: "white", border: "1px solid hsl(214 32% 91%)",
+                borderRadius: "10px", padding: "24px", textAlign: "center",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
+              }}>
+                <h3 style={{ fontWeight: 600, color: "hsl(222 47% 11%)", marginBottom: "8px", fontSize: "15px" }}>{item.title}</h3>
+                <p style={{ fontSize: "13px", color: "hsl(215 16% 47%)", lineHeight: 1.6 }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Zorg */}
+        <section>
+          <div className="grid md:grid-cols-5 gap-8">
+            <div className="md:col-span-3 space-y-4">
+              <p className="page-hero-label">WAT WIJ BIEDEN</p>
+              <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 700, color: "hsl(222 47% 11%)" }}>
+                Welke zorg kunt u bij ons krijgen?
+              </h2>
+              <p style={{ color: "hsl(215 16% 47%)", lineHeight: 1.7, fontSize: "14px" }}>
+                Wij bieden alle medisch noodzakelijke zorg die onder het basispakket valt.
+                U heeft geen verzekering of BSN-nummer nodig om bij ons langs te komen.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                {[
+                  "Huisartsenconsult", "Bloedafname en onderzoek", "Doorverwijzing naar specialist",
+                  "Begeleiding bij zwangerschap", "Fysiotherapie", "Chronische ziekten begeleiding", "Medicijnen via CAK-apotheek",
+                ].map(item => (
+                  <div key={item} className="flex items-center gap-3 text-sm" style={{ color: "hsl(222 47% 11%)" }}>
+                    <CheckCircle className="w-4 h-4 shrink-0" style={{ color: "hsl(174 43% 30%)" }} />
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
-          </section>
 
-          {/* Welke zorg */}
-          <section>
-            <div className="grid md:grid-cols-5 gap-8">
-              <div className="md:col-span-3 space-y-4">
-                <p className="text-xs font-bold uppercase tracking-widest text-accent">WAT WIJ BIEDEN</p>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-                  Welke zorg kunt u bij ons krijgen?
-                </h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  Wij bieden alle medisch noodzakelijke zorg die onder het basispakket valt.
-                  U heeft geen verzekering of BSN-nummer nodig om bij ons langs te komen.
+            <div className="md:col-span-2 space-y-4">
+              <div style={{
+                background: "white", border: "1px solid hsl(214 32% 91%)",
+                borderRadius: "10px", padding: "24px",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
+              }}>
+                <h3 style={{ fontSize: "16px", fontWeight: 700, color: "hsl(222 47% 11%)", marginBottom: "12px" }}>
+                  Hoe werkt de betaling?
+                </h3>
+                <p style={{ fontSize: "13px", color: "hsl(215 16% 47%)", marginBottom: "16px", lineHeight: 1.6 }}>
+                  Wij hebben een contract met het CAK (Centraal Administratie Kantoor).
+                  Dit betekent dat wij de kosten voor uw zorg bij het CAK kunnen declareren.
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div className="space-y-2">
                   {[
-                    "Huisartsenconsult",
-                    "Bloedafname en onderzoek",
-                    "Doorverwijzing naar specialist",
-                    "Begeleiding bij zwangerschap",
-                    "Fysiotherapie",
-                    "Chronische ziekten begeleiding",
-                    "Medicijnen via CAK-apotheek",
-                  ].map(item => (
-                    <div key={item} className="flex items-center gap-3 text-sm text-foreground">
-                      <CheckCircle className="w-4 h-4 text-accent shrink-0" />
-                      {item}
+                    { label: "Huisartsenzorg", value: "Gratis voor u" },
+                    { label: "Overige zorg", value: "Via CAK regeling" },
+                    { label: "Zwangerschap & bevalling", value: "100% vergoed" },
+                    { label: "Medicijnen", value: "Max. €5 eigen bijdrage" },
+                  ].map(({ label, value }) => (
+                    <div key={label} className="flex justify-between text-sm py-1.5" style={{ borderBottom: "1px solid hsl(214 32% 91%)" }}>
+                      <span style={{ color: "hsl(215 16% 47%)" }}>{label}</span>
+                      <span style={{ fontWeight: 600, color: "hsl(222 47% 11%)" }}>{value}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* CAK uitleg */}
-              <div className="md:col-span-2 space-y-4">
-                <div className="bg-card border border-border rounded-2xl p-6 shadow-sm space-y-4">
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">💳</span>
-                    <h3 className="text-lg font-bold text-foreground">
-                      Hoe werkt de betaling?
-                    </h3>
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Wij hebben een contract met het CAK (Centraal Administratie Kantoor).
-                    Dit betekent dat wij de kosten voor uw zorg bij het CAK kunnen declareren
-                    als u de rekening niet kunt betalen.
-                  </p>
-                  <div className="space-y-2">
-                    {[
-                      { label: "Huisartsenzorg", value: "Gratis voor u" },
-                      { label: "Overige zorg", value: "Via CAK regeling" },
-                      { label: "Zwangerschap & bevalling", value: "100% vergoed" },
-                      { label: "Medicijnen", value: "Max. €5 eigen bijdrage" },
-                    ].map(({ label, value }) => (
-                      <div key={label} className="flex justify-between text-sm py-1.5 border-b border-border last:border-0">
-                        <span className="text-muted-foreground">{label}</span>
-                        <span className="font-semibold text-foreground">{value}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              <div style={{
+                background: "hsl(166 76% 97%)", border: "1px solid hsl(168 76% 78%)",
+                borderRadius: "8px", padding: "14px",
+              }}>
+                <p style={{ fontSize: "13px", color: "hsl(222 47% 11%)", lineHeight: 1.6 }}>
+                  💡 <strong>Tip:</strong> U heeft geen BSN-nummer nodig voor een huisartsenconsult. Kom gewoon langs of bel ons.
+                </p>
+              </div>
 
-                <div className="bg-accent/5 border border-accent/20 rounded-xl p-4">
-                  <p className="text-sm text-foreground leading-relaxed">
-                    💡 <strong>Tip:</strong> U heeft geen BSN-nummer nodig voor een huisartsenconsult.
-                    Kom gewoon langs of bel ons. Wij helpen u verder.
-                  </p>
-                </div>
-
-                <div className="bg-card border border-border rounded-2xl p-5 shadow-sm">
-                  <h4 className="font-bold text-foreground mb-3">
-                    Direct contact
-                  </h4>
-                  <div className="space-y-2">
-                    <a href="tel:0207371426" className="flex items-center gap-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                      <Phone size={16} className="text-accent" />
-                      020 737 14 26
-                    </a>
-                    <a href="mailto:Info@reigersbosmedicalcenter.nl" className="flex items-center gap-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                      <Mail size={16} className="text-accent" />
-                      Info@reigersbosmedicalcenter.nl
-                    </a>
-                  </div>
+              <div style={{
+                background: "white", border: "1px solid hsl(214 32% 91%)",
+                borderRadius: "10px", padding: "20px",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
+              }}>
+                <h4 style={{ fontWeight: 700, color: "hsl(222 47% 11%)", marginBottom: "12px", fontSize: "14px" }}>Direct contact</h4>
+                <div className="space-y-2">
+                  <a href="tel:0207371426" className="flex items-center gap-2.5 text-sm" style={{ color: "hsl(215 16% 47%)", textDecoration: "none" }}>
+                    <Phone size={16} style={{ color: "hsl(174 43% 30%)" }} />
+                    020 737 14 26
+                  </a>
+                  <a href="mailto:Info@reigersbosmedicalcenter.nl" className="flex items-center gap-2.5 text-sm" style={{ color: "hsl(215 16% 47%)", textDecoration: "none" }}>
+                    <Mail size={16} style={{ color: "hsl(174 43% 30%)" }} />
+                    Info@reigersbosmedicalcenter.nl
+                  </a>
                 </div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* Veelgestelde vragen */}
-          <section>
-            <p className="text-xs font-bold uppercase tracking-widest text-accent mb-2">VEELGESTELDE VRAGEN</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
-              Veelgestelde vragen
+        {/* FAQ */}
+        <section>
+          <p className="page-hero-label mb-2">VEELGESTELDE VRAGEN</p>
+          <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 700, color: "hsl(222 47% 11%)", marginBottom: "32px" }}>
+            Veelgestelde vragen
+          </h2>
+          <div className="space-y-4">
+            {faqs.map(({ v, a }) => (
+              <div key={v} style={{
+                background: "white", border: "1px solid hsl(214 32% 91%)",
+                borderRadius: "10px", padding: "24px",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
+              }}>
+                <h3 style={{ fontWeight: 600, color: "hsl(222 47% 11%)", marginBottom: "8px", fontSize: "15px" }}>{v}</h3>
+                <p style={{ fontSize: "14px", color: "hsl(215 16% 47%)", lineHeight: 1.7 }}>{a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="text-center py-8">
+          <div style={{
+            background: "hsl(210 40% 98%)", border: "1px solid hsl(214 32% 91%)",
+            borderRadius: "10px", padding: "48px 32px",
+          }}>
+            <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 700, color: "hsl(222 47% 11%)", marginBottom: "12px" }}>
+              Wij staan voor u klaar
             </h2>
-            <div className="space-y-4">
-              {faqs.map(({ v, a }) => (
-                <div key={v} className="bg-card border border-border rounded-2xl p-6 shadow-sm">
-                  <h3 className="font-bold text-foreground mb-2">
-                    {v}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {a}
-                  </p>
-                </div>
-              ))}
+            <p style={{ color: "hsl(215 16% 47%)", maxWidth: "500px", margin: "0 auto 24px", fontSize: "14px" }}>
+              Neem gerust contact met ons op. Wij helpen u graag — vertrouwelijk en zonder oordeel.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <a href="tel:0207371426" className="flex items-center gap-2" style={{
+                background: "hsl(222 47% 11%)", color: "white",
+                borderRadius: "6px", padding: "12px 24px", fontSize: "14px", fontWeight: 600, textDecoration: "none",
+              }}>
+                <Phone className="w-4 h-4" />
+                020 737 14 26
+              </a>
+              <button onClick={() => openModal("inschrijven")} className="flex items-center gap-2" style={{
+                background: "transparent", color: "hsl(222 47% 11%)",
+                border: "1px solid hsl(214 32% 91%)", borderRadius: "6px",
+                padding: "12px 24px", fontSize: "14px", fontWeight: 600, cursor: "pointer",
+              }}>
+                Schrijf u in →
+              </button>
             </div>
-          </section>
-
-          {/* CTA onderaan */}
-          <section className="text-center py-8">
-            <div className="rounded-2xl p-8 md:p-12" style={{ background: "linear-gradient(135deg, #1B4F8A 0%, #7C3AED 100%)" }}>
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-                Wij staan voor u klaar
-              </h2>
-              <p className="text-white/85 max-w-xl mx-auto mb-6">
-                Neem gerust contact met ons op. Wij helpen u graag — vertrouwelijk en zonder oordeel.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <a
-                  href="tel:0207371426"
-                  className="flex items-center gap-2 bg-white text-primary font-bold rounded-full px-7 py-3.5 text-sm shadow-lg"
-                >
-                  <Phone className="w-5 h-5" />
-                  020 737 14 26
-                </a>
-                <button
-                  onClick={() => openModal("inschrijven")}
-                  className="flex items-center gap-2 bg-white/15 text-white font-bold rounded-full px-7 py-3.5 text-sm border-2 border-white/30 hover:bg-white/25 transition-colors cursor-pointer"
-                >
-                  Schrijf u in →
-                </button>
-              </div>
-            </div>
-          </section>
-
-        </div>
+          </div>
+        </section>
       </div>
     </Layout>
   );
