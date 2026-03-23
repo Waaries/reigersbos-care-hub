@@ -69,8 +69,8 @@ export const translations: Translations = {
   NL: {
     "hero.welcome": "Welkom op onze website",
     "hero.tagline": "\"Because the greatest wealth is health\"",
-    "hero.cta": "Schrijf je nu in",
-    "about.heading": "Wie zijn wij! Reigersbos Medical Center",
+    "hero.cta": "Schrijf u in als patiënt",
+    "about.heading": "Wie zijn wij? Reigersbos Medical Center",
     "about.p1": "Welkom bij Reigersbos Medical Center, een kleinschalige huisartspraktijk gelegen aan de Reigersbos 100K op de 3e etage. Wij streven naar persoonlijke en kwalitatieve zorg en werken nauw samen met onze fysiotherapeuten om u de beste zorg te bieden.",
     "about.p2": "Bij ons kunt u terecht voor diverse medische diensten, waaronder algemene huisartsenzorg, bloedafname, preventieve zorg en chronische zorg. Ons team van zorgverleners staat voor u klaar om u te helpen bij uw gezondheidsbehoeften en vragen.",
     "about.p3": "We begrijpen dat elke patiënt uniek is en daarom vinden wij het belangrijk om persoonlijke zorg te bieden die is afgestemd op uw individuele behoeften. Onze fysiotherapeuten werken nauw samen met onze huisartsen om u te helpen uw gezondheidsdoelen te bereiken.",
@@ -86,8 +86,8 @@ export const translations: Translations = {
     "services.gp.desc": "Voor al uw medische vragen en zorg",
     "services.physio.title": "Fysiotherapie",
     "services.physio.desc": "Moderne behandelingen, 30 min per sessie",
-    "services.chronic.title": "Chronische Zorg",
-    "services.chronic.desc": "Begeleiding bij langdurige aandoeningen",
+    "services.chronic.title": "Verloskundige",
+    "services.chronic.desc": "Verloskundige Praktijk De Poort — in ons gebouw",
     "nav.huisartspraktijk": "Huisartspraktijk",
     
     "nav.fysiotherapie": "Fysiotherapie",

@@ -9,7 +9,8 @@ const Index = () => {
   const services = [
     { icon: "🩺", titleKey: "services.gp.title" as const, descKey: "services.gp.desc" as const },
     { icon: "🏃", titleKey: "services.physio.title" as const, descKey: "services.physio.desc" as const },
-    { icon: "💊", titleKey: "services.chronic.title" as const, descKey: "services.chronic.desc" as const },
+    { icon: "🤰", title: "Verloskundige", desc: "Verloskundige Praktijk De Poort — in ons gebouw" },
+    { icon: "🩸", title: "Bloedafname", desc: "RHMDC bloedafname service — snel en betrouwbaar" },
   ];
 
   return (
@@ -241,9 +242,9 @@ const Index = () => {
 
           {/* Cards grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map(({ icon, titleKey, descKey }) => (
+            {services.map((svc) => (
               <div
-                key={titleKey}
+                key={svc.icon}
                 style={{
                   background: "#FFFFFF",
                   borderRadius: "16px",
@@ -268,7 +269,7 @@ const Index = () => {
                   el.style.boxShadow = "0 4px 20px rgba(0,0,0,0.10)";
                 }}
               >
-                <div style={{ fontSize: "48px", marginBottom: "16px" }}>{icon}</div>
+                <div style={{ fontSize: "48px", marginBottom: "16px" }}>{svc.icon}</div>
                 <div
                   style={{
                     fontSize: "18px",
@@ -277,9 +278,9 @@ const Index = () => {
                     marginBottom: "8px",
                   }}
                 >
-                  {t(titleKey)}
+                  {'titleKey' in svc ? t(svc.titleKey) : svc.title}
                 </div>
-                <p style={{ fontSize: "14px", color: "#64748B", margin: 0 }}>{t(descKey)}</p>
+                <p style={{ fontSize: "14px", color: "#64748B", margin: 0 }}>{'descKey' in svc ? t(svc.descKey) : svc.desc}</p>
               </div>
             ))}
           </div>
