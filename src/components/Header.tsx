@@ -61,7 +61,6 @@ const Header = () => {
     setOpenDropdown(null);
   }, [location.pathname]);
 
-  // Close lang dropdown on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (langRef.current && !langRef.current.contains(e.target as Node)) {
@@ -79,15 +78,22 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-card transition-shadow duration-300 ${
-        scrolled ? "shadow-header" : "shadow-sm"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 bg-background transition-shadow duration-300 border-b border-border`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className={`flex items-center justify-between h-20 lg:h-24 ${isRTL ? "flex-row-reverse" : ""}`}>
+        <div className={`flex items-center justify-between h-16 lg:h-20 ${isRTL ? "flex-row-reverse" : ""}`}>
           {/* Logo */}
-          <Link to="/" className="flex items-center flex-shrink-0">
-            <img src={logo} alt="Reigersbos Medical Center" className="h-16 lg:h-20 w-auto" />
+          <Link to="/" className="flex items-center gap-3 flex-shrink-0">
+            <img src={logo} alt="Reigersbos Medical Center" className="h-10 lg:h-12 w-auto" />
+            <span style={{
+              fontSize: "13px",
+              fontWeight: 700,
+              letterSpacing: "0.05em",
+              color: "hsl(222 47% 11%)",
+              lineHeight: 1.2,
+            }}>
+              REIGERSBOS<br />MEDICAL CENTER
+            </span>
           </Link>
 
           {/* Desktop Nav */}
@@ -101,31 +107,42 @@ const Header = () => {
               >
                 <Link
                   to={item.href}
-                  className={`flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-150 ${
-                    isActive(item.href)
-                      ? "text-primary bg-primary-light"
-                      : "text-foreground hover:text-primary hover:bg-primary-light"
-                  }`}
+                  className="flex items-center gap-1 px-3 py-2 rounded-md text-sm transition-colors duration-150"
+                  style={{
+                    color: isActive(item.href) ? "hsl(222 47% 11%)" : "hsl(215 16% 47%)",
+                    fontWeight: isActive(item.href) ? 600 : 400,
+                    fontSize: "14px",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = "hsl(222 47% 11%)"; }}
+                  onMouseLeave={(e) => {
+                    if (!isActive(item.href)) e.currentTarget.style.color = "hsl(215 16% 47%)";
+                  }}
                 >
                   {item.label}
-                  {item.children && <ChevronDown className="w-3 h-3" />}
+                  {item.children && <ChevronDown className="w-3 h-3" style={{ color: "hsl(215 25% 64%)" }} />}
                 </Link>
 
                 {item.children && openDropdown === item.label && (
                   <div
-                    className={`absolute top-full mt-1 w-52 bg-white border border-border rounded-lg shadow-modal dropdown-animate z-50 ${
+                    className={`absolute top-full mt-1 w-52 bg-background border border-border rounded-lg z-50 dropdown-animate ${
                       isRTL ? "right-0" : "left-0"
                     }`}
+                    style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}
                   >
                     {item.children.map((child) => (
                       <Link
                         key={child.href}
                         to={child.href}
-                        className={`block px-4 py-2.5 text-sm transition-colors duration-100 first:rounded-t-lg last:rounded-b-lg ${
-                          isActive(child.href)
-                            ? "bg-primary-light text-primary font-medium"
-                            : "text-foreground hover:bg-secondary hover:text-primary"
-                        }`}
+                        className="block px-4 py-2.5 text-sm transition-colors duration-100 first:rounded-t-lg last:rounded-b-lg"
+                        style={{
+                          color: isActive(child.href) ? "hsl(222 47% 11%)" : "hsl(215 16% 47%)",
+                          fontWeight: isActive(child.href) ? 500 : 400,
+                          background: isActive(child.href) ? "hsl(210 40% 98%)" : "transparent",
+                        }}
+                        onMouseEnter={(e) => { e.currentTarget.style.background = "hsl(210 40% 98%)"; }}
+                        onMouseLeave={(e) => {
+                          if (!isActive(child.href)) e.currentTarget.style.background = "transparent";
+                        }}
                       >
                         {child.label}
                       </Link>
@@ -136,42 +153,57 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Right: Phone + Lang Switcher + Mobile Toggle */}
+          {/* Right: Phone + Lang + Mobile Toggle */}
           <div className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
             <a
               href="tel:0207371426"
-              className="flex items-center gap-1.5 text-primary font-semibold text-sm hover:text-accent transition-colors"
+              className="hidden sm:flex items-center gap-1.5 text-sm"
+              style={{
+                background: "hsl(222 47% 11%)",
+                color: "white",
+                borderRadius: "6px",
+                padding: "8px 16px",
+                fontSize: "13px",
+                fontWeight: 600,
+                textDecoration: "none",
+              }}
             >
-              <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">020 737 14 26</span>
+              <Phone className="w-3.5 h-3.5" />
+              020 737 14 26
             </a>
 
             {/* Language Switcher */}
             <div className="relative hidden sm:block" ref={langRef}>
               <button
                 onClick={() => setLangOpen(!langOpen)}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-card border border-border rounded-md text-sm font-medium hover:bg-secondary transition-colors"
+                className="flex items-center gap-1 px-2 py-1.5 text-sm transition-colors"
+                style={{ color: "hsl(215 16% 47%)", fontWeight: 400 }}
               >
                 <span>{currentLang.flag}</span>
-                <span className="text-foreground">{currentLang.label}</span>
-                <ChevronDown className={`w-3 h-3 text-muted-foreground transition-transform ${langOpen ? "rotate-180" : ""}`} />
+                <span>{currentLang.label}</span>
               </button>
 
               {langOpen && (
                 <div
-                  className={`absolute top-full mt-2 w-44 bg-white border border-border rounded-lg shadow-lg z-50 overflow-hidden ${
+                  className={`absolute top-full mt-2 w-44 bg-background border border-border rounded-lg z-50 overflow-hidden ${
                     isRTL ? "left-0" : "right-0"
                   }`}
+                  style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}
                 >
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
-                      className={`w-full flex items-center gap-2.5 px-4 py-2.5 text-sm transition-colors text-left ${
-                        language === lang.code
-                          ? "bg-accent/10 text-accent font-semibold"
-                          : "text-foreground hover:bg-secondary"
-                      }`}
+                      className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm transition-colors text-left"
+                      style={{
+                        color: language === lang.code ? "hsl(174 43% 30%)" : "hsl(215 16% 47%)",
+                        fontWeight: language === lang.code ? 600 : 400,
+                        background: language === lang.code ? "hsl(166 76% 97%)" : "transparent",
+                      }}
+                      onMouseEnter={(e) => { e.currentTarget.style.background = "hsl(210 40% 98%)"; }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = language === lang.code ? "hsl(166 76% 97%)" : "transparent";
+                      }}
                     >
                       <span className="text-base">{lang.flag}</span>
                       <span>{lang.label}</span>
@@ -182,7 +214,8 @@ const Header = () => {
             </div>
 
             <button
-              className="lg:hidden p-2 rounded-md text-foreground hover:bg-secondary"
+              className="lg:hidden p-2 rounded-md"
+              style={{ color: "hsl(222 47% 11%)" }}
               onClick={() => setMobileOpen(!mobileOpen)}
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -193,21 +226,24 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden border-t border-border bg-card shadow-lg max-h-[80vh] overflow-y-auto">
+        <div className="lg:hidden border-t border-border bg-background max-h-[80vh] overflow-y-auto">
           {navItems.map((item) => (
             <div key={item.href}>
               <div className={`flex items-center justify-between ${isRTL ? "flex-row-reverse" : ""}`}>
                 <Link
                   to={item.href}
-                  className={`flex-1 px-5 py-3 text-sm font-medium ${
-                    isActive(item.href) ? "text-primary" : "text-foreground"
-                  } ${isRTL ? "text-right" : ""}`}
+                  className="flex-1 px-5 py-3 text-sm"
+                  style={{
+                    color: isActive(item.href) ? "hsl(222 47% 11%)" : "hsl(215 16% 47%)",
+                    fontWeight: isActive(item.href) ? 600 : 400,
+                  }}
                 >
                   {item.label}
                 </Link>
                 {item.children && (
                   <button
-                    className="px-4 py-3 text-muted-foreground"
+                    className="px-4 py-3"
+                    style={{ color: "hsl(215 16% 47%)" }}
                     onClick={() =>
                       setMobileExpanded(mobileExpanded === item.label ? null : item.label)
                     }
@@ -221,16 +257,16 @@ const Header = () => {
                 )}
               </div>
               {item.children && mobileExpanded === item.label && (
-                <div className="bg-secondary/50 border-t border-border">
+                <div className="border-t border-border" style={{ background: "hsl(210 40% 98%)" }}>
                   {item.children.map((child) => (
                     <Link
                       key={child.href}
                       to={child.href}
-                      className={`block px-8 py-2.5 text-sm ${
-                        isActive(child.href)
-                          ? "text-primary font-medium"
-                          : "text-muted-foreground hover:text-primary"
-                      } ${isRTL ? "text-right" : ""}`}
+                      className="block px-8 py-2.5 text-sm"
+                      style={{
+                        color: isActive(child.href) ? "hsl(222 47% 11%)" : "hsl(215 16% 47%)",
+                        fontWeight: isActive(child.href) ? 500 : 400,
+                      }}
                     >
                       {child.label}
                     </Link>
@@ -242,17 +278,18 @@ const Header = () => {
 
           {/* Mobile Language Switcher */}
           <div className="px-5 py-3 border-t border-border">
-            <p className="text-xs text-muted-foreground mb-2 font-medium uppercase tracking-wide">Taal / Language</p>
+            <p className="text-xs font-medium uppercase tracking-wide mb-2" style={{ color: "hsl(215 16% 47%)" }}>Taal / Language</p>
             <div className="flex flex-wrap gap-2">
               {languages.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => { setLanguage(lang.code); setMobileOpen(false); }}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-medium border transition-colors ${
-                    language === lang.code
-                      ? "bg-accent text-white border-accent"
-                      : "border-border text-foreground hover:bg-secondary"
-                  }`}
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-medium border transition-colors"
+                  style={{
+                    background: language === lang.code ? "hsl(174 43% 30%)" : "transparent",
+                    color: language === lang.code ? "white" : "hsl(222 47% 11%)",
+                    borderColor: language === lang.code ? "hsl(174 43% 30%)" : "hsl(214 32% 91%)",
+                  }}
                 >
                   <span>{lang.flag}</span>
                   <span>{lang.label}</span>
@@ -262,7 +299,7 @@ const Header = () => {
           </div>
 
           <div className="px-5 py-3 border-t border-border">
-            <a href="tel:0207371426" className="flex items-center gap-2 text-primary font-semibold text-sm">
+            <a href="tel:0207371426" className="flex items-center gap-2 text-sm" style={{ color: "hsl(222 47% 11%)", fontWeight: 600 }}>
               <Phone className="w-4 h-4" />
               020 737 14 26
             </a>

@@ -2,47 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 215 28% 17%;
+    --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 28% 17%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 28% 17%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 211 100% 45%;
+    --primary: 222 47% 11%;
     --primary-foreground: 0 0% 100%;
 
-    --primary-light: 211 100% 96%;
-    --primary-mid: 211 90% 62%;
+    --primary-light: 210 40% 98%;
+    --primary-mid: 215 14% 34%;
 
-    --secondary: 205 73% 95%;
-    --secondary-foreground: 211 100% 35%;
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 222 47% 11%;
 
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 199 89% 48%;
+    --accent: 174 43% 30%;
     --accent-foreground: 0 0% 100%;
+    --accent-light: 166 76% 97%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 211 100% 45%;
+    --ring: 174 43% 30%;
 
     --radius: 0.5rem;
 
     --header-bg: 0 0% 100%;
-    --header-shadow: 0 2px 20px rgba(59, 130, 246, 0.12);
-
-    --hero-overlay: linear-gradient(135deg, rgba(2, 62, 138, 0.75) 0%, rgba(0, 119, 182, 0.55) 100%);
 
     --covid-bg: 45 93% 92%;
     --covid-border: 38 92% 50%;
@@ -59,25 +57,25 @@
   }
 
   .dark {
-    --background: 215 28% 10%;
+    --background: 222 47% 6%;
     --foreground: 210 40% 98%;
-    --card: 215 28% 12%;
+    --card: 222 47% 8%;
     --card-foreground: 210 40% 98%;
-    --popover: 215 28% 12%;
+    --popover: 222 47% 8%;
     --popover-foreground: 210 40% 98%;
-    --primary: 211 100% 55%;
+    --primary: 174 43% 30%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 211 30% 20%;
+    --secondary: 222 30% 15%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 215 28% 18%;
+    --muted: 222 28% 18%;
     --muted-foreground: 215 20% 65%;
-    --accent: 199 89% 48%;
+    --accent: 174 43% 30%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
-    --border: 215 28% 22%;
-    --input: 215 28% 22%;
-    --ring: 211 100% 55%;
+    --border: 222 28% 22%;
+    --input: 222 28% 22%;
+    --ring: 174 43% 30%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -95,12 +93,14 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
   }
 
   h1, h2, h3 {
-    font-family: 'Merriweather', Georgia, serif;
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    letter-spacing: -0.025em;
+    color: hsl(222 47% 11%);
   }
 }
 
@@ -114,7 +114,7 @@
   }
 
   .page-heading {
-    @apply text-3xl font-bold text-primary mb-6 pb-3 border-b border-border;
+    @apply text-2xl font-bold text-foreground mb-6 pb-3 border-b border-border;
   }
 
   .page-subheading {
@@ -122,21 +122,50 @@
   }
 
   .page-text {
-    @apply text-foreground/80 leading-relaxed mb-4;
+    @apply text-sm leading-relaxed mb-4;
+    color: hsl(220 9% 26%);
+    line-height: 1.7;
   }
 
   .info-card {
-    @apply bg-secondary rounded-lg p-5 border border-border;
+    @apply bg-card rounded-lg p-5 border border-border;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
   }
 
   .nav-link-active {
-    @apply text-primary font-semibold;
+    @apply text-foreground font-semibold;
   }
 
-  .floating-btn {
-    @apply flex items-center justify-center w-12 h-12 rounded-l-full shadow-lg text-sm font-semibold transition-all duration-200 cursor-pointer;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
+  .page-hero {
+    background: hsl(210 40% 98%);
+    padding: 80px 0 60px;
+  }
+
+  .page-hero-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: hsl(174 43% 30%);
+  }
+
+  .page-hero-title {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 700;
+    color: hsl(222 47% 11%);
+    margin: 0 0 12px;
+    letter-spacing: -0.025em;
+    border-left: 3px solid hsl(174 43% 30%);
+    padding-left: 16px;
+    display: inline-block;
+  }
+
+  .page-hero-desc {
+    font-size: 15px;
+    color: hsl(215 16% 47%);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
   }
 }
 
@@ -148,7 +177,7 @@
   background: hsl(var(--muted));
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary-mid));
+  background: hsl(var(--muted-foreground));
   border-radius: 3px;
 }
 
@@ -172,7 +201,11 @@
   animation: dropdown-in 0.15s ease-out;
 }
 
-/* Hero gradient overlay */
-.hero-overlay {
-  background: var(--hero-overlay);
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
 }
