@@ -1,9 +1,8 @@
 import Layout from "@/components/Layout";
-import { ExternalLink, Phone, Mail, Clock, MapPin } from "lucide-react";
+import { ExternalLink, Phone, Clock, MapPin } from "lucide-react";
 
 const zorgverleners = [
   {
-    emoji: "🤰",
     naam: "Verloskundigenpraktijk De Poort",
     categorie: "Verloskunde",
     beschrijving: "Een kleinschalige verloskundigenpraktijk gevestigd in ons pand. Persoonlijke begeleiding, professionaliteit en aandacht staan centraal. Vanaf de eerste maanden van de zwangerschap tot en met de eerste weken na de geboorte staan zij voor u klaar.",
@@ -12,10 +11,8 @@ const zorgverleners = [
     website: "https://www.verloskundigenpraktijkdepoort.nl",
     openingstijden: null,
     opmerking: "Voor aanmelden en afspraken kunt u direct contact opnemen met De Poort via telefoon of via hun website.",
-    kleur: "#0EA5A0",
   },
   {
-    emoji: "🩸",
     naam: "RHMDC Bloedafname",
     categorie: "Diagnostiek",
     beschrijving: "Het Reinier Haga Medisch Diagnostisch Centrum (RHMDC) verzorgt diagnostisch onderzoek op onze locatie. U bent zonder afspraak welkom. Neem altijd uw aanvraagformulier en legitimatiebewijs mee.",
@@ -24,114 +21,99 @@ const zorgverleners = [
     website: "https://www.rhmdc.nl/locaties/reigersbos-medical-center",
     openingstijden: "Donderdag: 09:00 – 12:00 (overige dagen gesloten)",
     opmerking: "Zonder afspraak welkom. Neem mee: aanvraagformulier (papier of digitaal) en legitimatiebewijs.",
-    kleur: "#DC2626",
   },
 ];
 
 const OverigZorgaanbod = () => {
   return (
     <Layout>
-      {/* Hero */}
-      <div className="bg-gradient-to-br from-primary to-accent text-white py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest opacity-80 mb-3">
-            Reigersbos Medical Center
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Overig Zorgaanbod
-          </h1>
-          <p className="text-lg opacity-90 max-w-2xl mx-auto leading-relaxed">
+      <section className="page-hero">
+        <div className="max-w-4xl mx-auto text-center px-4">
+          <p className="page-hero-label mb-3">Reigersbos Medical Center</p>
+          <h1 className="page-hero-title">Overig Zorgaanbod</h1>
+          <p className="page-hero-desc" style={{ maxWidth: "600px" }}>
             Naast onze eigen huisartspraktijk en fysiotherapie zijn er ook andere zorgverleners
             in ons pand gevestigd. Wij werken nauw met hen samen voor de beste zorg aan u.
           </p>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-5xl mx-auto px-4 py-12">
-        <div className="space-y-8">
+      <div className="max-w-5xl mx-auto px-4 py-12 space-y-8">
 
-          {/* Intro card */}
-          <div className="bg-secondary/50 border border-border rounded-2xl p-6 flex gap-4 items-start">
-            <span className="text-3xl">🤝</span>
-            <p className="text-muted-foreground leading-relaxed">
-              Samenwerking in één pand. Doordat alle zorgverleners onder één dak werken,
-              kunnen wij snel schakelen en de continuïteit van uw zorg waarborgen.
-              Elke zorgverlener heeft zijn eigen administratie en afsprakensysteem.
-            </p>
-          </div>
+        <div style={{
+          background: "hsl(166 76% 97%)", border: "1px solid hsl(168 76% 78%)",
+          borderRadius: "10px", padding: "20px 24px",
+          display: "flex", gap: "16px", alignItems: "flex-start",
+        }}>
+          <span style={{ fontSize: "24px" }}>🤝</span>
+          <p style={{ color: "hsl(215 16% 47%)", lineHeight: 1.7, fontSize: "14px" }}>
+            Samenwerking in één pand. Doordat alle zorgverleners onder één dak werken,
+            kunnen wij snel schakelen en de continuïteit van uw zorg waarborgen.
+            Elke zorgverlener heeft zijn eigen administratie en afsprakensysteem.
+          </p>
+        </div>
 
-          {/* Zorgverleners */}
-          <div className="space-y-6">
-            {zorgverleners.map((z) => (
-              <div key={z.naam} className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm">
-                {/* Colored top bar */}
-                <div style={{ background: z.kleur, height: "5px" }} />
-
-                <div className="p-6 md:p-8 flex flex-col md:flex-row gap-8">
-                  {/* Left: info */}
-                  <div className="flex-1 space-y-4">
-                    <div className="flex items-center gap-4">
-                      <span className="text-4xl">{z.emoji}</span>
-                      <div>
-                        <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                          {z.categorie}
-                        </span>
-                        <h2 className="text-xl font-bold text-foreground">
-                          {z.naam}
-                        </h2>
-                      </div>
-                    </div>
-
-                    <p className="text-muted-foreground leading-relaxed">
-                      {z.beschrijving}
-                    </p>
-
-                    {/* Diensten */}
-                    <div className="flex flex-wrap gap-2">
-                      {z.diensten.map(d => (
-                        <span key={d} className="bg-secondary text-foreground text-xs font-medium px-3 py-1.5 rounded-full border border-border">
-                          {d}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Opmerking */}
-                    <div className="bg-secondary/50 border border-border rounded-xl p-4 text-sm text-muted-foreground leading-relaxed">
-                      ℹ️ {z.opmerking}
-                    </div>
+        <div className="space-y-6">
+          {zorgverleners.map((z) => (
+            <div key={z.naam} style={{
+              background: "white", border: "1px solid hsl(214 32% 91%)",
+              borderRadius: "10px", overflow: "hidden",
+              boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
+            }}>
+              <div className="p-6 md:p-8 flex flex-col md:flex-row gap-8">
+                <div className="flex-1 space-y-4">
+                  <div>
+                    <span className="page-hero-label">{z.categorie}</span>
+                    <h2 style={{ fontSize: "18px", fontWeight: 700, color: "hsl(222 47% 11%)", marginTop: "4px" }}>
+                      {z.naam}
+                    </h2>
                   </div>
+                  <p style={{ color: "hsl(215 16% 47%)", lineHeight: 1.7, fontSize: "14px" }}>{z.beschrijving}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {z.diensten.map(d => (
+                      <span key={d} style={{
+                        background: "hsl(210 40% 98%)", color: "hsl(222 47% 11%)",
+                        fontSize: "12px", fontWeight: 500, padding: "4px 12px",
+                        borderRadius: "50px", border: "1px solid hsl(214 32% 91%)",
+                      }}>
+                        {d}
+                      </span>
+                    ))}
+                  </div>
+                  <div style={{
+                    background: "hsl(210 40% 98%)", border: "1px solid hsl(214 32% 91%)",
+                    borderRadius: "8px", padding: "12px", fontSize: "13px",
+                    color: "hsl(215 16% 47%)", lineHeight: 1.6,
+                  }}>
+                    ℹ️ {z.opmerking}
+                  </div>
+                </div>
 
-                  {/* Right: contact */}
-                  <div className="md:w-64 shrink-0">
-                    <div className="bg-secondary/30 border border-border rounded-xl p-5 space-y-3">
-                      <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                        Contact &amp; Info
-                      </p>
-
-                      <div className="flex items-start gap-2.5 text-sm text-foreground">
-                        <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-primary" />
-                        <span>
-                          Reigersbos 100 K (3e etage)<br />
-                          1107 ES Amsterdam
-                        </span>
+                <div className="md:w-64 shrink-0">
+                  <div style={{
+                    background: "hsl(210 40% 98%)", border: "1px solid hsl(214 32% 91%)",
+                    borderRadius: "8px", padding: "20px",
+                  }}>
+                    <p className="page-hero-label mb-3">Contact & Info</p>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-2.5 text-sm" style={{ color: "hsl(222 47% 11%)" }}>
+                        <MapPin className="w-4 h-4 mt-0.5 shrink-0" style={{ color: "hsl(174 43% 30%)" }} />
+                        <span>Reigersbos 100 K (3e etage)<br />1107 ES Amsterdam</span>
                       </div>
-
                       {z.openingstijden && (
-                        <div className="flex items-center gap-2.5 text-sm text-foreground">
-                          <Clock className="w-4 h-4 shrink-0 text-primary" />
+                        <div className="flex items-center gap-2.5 text-sm" style={{ color: "hsl(222 47% 11%)" }}>
+                          <Clock className="w-4 h-4 shrink-0" style={{ color: "hsl(174 43% 30%)" }} />
                           {z.openingstijden}
                         </div>
                       )}
-
                       {z.contact && (
-                        <a href={`tel:${z.contact.replace(/\s/g, "")}`} className="flex items-center gap-2.5 text-sm text-primary font-semibold hover:text-accent transition-colors">
+                        <a href={`tel:${z.contact.replace(/\s/g, "")}`} className="flex items-center gap-2.5 text-sm" style={{ color: "hsl(174 43% 30%)", fontWeight: 600, textDecoration: "none" }}>
                           <Phone className="w-4 h-4 shrink-0" />
                           {z.contact}
                         </a>
                       )}
-
                       {z.website && (
-                        <a href={z.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-primary font-semibold hover:text-accent transition-colors">
+                        <a href={z.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm" style={{ color: "hsl(174 43% 30%)", fontWeight: 600, textDecoration: "none" }}>
                           <ExternalLink className="w-4 h-4 shrink-0" />
                           Bezoek website
                         </a>
@@ -140,9 +122,8 @@ const OverigZorgaanbod = () => {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-
+            </div>
+          ))}
         </div>
       </div>
     </Layout>
