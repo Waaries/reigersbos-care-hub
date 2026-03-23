@@ -125,12 +125,11 @@ const Footer = () => {
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <img
-                  src="https://www.zorgkaartnederland.nl/images/logos/zkn-logo.png"
-                  alt="Zorgkaart Nederland"
-                  style={{ height: '32px', objectFit: 'contain' }}
-                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
-                />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <span style={{ color: '#e85d04', fontWeight: 900, fontSize: '13px', lineHeight: 1 }}>Zorgkaart</span>
+                  <span style={{ color: '#1a365d', fontWeight: 900, fontSize: '13px', lineHeight: 1 }}>Nederland</span>
+                </div>
+                <div style={{ background: '#e85d04', color: 'white', borderRadius: '4px', padding: '2px 6px', fontSize: '12px', fontWeight: 900 }}>+Q</div>
               </div>
               <p style={{ color: '#2d3748', fontSize: '13px', margin: '0 0 6px', lineHeight: '1.4' }}>
                 Reigersbos Medical Center is 2 keer gewaardeerd en heeft een gemiddeld cijfer van <strong>10.0</strong>.
