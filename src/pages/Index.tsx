@@ -269,7 +269,7 @@ const Index = () => {
                   el.style.boxShadow = "0 4px 20px rgba(0,0,0,0.10)";
                 }}
               >
-                <div style={{ fontSize: "48px", marginBottom: "16px" }}>{icon}</div>
+                <div style={{ fontSize: "48px", marginBottom: "16px" }}>{svc.icon}</div>
                 <div
                   style={{
                     fontSize: "18px",
@@ -278,9 +278,9 @@ const Index = () => {
                     marginBottom: "8px",
                   }}
                 >
-                  {t(titleKey)}
+                  {'titleKey' in svc ? t(svc.titleKey) : svc.title}
                 </div>
-                <p style={{ fontSize: "14px", color: "#64748B", margin: 0 }}>{t(descKey)}</p>
+                <p style={{ fontSize: "14px", color: "#64748B", margin: 0 }}>{'descKey' in svc ? t(svc.descKey) : svc.desc}</p>
               </div>
             ))}
           </div>

@@ -86,8 +86,8 @@ export const translations: Translations = {
     "services.gp.desc": "Voor al uw medische vragen en zorg",
     "services.physio.title": "Fysiotherapie",
     "services.physio.desc": "Moderne behandelingen, 30 min per sessie",
-    "services.chronic.title": "Chronische Zorg",
-    "services.chronic.desc": "Begeleiding bij langdurige aandoeningen",
+    "services.chronic.title": "Verloskundige",
+    "services.chronic.desc": "Verloskundige Praktijk De Poort — in ons gebouw",
     "nav.huisartspraktijk": "Huisartspraktijk",
     
     "nav.fysiotherapie": "Fysiotherapie",

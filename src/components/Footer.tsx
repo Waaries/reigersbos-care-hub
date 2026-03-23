@@ -7,7 +7,7 @@ const medischeLinks = [
   { label: "thuisarts.nl", url: "https://www.thuisarts.nl" },
   { label: "kiesbeter.nl", url: "https://www.kiesbeter.nl" },
   { label: "voedingscentrum.nl", url: "https://www.voedingscentrum.nl" },
-  { label: "dieetditdieetdat.nl", url: "https://www.dieetditdieetdat.nl" },
+  
   { label: "moetiknaardedokter.nl", url: "https://www.moetiknaardedokter.nl" },
   { label: "medicijnkosten.nl", url: "https://www.medicijnkosten.nl" },
   { label: "zorgkaartnederland.nl", url: "https://www.zorgkaartnederland.nl" },
