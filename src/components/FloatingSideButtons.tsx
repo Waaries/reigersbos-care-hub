@@ -95,13 +95,13 @@ const FloatingSideButtons = () => {
   return (
     <>
       <div
+        className="hidden lg:flex"
         style={{
           position: "fixed",
           right: 0,
           top: "50%",
           transform: "translateY(-50%)",
           zIndex: 9999,
-          display: "flex",
           flexDirection: "column",
           gap: "6px",
           overflow: "visible",
