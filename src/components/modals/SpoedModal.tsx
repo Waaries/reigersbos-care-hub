@@ -9,80 +9,51 @@ const SpoedModal = () => {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ background: "rgba(13,59,110,0.6)", backdropFilter: "blur(8px)" }}
+      style={{ background: "rgba(15,23,42,0.5)", backdropFilter: "blur(4px)" }}
       onClick={closeModal}
     >
       <div
-        className="bg-white w-full max-w-md overflow-hidden flex flex-col"
-        style={{ borderRadius: "24px", boxShadow: "0 32px 80px rgba(27,79,138,0.25)" }}
+        className="bg-white w-full max-w-md overflow-hidden flex flex-col rounded-[10px] border border-border"
+        style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}
         onClick={e => e.stopPropagation()}
       >
         {/* Red header */}
-        <div style={{
-          background: "linear-gradient(135deg, #DC2626 0%, #991B1B 60%, #7F1D1D 100%)",
-          padding: "28px 32px 24px",
-          position: "relative",
-        }}>
+        <div className="bg-destructive p-7 relative">
           <button
             onClick={closeModal}
-            style={{
-              position: "absolute", top: "20px", right: "20px",
-              background: "rgba(255,255,255,0.15)", border: "none",
-              borderRadius: "50%", width: "36px", height: "36px",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              cursor: "pointer", transition: "all 0.2s",
-            }}
+            className="absolute top-5 right-5 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer border-none transition-all duration-200"
+            style={{ background: "rgba(255,255,255,0.15)" }}
             onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.25)")}
             onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.15)")}
           >
             <X size={16} color="white" />
           </button>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-            <div style={{
-              width: "48px", height: "48px", borderRadius: "14px",
-              background: "rgba(255,255,255,0.15)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              flexShrink: 0,
-            }}>
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-[10px] flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,255,255,0.15)" }}>
               <AlertTriangle size={24} color="white" />
             </div>
             <div>
-              <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "2px" }}>
+              <p className="text-xs font-semibold tracking-widest uppercase mb-0.5" style={{ color: "rgba(255,255,255,0.7)" }}>
                 Spoedhulp
               </p>
-              <h2 style={{ color: "white", fontSize: "26px", fontWeight: 900, margin: 0, letterSpacing: "2px" }}>
+              <h2 className="text-2xl font-black text-white m-0 tracking-wide">
                 SPOED
               </h2>
             </div>
           </div>
 
           {/* 112 banner */}
-          <div style={{
-            marginTop: "20px",
-            background: "rgba(0,0,0,0.25)",
-            borderRadius: "14px",
-            padding: "14px 18px",
-            display: "flex",
-            alignItems: "center",
-            gap: "14px",
-          }}>
-            <span style={{ fontSize: "28px" }}>🚨</span>
+          <div className="mt-5 rounded-[10px] px-4 py-3.5 flex items-center gap-3.5" style={{ background: "rgba(0,0,0,0.2)" }}>
+            <span className="text-2xl">🚨</span>
             <div>
-              <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "12px", fontWeight: 600, margin: "0 0 2px 0", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              <p className="text-xs font-semibold uppercase tracking-wide mb-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>
                 Levensbedreigende situatie?
               </p>
               <a
                 href="tel:112"
-                style={{
-                  color: "#FCA5A5",
-                  fontWeight: 900,
-                  fontSize: "28px",
-                  letterSpacing: "2px",
-                  textDecoration: "none",
-                  lineHeight: 1,
-                  display: "block",
-                }}
+                className="block text-3xl font-black tracking-wide no-underline leading-none"
+                style={{ color: "#FCA5A5" }}
               >
                 Bel 112
               </a>
@@ -91,108 +62,70 @@ const SpoedModal = () => {
         </div>
 
         {/* Contact cards */}
-        <div style={{ padding: "24px 28px 28px", display: "flex", flexDirection: "column", gap: "12px" }}>
+        <div className="p-6 flex flex-col gap-3">
 
           {/* Praktijk */}
           <a
             href="tel:0207371426"
-            style={{
-              display: "flex", alignItems: "center", gap: "16px",
-              padding: "16px 20px", borderRadius: "16px", textDecoration: "none",
-              background: "#EFF6FF", border: "2px solid #BFDBFE",
-              transition: "all 0.2s",
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.background = "#DBEAFE";
-              e.currentTarget.style.borderColor = "#93C5FD";
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.background = "#EFF6FF";
-              e.currentTarget.style.borderColor = "#BFDBFE";
-            }}
+            className="flex items-center gap-4 p-4 rounded-[10px] no-underline transition-all duration-200 border border-border hover:border-accent"
+            style={{ background: "hsl(var(--secondary))" }}
           >
-            <div style={{
-              width: "44px", height: "44px", borderRadius: "12px",
-              background: "#1B4F8A",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              flexShrink: 0,
-            }}>
+            <div className="w-11 h-11 rounded-[10px] bg-primary flex items-center justify-center flex-shrink-0">
               <Phone size={20} color="white" />
             </div>
-            <div style={{ flex: 1 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "2px" }}>
-                <Clock size={11} color="#64748B" />
-                <p style={{ fontSize: "12px", color: "#64748B", fontWeight: 600, margin: 0 }}>
+            <div className="flex-1">
+              <div className="flex items-center gap-1.5 mb-0.5">
+                <Clock size={11} className="text-muted-foreground" />
+                <p className="text-xs text-muted-foreground font-semibold m-0">
                   Ma–Vr tot 17:00 · Praktijk
                 </p>
               </div>
-              <p style={{ fontSize: "20px", fontWeight: 800, color: "#1B4F8A", margin: 0 }}>
+              <p className="text-lg font-bold text-foreground m-0">
                 020 737 14 26
               </p>
             </div>
-            <ExternalLink size={16} color="#93C5FD" />
+            <ExternalLink size={16} className="text-muted-foreground" />
           </a>
 
           {/* Huisartsenpost */}
           <a
             href="tel:0880030600"
-            style={{
-              display: "flex", alignItems: "center", gap: "16px",
-              padding: "16px 20px", borderRadius: "16px", textDecoration: "none",
-              background: "#FFF7ED", border: "2px solid #FED7AA",
-              transition: "all 0.2s",
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.background = "#FFEDD5";
-              e.currentTarget.style.borderColor = "#FDBA74";
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.background = "#FFF7ED";
-              e.currentTarget.style.borderColor = "#FED7AA";
-            }}
+            className="flex items-center gap-4 p-4 rounded-[10px] no-underline transition-all duration-200 border border-border hover:border-accent"
+            style={{ background: "hsl(var(--secondary))" }}
           >
-            <div style={{
-              width: "44px", height: "44px", borderRadius: "12px",
-              background: "#EA580C",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              flexShrink: 0,
-            }}>
+            <div className="w-11 h-11 rounded-[10px] bg-destructive flex items-center justify-center flex-shrink-0">
               <Phone size={20} color="white" />
             </div>
-            <div style={{ flex: 1 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "2px" }}>
-                <Clock size={11} color="#64748B" />
-                <p style={{ fontSize: "12px", color: "#64748B", fontWeight: 600, margin: 0 }}>
+            <div className="flex-1">
+              <div className="flex items-center gap-1.5 mb-0.5">
+                <Clock size={11} className="text-muted-foreground" />
+                <p className="text-xs text-muted-foreground font-semibold m-0">
                   Avond · Nacht · Weekend
                 </p>
               </div>
-              <p style={{ fontSize: "20px", fontWeight: 800, color: "#C2410C", margin: 0 }}>
+              <p className="text-lg font-bold text-destructive m-0">
                 088 003 06 00
               </p>
-              <p style={{ fontSize: "11px", color: "#9A3412", margin: 0 }}>Huisartsenposten Amsterdam</p>
+              <p className="text-xs text-muted-foreground m-0">Huisartsenposten Amsterdam</p>
             </div>
-            <ExternalLink size={16} color="#FDBA74" />
+            <ExternalLink size={16} className="text-muted-foreground" />
           </a>
 
           {/* Adres */}
-          <div style={{
-            display: "flex", alignItems: "flex-start", gap: "14px",
-            padding: "14px 18px", borderRadius: "14px",
-            background: "#F8FAFC", border: "1px solid #E2E8F0",
-          }}>
-            <span style={{ fontSize: "20px", marginTop: "1px" }}>📍</span>
+          <div className="flex items-start gap-3.5 p-3.5 rounded-[10px] bg-secondary border border-border">
+            <span className="text-xl mt-0.5">📍</span>
             <div>
-              <p style={{ fontSize: "13px", fontWeight: 700, color: "#1B4F8A", margin: "0 0 2px 0" }}>
+              <p className="text-sm font-bold text-foreground mb-0.5">
                 Huisartsenpost Amsterdam
               </p>
-              <p style={{ fontSize: "12px", color: "#64748B", margin: 0 }}>
+              <p className="text-xs text-muted-foreground m-0">
                 Hoogte Kadijk 143 C · 1018 BH Amsterdam
               </p>
               <a
                 href="https://www.huisartsenpostenamsterdam.nl"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ fontSize: "12px", color: "#0EA5A0", fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: "4px", marginTop: "4px" }}
+                className="text-xs text-accent font-semibold no-underline flex items-center gap-1 mt-1"
               >
                 <ExternalLink size={11} />
                 huisartsenpostenamsterdam.nl
@@ -202,12 +135,7 @@ const SpoedModal = () => {
 
           <button
             onClick={closeModal}
-            style={{
-              marginTop: "4px",
-              padding: "12px", borderRadius: "12px", fontSize: "14px", fontWeight: 600,
-              border: "2px solid #E2E8F0", background: "white", color: "#64748B",
-              cursor: "pointer", transition: "all 0.2s", width: "100%",
-            }}
+            className="mt-1 w-full py-3 rounded-md text-sm font-semibold border border-border bg-white text-muted-foreground cursor-pointer hover:bg-secondary transition-all"
           >
             Sluiten
           </button>
