@@ -20,122 +20,95 @@ const HerhaalreceptModal = () => {
   const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(true); };
 
   const inputClass = `
-    w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-4 py-3 text-sm text-gray-800
-    focus:outline-none focus:ring-2 focus:ring-[#0EA5A0]/30 focus:border-[#0EA5A0]
-    placeholder:text-gray-400 transition-all duration-200
+    w-full bg-secondary border border-border rounded-md px-4 py-3 text-sm text-foreground
+    focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent
+    placeholder:text-muted-foreground transition-all duration-200
   `;
-  const labelClass = "block text-xs font-semibold text-[#1B4F8A] mb-1.5 uppercase tracking-wide";
+  const labelClass = "block text-xs font-semibold text-foreground mb-1.5 uppercase tracking-wide";
 
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ background: "rgba(13,59,110,0.6)", backdropFilter: "blur(8px)" }}
+      style={{ background: "rgba(15,23,42,0.5)", backdropFilter: "blur(4px)" }}
       onClick={handleClose}
     >
       <div
-        className="bg-white w-full max-w-2xl max-h-[92vh] overflow-hidden flex flex-col"
-        style={{ borderRadius: "24px", boxShadow: "0 32px 80px rgba(27,79,138,0.25)" }}
+        className="bg-white w-full max-w-2xl max-h-[92vh] overflow-hidden flex flex-col rounded-[10px] border border-border"
+        style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
-        <div
-          style={{
-            background: "linear-gradient(135deg, #1B4F8A 0%, #0D3B6E 50%, #0EA5A0 100%)",
-            padding: "28px 32px 24px",
-            position: "relative",
-            flexShrink: 0,
-          }}
-        >
+        <div className="bg-primary p-7 relative flex-shrink-0">
           <button
             onClick={handleClose}
-            style={{
-              position: "absolute", top: "20px", right: "20px",
-              background: "rgba(255,255,255,0.15)", border: "none",
-              borderRadius: "50%", width: "36px", height: "36px",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              cursor: "pointer", transition: "all 0.2s",
-            }}
+            className="absolute top-5 right-5 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer border-none transition-all duration-200"
+            style={{ background: "rgba(255,255,255,0.15)" }}
             onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.25)")}
             onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.15)")}
           >
             <X size={16} color="white" />
           </button>
 
-          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "6px" }}>
+          <p className="text-xs font-semibold tracking-widest uppercase mb-1.5" style={{ color: "rgba(255,255,255,0.6)" }}>
             Reigersbos Medical Center
           </p>
-          <h2 style={{ color: "white", fontSize: "24px", fontWeight: 800, margin: 0 }}>
+          <h2 className="text-2xl font-bold text-white m-0">
             Herhaalrecept aanvragen
           </h2>
-          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "13px", marginTop: "6px" }}>
+          <p className="text-xs mt-1.5" style={{ color: "rgba(255,255,255,0.6)" }}>
             Vul uw gegevens in en wij verwerken uw aanvraag
           </p>
 
           {/* Info strip */}
-          <div style={{ display: "flex", alignItems: "center", gap: "20px", marginTop: "20px" }}>
+          <div className="flex items-center gap-5 mt-5">
             {[
               { icon: User, text: "Uw gegevens" },
               { icon: Pill, text: "Medicatie" },
               { icon: ClipboardList, text: "Akkoord" },
             ].map(({ icon: Icon, text }) => (
-              <div key={text} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <div style={{
-                  width: "28px", height: "28px", borderRadius: "50%",
-                  background: "rgba(255,255,255,0.15)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                }}>
+              <div key={text} className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ background: "rgba(255,255,255,0.15)" }}>
                   <Icon size={13} color="white" />
                 </div>
-                <span style={{ fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.8)" }}>{text}</span>
+                <span className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.7)" }}>{text}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Body */}
-        <div style={{ overflowY: "auto", flex: 1 }}>
+        <div className="overflow-y-auto flex-1">
           {submitted ? (
-            <div style={{ padding: "60px 32px", textAlign: "center" }}>
-              <div style={{
-                width: "72px", height: "72px", borderRadius: "50%",
-                background: "linear-gradient(135deg, #0EA5A0, #059669)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                margin: "0 auto 20px",
-                boxShadow: "0 8px 24px rgba(14,165,160,0.3)",
-              }}>
-                <CheckCircle size={36} color="white" />
+            <div className="py-14 px-8 text-center">
+              <div className="w-[72px] h-[72px] rounded-full flex items-center justify-center mx-auto mb-5 bg-accent-light border-2 border-accent">
+                <CheckCircle size={36} className="text-accent" />
               </div>
-              <h3 style={{ fontSize: "22px", fontWeight: 800, color: "#1B4F8A", marginBottom: "8px" }}>
+              <h3 className="text-xl font-bold text-foreground mb-2">
                 Aanvraag ontvangen!
               </h3>
-              <p style={{ color: "#64748B", fontSize: "15px", maxWidth: "340px", margin: "0 auto 8px" }}>
+              <p className="text-muted-foreground text-sm max-w-[340px] mx-auto mb-2">
                 Uw herhaalrecept wordt zo spoedig mogelijk verwerkt.
               </p>
-              <p style={{ color: "#64748B", fontSize: "14px", maxWidth: "340px", margin: "0 auto 32px" }}>
+              <p className="text-muted-foreground text-sm max-w-[340px] mx-auto mb-8">
                 U ontvangt een bevestiging per e-mail.
               </p>
               <button
                 onClick={handleClose}
-                style={{
-                  background: "linear-gradient(135deg, #1B4F8A, #0EA5A0)",
-                  color: "white", border: "none", borderRadius: "12px",
-                  padding: "12px 32px", fontSize: "15px", fontWeight: 700,
-                  cursor: "pointer",
-                }}
+                className="bg-primary text-primary-foreground border-none rounded-md px-8 py-3 text-sm font-semibold cursor-pointer hover:opacity-90 transition-opacity"
               >
                 Sluiten
               </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
-              <div style={{ padding: "28px 32px", display: "flex", flexDirection: "column", gap: "24px" }}>
+              <div className="p-7 flex flex-col gap-6">
 
                 {/* Uw gegevens */}
-                <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-                  <p style={{ fontSize: "13px", fontWeight: 700, color: "#1B4F8A", textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
+                <div className="flex flex-col gap-4">
+                  <p className="text-xs font-bold text-foreground uppercase tracking-wider m-0">
                     Uw gegevens
                   </p>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: "12px" }}>
+                  <div className="grid grid-cols-[1fr_auto_1fr] gap-3">
                     <div>
                       <label className={labelClass}>Voornaam *</label>
                       <input required className={inputClass} value={form.voornaam} onChange={e => set("voornaam", e.target.value)} placeholder="Jan" />
@@ -149,7 +122,7 @@ const HerhaalreceptModal = () => {
                       <input required className={inputClass} value={form.achternaam} onChange={e => set("achternaam", e.target.value)} placeholder="Berg" />
                     </div>
                   </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+                  <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className={labelClass}>Geboortedatum *</label>
                       <input required type="date" className={inputClass} value={form.geboortedatum} onChange={e => set("geboortedatum", e.target.value)} />
@@ -165,19 +138,18 @@ const HerhaalreceptModal = () => {
                   </div>
                 </div>
 
-                {/* Divider */}
-                <div style={{ height: "1px", background: "#F1F5F9" }} />
+                <div className="h-px bg-border" />
 
                 {/* Medicatie */}
-                <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-                  <p style={{ fontSize: "13px", fontWeight: 700, color: "#1B4F8A", textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
+                <div className="flex flex-col gap-4">
+                  <p className="text-xs font-bold text-foreground uppercase tracking-wider m-0">
                     Medicatie
                   </p>
                   <div>
                     <label className={labelClass}>Naam medicijn *</label>
                     <input required className={inputClass} value={form.medicijn} onChange={e => set("medicijn", e.target.value)} placeholder="Bijv. Metformine" />
                   </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+                  <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className={labelClass}>Dosering *</label>
                       <input required className={inputClass} value={form.dosering} onChange={e => set("dosering", e.target.value)} placeholder="Bijv. 500mg" />
@@ -200,68 +172,45 @@ const HerhaalreceptModal = () => {
                   </div>
                 </div>
 
-                {/* Divider */}
-                <div style={{ height: "1px", background: "#F1F5F9" }} />
+                <div className="h-px bg-border" />
 
                 {/* AVG */}
-                <label style={{
-                  display: "flex", alignItems: "flex-start", gap: "14px",
-                  padding: "18px", borderRadius: "14px", cursor: "pointer",
-                  border: `2px solid ${form.avg ? "#0EA5A0" : "#E2E8F0"}`,
-                  background: form.avg ? "#F0FDFA" : "#F8FAFC",
-                  transition: "all 0.2s",
+                <label className="flex items-start gap-3.5 p-4 rounded-md cursor-pointer transition-all duration-200" style={{
+                  border: `1px solid ${form.avg ? "hsl(var(--accent))" : "hsl(var(--border))"}`,
+                  background: form.avg ? "hsl(var(--accent-light))" : "hsl(var(--secondary))",
                 }}>
-                  <div style={{
-                    width: "22px", height: "22px", borderRadius: "7px", flexShrink: 0,
-                    border: `2px solid ${form.avg ? "#0EA5A0" : "#CBD5E1"}`,
-                    background: form.avg ? "#0EA5A0" : "white",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    transition: "all 0.2s", marginTop: "1px",
+                  <div className="w-5 h-5 rounded flex-shrink-0 flex items-center justify-center transition-all duration-200 mt-0.5" style={{
+                    border: `1px solid ${form.avg ? "hsl(var(--accent))" : "hsl(var(--border))"}`,
+                    background: form.avg ? "hsl(var(--accent))" : "white",
                   }}>
-                    {form.avg && <CheckCircle size={13} color="white" />}
+                    {form.avg && <CheckCircle size={12} color="white" />}
                   </div>
                   <input type="checkbox" required checked={form.avg} onChange={e => set("avg", e.target.checked)} style={{ display: "none" }} />
                   <div>
-                    <p style={{ fontWeight: 700, color: "#1B4F8A", fontSize: "13px", marginBottom: "3px" }}>Privacyverklaring (AVG) *</p>
-                    <p style={{ fontSize: "12px", color: "#64748B", lineHeight: 1.6 }}>Ik ga akkoord met de verwerking van mijn persoonsgegevens conform de AVG.</p>
+                    <p className="font-semibold text-foreground text-sm mb-1">Privacyverklaring (AVG) *</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">Ik ga akkoord met de verwerking van mijn persoonsgegevens conform de AVG.</p>
                   </div>
                 </label>
 
-                <div style={{
-                  background: "#EFF6FF", border: "1px solid #BFDBFE",
-                  borderRadius: "12px", padding: "14px",
-                }}>
-                  <p style={{ fontSize: "12px", color: "#1E40AF", lineHeight: 1.6, margin: 0 }}>
+                <div className="bg-accent-light border border-accent/20 rounded-md p-3.5">
+                  <p className="text-xs text-accent leading-relaxed m-0">
                     💊 <strong>Let op:</strong> Een herhaalrecept kunt u alleen aanvragen voor medicatie die u al gebruikt. Voor een nieuw medicijn dient u een afspraak te maken.
                   </p>
                 </div>
               </div>
 
               {/* Footer */}
-              <div style={{
-                padding: "16px 32px 28px",
-                display: "flex", gap: "12px", justifyContent: "space-between",
-                borderTop: "1px solid #F1F5F9",
-              }}>
+              <div className="px-7 pb-7 pt-4 flex gap-3 justify-between border-t border-border">
                 <button
                   type="button"
                   onClick={handleClose}
-                  style={{
-                    padding: "12px 24px", borderRadius: "12px", fontSize: "14px", fontWeight: 600,
-                    border: "2px solid #E2E8F0", background: "white", color: "#64748B",
-                    cursor: "pointer",
-                  }}
+                  className="px-6 py-3 rounded-md text-sm font-semibold border border-border bg-white text-muted-foreground cursor-pointer hover:bg-secondary transition-all"
                 >
                   Annuleren
                 </button>
                 <button
                   type="submit"
-                  style={{
-                    padding: "12px 28px", borderRadius: "12px", fontSize: "14px", fontWeight: 700,
-                    background: "linear-gradient(135deg, #1B4F8A, #0EA5A0)",
-                    color: "white", border: "none", cursor: "pointer",
-                    boxShadow: "0 4px 16px rgba(27,79,138,0.25)",
-                  }}
+                  className="px-7 py-3 rounded-md text-sm font-bold bg-accent text-accent-foreground border-none cursor-pointer hover:opacity-90 transition-opacity"
                 >
                   Aanvraag versturen ✓
                 </button>
@@ -275,4 +224,3 @@ const HerhaalreceptModal = () => {
 };
 
 export default HerhaalreceptModal;
-

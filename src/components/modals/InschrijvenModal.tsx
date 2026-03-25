@@ -34,83 +34,72 @@ const InschrijvenModal = () => {
   const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(true); };
 
   const inputClass = `
-    w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-4 py-3 text-sm text-gray-800
-    focus:outline-none focus:ring-2 focus:ring-[#0EA5A0]/30 focus:border-[#0EA5A0]
-    placeholder:text-gray-400 transition-all duration-200
+    w-full bg-secondary border border-border rounded-md px-4 py-3 text-sm text-foreground
+    focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent
+    placeholder:text-muted-foreground transition-all duration-200
   `;
-  const labelClass = "block text-xs font-semibold text-[#1B4F8A] mb-1.5 uppercase tracking-wide";
+  const labelClass = "block text-xs font-semibold text-foreground mb-1.5 uppercase tracking-wide";
 
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ background: "rgba(13,59,110,0.6)", backdropFilter: "blur(8px)" }}
+      style={{ background: "rgba(15,23,42,0.5)", backdropFilter: "blur(4px)" }}
       onClick={handleClose}
     >
       <div
-        className="bg-white w-full max-w-2xl max-h-[92vh] overflow-hidden flex flex-col"
-        style={{ borderRadius: "24px", boxShadow: "0 32px 80px rgba(27,79,138,0.25)" }}
+        className="bg-white w-full max-w-2xl max-h-[92vh] overflow-hidden flex flex-col rounded-[10px] border border-border"
+        style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
-        <div
-          style={{
-            background: "linear-gradient(135deg, #1B4F8A 0%, #0D3B6E 50%, #0EA5A0 100%)",
-            padding: "28px 32px 24px",
-            position: "relative",
-            flexShrink: 0,
-          }}
-        >
+        <div className="bg-primary p-7 relative flex-shrink-0">
           <button
             onClick={handleClose}
-            style={{
-              position: "absolute", top: "20px", right: "20px",
-              background: "rgba(255,255,255,0.15)", border: "none",
-              borderRadius: "50%", width: "36px", height: "36px",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              cursor: "pointer", transition: "all 0.2s",
-            }}
+            className="absolute top-5 right-5 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer border-none transition-all duration-200"
+            style={{ background: "rgba(255,255,255,0.15)" }}
             onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.25)")}
             onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.15)")}
           >
             <X size={16} color="white" />
           </button>
 
-          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "6px" }}>
+          <p className="text-xs font-semibold tracking-widest uppercase mb-1.5" style={{ color: "rgba(255,255,255,0.6)" }}>
             Reigersbos Medical Center
           </p>
-          <h2 style={{ color: "white", fontSize: "24px", fontWeight: 800, margin: 0 }}>
+          <h2 className="text-2xl font-bold text-white m-0">
             Inschrijven als patiënt
           </h2>
 
           {/* Step indicator */}
           {!submitted && (
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginTop: "24px" }}>
+            <div className="flex items-center gap-2 mt-5">
               {steps.map((s, i) => {
                 const Icon = s.icon;
                 const isActive = step === s.id;
                 const isDone = step > s.id;
                 return (
-                  <div key={s.id} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                      <div style={{
-                        width: "32px", height: "32px", borderRadius: "50%",
-                        background: isActive ? "white" : isDone ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.15)",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        transition: "all 0.3s",
-                        flexShrink: 0,
-                      }}>
-                        <Icon size={14} color={isActive ? "#1B4F8A" : "white"} />
+                  <div key={s.id} className="flex items-center gap-2">
+                    <div className="flex items-center gap-2">
+                      <div
+                        className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300"
+                        style={{
+                          background: isActive ? "white" : isDone ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.15)",
+                        }}
+                      >
+                        <Icon size={14} style={{ color: isActive ? "hsl(var(--primary))" : "white" }} />
                       </div>
-                      <span style={{
-                        fontSize: "12px", fontWeight: isActive ? 700 : 500,
-                        color: isActive ? "white" : "rgba(255,255,255,0.6)",
-                        whiteSpace: "nowrap",
-                      }}>
+                      <span
+                        className="text-xs whitespace-nowrap"
+                        style={{
+                          fontWeight: isActive ? 700 : 500,
+                          color: isActive ? "white" : "rgba(255,255,255,0.5)",
+                        }}
+                      >
                         {s.label}
                       </span>
                     </div>
                     {i < steps.length - 1 && (
-                      <div style={{ width: "24px", height: "1px", background: "rgba(255,255,255,0.25)", flexShrink: 0 }} />
+                      <div className="w-6 h-px flex-shrink-0" style={{ background: "rgba(255,255,255,0.2)" }} />
                     )}
                   </div>
                 );
@@ -120,44 +109,35 @@ const InschrijvenModal = () => {
         </div>
 
         {/* Body */}
-        <div style={{ overflowY: "auto", flex: 1 }}>
+        <div className="overflow-y-auto flex-1">
           {submitted ? (
-            <div style={{ padding: "60px 32px", textAlign: "center" }}>
-              <div style={{
-                width: "72px", height: "72px", borderRadius: "50%",
-                background: "linear-gradient(135deg, #0EA5A0, #059669)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                margin: "0 auto 20px",
-                boxShadow: "0 8px 24px rgba(14,165,160,0.3)",
-              }}>
-                <CheckCircle size={36} color="white" />
+            <div className="py-14 px-8 text-center">
+              <div
+                className="w-[72px] h-[72px] rounded-full flex items-center justify-center mx-auto mb-5 bg-accent-light border-2 border-accent"
+              >
+                <CheckCircle size={36} className="text-accent" />
               </div>
-              <h3 style={{ fontSize: "22px", fontWeight: 800, color: "#1B4F8A", marginBottom: "8px" }}>
+              <h3 className="text-xl font-bold text-foreground mb-2">
                 Aanvraag ontvangen!
               </h3>
-              <p style={{ color: "#64748B", fontSize: "15px", maxWidth: "340px", margin: "0 auto 32px" }}>
+              <p className="text-muted-foreground text-sm max-w-[340px] mx-auto mb-8">
                 Wij nemen zo spoedig mogelijk contact met u op om uw inschrijving te bevestigen.
               </p>
               <button
                 onClick={handleClose}
-                style={{
-                  background: "linear-gradient(135deg, #1B4F8A, #0EA5A0)",
-                  color: "white", border: "none", borderRadius: "12px",
-                  padding: "12px 32px", fontSize: "15px", fontWeight: 700,
-                  cursor: "pointer",
-                }}
+                className="bg-primary text-primary-foreground border-none rounded-md px-8 py-3 text-sm font-semibold cursor-pointer hover:opacity-90 transition-opacity"
               >
                 Sluiten
               </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
-              <div style={{ padding: "28px 32px" }}>
+              <div className="p-7 flex flex-col gap-5">
 
                 {/* STEP 1: Persoonlijk */}
                 {step === 1 && (
-                  <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: "12px" }}>
+                  <div className="flex flex-col gap-5">
+                    <div className="grid grid-cols-[1fr_auto_1fr] gap-3">
                       <div>
                         <label className={labelClass}>Voornaam *</label>
                         <input required className={inputClass} value={form.voornaam} onChange={e => set("voornaam", e.target.value)} placeholder="Jan" />
@@ -174,29 +154,21 @@ const InschrijvenModal = () => {
 
                     <div>
                       <label className={labelClass}>Geslacht *</label>
-                      <div style={{ display: "flex", gap: "12px" }}>
+                      <div className="flex gap-3">
                         {["Man", "Vrouw", "Anders"].map(g => (
-                          <label key={g} style={{
-                            flex: 1, display: "flex", alignItems: "center", justifyContent: "center",
-                            gap: "8px", padding: "12px", borderRadius: "12px", cursor: "pointer",
-                            border: `2px solid ${form.geslacht === g ? "#0EA5A0" : "#E2E8F0"}`,
-                            background: form.geslacht === g ? "#F0FDFA" : "#F8FAFC",
-                            transition: "all 0.2s", fontSize: "14px", fontWeight: 500,
-                            color: form.geslacht === g ? "#0EA5A0" : "#64748B",
+                          <label key={g} className="flex-1 flex items-center justify-center gap-2 py-3 rounded-md cursor-pointer text-sm font-medium transition-all duration-200" style={{
+                            border: `1px solid ${form.geslacht === g ? "hsl(var(--accent))" : "hsl(var(--border))"}`,
+                            background: form.geslacht === g ? "hsl(var(--accent-light))" : "hsl(var(--secondary))",
+                            color: form.geslacht === g ? "hsl(var(--accent))" : "hsl(var(--muted-foreground))",
                           }}>
-                            <input
-                              type="radio" name="geslacht" value={g} required
-                              checked={form.geslacht === g}
-                              onChange={e => set("geslacht", e.target.value)}
-                              style={{ display: "none" }}
-                            />
+                            <input type="radio" name="geslacht" value={g} required checked={form.geslacht === g} onChange={e => set("geslacht", e.target.value)} style={{ display: "none" }} />
                             {g}
                           </label>
                         ))}
                       </div>
                     </div>
 
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+                    <div className="grid grid-cols-2 gap-3">
                       <div>
                         <label className={labelClass}>Geboortedatum *</label>
                         <input required type="date" className={inputClass} value={form.geboortedatum} onChange={e => set("geboortedatum", e.target.value)} />
@@ -216,12 +188,12 @@ const InschrijvenModal = () => {
 
                 {/* STEP 2: Adres */}
                 {step === 2 && (
-                  <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                  <div className="flex flex-col gap-5">
                     <div>
                       <label className={labelClass}>Straat en huisnummer *</label>
                       <input required className={inputClass} value={form.adres} onChange={e => set("adres", e.target.value)} placeholder="Voorbeeldstraat 12" />
                     </div>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "12px" }}>
+                    <div className="grid grid-cols-[1fr_2fr] gap-3">
                       <div>
                         <label className={labelClass}>Postcode *</label>
                         <input required className={inputClass} value={form.postcode} onChange={e => set("postcode", e.target.value)} placeholder="1234 AB" />
@@ -236,8 +208,8 @@ const InschrijvenModal = () => {
 
                 {/* STEP 3: Medisch */}
                 {step === 3 && (
-                  <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+                  <div className="flex flex-col gap-5">
+                    <div className="grid grid-cols-2 gap-3">
                       <div>
                         <label className={labelClass}>Zorgverzekeraar *</label>
                         <input required className={inputClass} value={form.verzekering} onChange={e => set("verzekering", e.target.value)} placeholder="CZ, VGZ, Menzis..." />
@@ -261,18 +233,15 @@ const InschrijvenModal = () => {
                     </div>
                     <div>
                       <label className={labelClass}>LSP Toestemming *</label>
-                      <p style={{ fontSize: "12px", color: "#64748B", marginBottom: "10px" }}>
+                      <p className="text-xs text-muted-foreground mb-2.5">
                         Geeft u toestemming om uw medische gegevens via het Landelijk Schakel Punt te delen?
                       </p>
-                      <div style={{ display: "flex", gap: "12px" }}>
+                      <div className="flex gap-3">
                         {["Ja", "Nee"].map(v => (
-                          <label key={v} style={{
-                            flex: 1, display: "flex", alignItems: "center", justifyContent: "center",
-                            gap: "8px", padding: "12px", borderRadius: "12px", cursor: "pointer",
-                            border: `2px solid ${form.lsp === v ? "#0EA5A0" : "#E2E8F0"}`,
-                            background: form.lsp === v ? "#F0FDFA" : "#F8FAFC",
-                            transition: "all 0.2s", fontSize: "14px", fontWeight: 500,
-                            color: form.lsp === v ? "#0EA5A0" : "#64748B",
+                          <label key={v} className="flex-1 flex items-center justify-center gap-2 py-3 rounded-md cursor-pointer text-sm font-medium transition-all duration-200" style={{
+                            border: `1px solid ${form.lsp === v ? "hsl(var(--accent))" : "hsl(var(--border))"}`,
+                            background: form.lsp === v ? "hsl(var(--accent-light))" : "hsl(var(--secondary))",
+                            color: form.lsp === v ? "hsl(var(--accent))" : "hsl(var(--muted-foreground))",
                           }}>
                             <input type="radio" name="lsp" value={v} required checked={form.lsp === v} onChange={e => set("lsp", e.target.value)} style={{ display: "none" }} />
                             {v}
@@ -285,8 +254,8 @@ const InschrijvenModal = () => {
 
                 {/* STEP 4: Akkoord */}
                 {step === 4 && (
-                  <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-                    <p style={{ fontSize: "15px", color: "#374151", marginBottom: "8px" }}>
+                  <div className="flex flex-col gap-4">
+                    <p className="text-sm text-foreground mb-2">
                       Bijna klaar! Lees de onderstaande verklaringen door en geef uw akkoord.
                     </p>
 
@@ -304,40 +273,27 @@ const InschrijvenModal = () => {
                         desc: "Ik heb de privacyverklaring gelezen en ga akkoord met de verwerking van mijn persoonsgegevens conform de AVG.",
                       },
                     ].map(({ key, checked, label, desc }) => (
-                      <label key={key} style={{
-                        display: "flex", alignItems: "flex-start", gap: "16px",
-                        padding: "20px", borderRadius: "16px", cursor: "pointer",
-                        border: `2px solid ${checked ? "#0EA5A0" : "#E2E8F0"}`,
-                        background: checked ? "#F0FDFA" : "#F8FAFC",
-                        transition: "all 0.2s",
+                      <label key={key} className="flex items-start gap-4 p-4 rounded-md cursor-pointer transition-all duration-200" style={{
+                        border: `1px solid ${checked ? "hsl(var(--accent))" : "hsl(var(--border))"}`,
+                        background: checked ? "hsl(var(--accent-light))" : "hsl(var(--secondary))",
                       }}>
-                        <div style={{
-                          width: "24px", height: "24px", borderRadius: "8px", flexShrink: 0,
-                          border: `2px solid ${checked ? "#0EA5A0" : "#CBD5E1"}`,
-                          background: checked ? "#0EA5A0" : "white",
-                          display: "flex", alignItems: "center", justifyContent: "center",
-                          transition: "all 0.2s", marginTop: "2px",
+                        <div className="w-5 h-5 rounded flex-shrink-0 flex items-center justify-center transition-all duration-200 mt-0.5" style={{
+                          border: `1px solid ${checked ? "hsl(var(--accent))" : "hsl(var(--border))"}`,
+                          background: checked ? "hsl(var(--accent))" : "white",
                         }}>
-                          {checked && <CheckCircle size={14} color="white" />}
+                          {checked && <CheckCircle size={12} color="white" />}
                         </div>
-                        <input
-                          type="checkbox" required checked={checked}
-                          onChange={e => set(key, e.target.checked)}
-                          style={{ display: "none" }}
-                        />
+                        <input type="checkbox" required checked={checked} onChange={e => set(key, e.target.checked)} style={{ display: "none" }} />
                         <div>
-                          <p style={{ fontWeight: 700, color: "#1B4F8A", fontSize: "14px", marginBottom: "4px" }}>{label} *</p>
-                          <p style={{ fontSize: "13px", color: "#64748B", lineHeight: 1.6 }}>{desc}</p>
+                          <p className="font-semibold text-foreground text-sm mb-1">{label} *</p>
+                          <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
                         </div>
                       </label>
                     ))}
 
-                    <div style={{
-                      background: "#FFF7ED", border: "1px solid #FED7AA",
-                      borderRadius: "12px", padding: "16px",
-                    }}>
-                      <p style={{ fontSize: "13px", color: "#92400E", lineHeight: 1.6 }}>
-                        <strong>Let op:</strong> Inschrijving is pas definitief na bevestiging door de praktijk. 
+                    <div className="bg-accent-light border border-accent/20 rounded-md p-4">
+                      <p className="text-xs text-accent leading-relaxed m-0">
+                        <strong>Let op:</strong> Inschrijving is pas definitief na bevestiging door de praktijk.
                         Wij nemen binnen 3 werkdagen contact met u op.
                       </p>
                     </div>
@@ -346,19 +302,11 @@ const InschrijvenModal = () => {
               </div>
 
               {/* Footer buttons */}
-              <div style={{
-                padding: "20px 32px 28px",
-                display: "flex", gap: "12px", justifyContent: "space-between",
-                borderTop: "1px solid #F1F5F9",
-              }}>
+              <div className="px-7 pb-7 pt-4 flex gap-3 justify-between border-t border-border">
                 <button
                   type="button"
                   onClick={() => step > 1 ? setStep((step - 1) as Step) : handleClose()}
-                  style={{
-                    padding: "12px 24px", borderRadius: "12px", fontSize: "14px", fontWeight: 600,
-                    border: "2px solid #E2E8F0", background: "white", color: "#64748B",
-                    cursor: "pointer", transition: "all 0.2s",
-                  }}
+                  className="px-6 py-3 rounded-md text-sm font-semibold border border-border bg-white text-muted-foreground cursor-pointer transition-all duration-200 hover:bg-secondary"
                 >
                   {step === 1 ? "Annuleren" : "← Terug"}
                 </button>
@@ -367,27 +315,14 @@ const InschrijvenModal = () => {
                   <button
                     type="button"
                     onClick={() => setStep((step + 1) as Step)}
-                    style={{
-                      padding: "12px 28px", borderRadius: "12px", fontSize: "14px", fontWeight: 700,
-                      background: "linear-gradient(135deg, #1B4F8A, #0EA5A0)",
-                      color: "white", border: "none", cursor: "pointer",
-                      display: "flex", alignItems: "center", gap: "8px",
-                      boxShadow: "0 4px 16px rgba(27,79,138,0.25)",
-                      transition: "all 0.2s",
-                    }}
+                    className="px-7 py-3 rounded-md text-sm font-bold bg-primary text-primary-foreground border-none cursor-pointer flex items-center gap-2 hover:opacity-90 transition-opacity"
                   >
                     Volgende <ChevronRight size={16} />
                   </button>
                 ) : (
                   <button
                     type="submit"
-                    style={{
-                      padding: "12px 28px", borderRadius: "12px", fontSize: "14px", fontWeight: 700,
-                      background: "linear-gradient(135deg, #0EA5A0, #059669)",
-                      color: "white", border: "none", cursor: "pointer",
-                      display: "flex", alignItems: "center", gap: "8px",
-                      boxShadow: "0 4px 16px rgba(14,165,160,0.3)",
-                    }}
+                    className="px-7 py-3 rounded-md text-sm font-bold bg-accent text-accent-foreground border-none cursor-pointer flex items-center gap-2 hover:opacity-90 transition-opacity"
                   >
                     Versturen ✓
                   </button>
