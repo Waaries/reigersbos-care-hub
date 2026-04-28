@@ -76,11 +76,27 @@ const Header = () => {
 
   const currentLang = languages.find((l) => l.code === language)!;
 
+  const adjustFontSize = (delta) => {
+    const html = document.documentElement;
+    const current = parseFloat(getComputedStyle(html).fontSize) || 16;
+    const next = Math.max(13, Math.min(20, current + delta));
+    html.style.fontSize = next + "px";
+  };
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-background transition-shadow duration-300 border-b border-border`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <div style={{ background: "hsl(var(--moss-deep))", borderBottom: "1px solid hsl(var(--gold) / 0.25)" }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-end gap-4" style={{ height: "36px" }}>
+          <button onClick={() => adjustFontSize(-1)} aria-label="Kleinere letters" style={{ color: "hsl(var(--ivory))", opacity: 0.75, padding: "2px 8px", fontStyle: "italic", fontSize: "13px", fontFamily: "Cormorant Garamond, Georgia, serif" }}>a−</button>
+          <button onClick={() => adjustFontSize(1)} aria-label="Grotere letters" style={{ color: "hsl(var(--ivory))", opacity: 0.95, padding: "2px 8px", fontStyle: "italic", fontSize: "16px", fontFamily: "Cormorant Garamond, Georgia, serif" }}>a+</button>
+          <span style={{ width: "1px", height: "16px", background: "hsl(var(--gold) / 0.4)" }} />
+          <a href="tel:0207371426" className="hidden sm:inline-flex items-center gap-1.5" style={{ fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "hsl(var(--gold))", textDecoration: "none", fontWeight: 500 }}>
+            <Phone className="w-3 h-3" /> 020 737 14 26
+          </a>
+        </div>
+      </div>
+      <div className="bg-background border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className={`flex items-center justify-between h-16 lg:h-20 ${isRTL ? "flex-row-reverse" : ""}`}>
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 flex-shrink-0 group">
@@ -308,6 +324,7 @@ const Header = () => {
           </div>
         </div>
       )}
+      </div>
     </header>
   );
 };
