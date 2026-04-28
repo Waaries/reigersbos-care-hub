@@ -6,39 +6,44 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    /* Spa palette */
+    --background: 40 33% 94%;        /* ivory cream #F5F1E8 */
+    --foreground: 100 18% 15%;       /* deep moss text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card: 40 40% 97%;
+    --card-foreground: 100 18% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover: 40 40% 97%;
+    --popover-foreground: 100 18% 15%;
 
-    --primary: 222 47% 11%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 105 19% 21%;          /* moss green #2D3F2A */
+    --primary-foreground: 40 33% 94%;
 
-    --primary-light: 210 40% 98%;
-    --primary-mid: 215 14% 34%;
+    --primary-light: 40 33% 94%;
+    --primary-mid: 100 12% 35%;
 
-    --secondary: 210 40% 98%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 40 30% 90%;
+    --secondary-foreground: 105 19% 21%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 40 25% 88%;
+    --muted-foreground: 100 8% 40%;
 
-    --accent: 174 43% 30%;
-    --accent-foreground: 0 0% 100%;
-    --accent-light: 166 76% 97%;
+    --accent: 36 35% 55%;            /* warm gold #B8945F */
+    --accent-foreground: 40 33% 97%;
+    --accent-light: 40 35% 90%;
 
-    /* Editorial warm accent — terracotta/zalm */
-    --warm: 14 65% 55%;
-    --warm-light: 24 80% 96%;
-    --warm-deep: 14 55% 35%;
-    --paper: 36 33% 96%;
+    /* Spa-specific */
+    --moss: 105 19% 21%;
+    --moss-deep: 105 22% 14%;
+    --gold: 36 35% 55%;
+    --gold-soft: 36 40% 78%;
+    --sage: 96 18% 67%;              /* soft sage #A8B89F */
+    --ivory: 40 33% 94%;
+    --cream: 40 40% 97%;
+    --linen: 35 28% 88%;
 
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 40 33% 97%;
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
