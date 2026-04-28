@@ -1,272 +1,286 @@
 import Layout from "@/components/Layout";
 import { useModal } from "@/contexts/ModalContext";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Stethoscope, Activity, Heart, Droplets, Shield, Globe, ArrowRight } from "lucide-react";
+import { Stethoscope, Activity, Heart, Droplets, Shield, Globe, ArrowUpRight, Phone, MapPin, Mail, Clock } from "lucide-react";
 
 const Index = () => {
   const { openModal } = useModal();
   const { t, isRTL } = useLanguage();
 
   const services = [
-    { num: "01", icon: Stethoscope, titleKey: "services.gp.title" as const, descKey: "services.gp.desc" as const },
-    { num: "02", icon: Activity, titleKey: "services.physio.title" as const, descKey: "services.physio.desc" as const },
-    { num: "03", icon: Heart, title: "Verloskundige", desc: "Verloskundige Praktijk De Poort — in ons gebouw" },
-    { num: "04", icon: Droplets, title: "Bloedafname", desc: "RHMDC bloedafname service — snel en betrouwbaar" },
+    { icon: Stethoscope, titleKey: "services.gp.title" as const, descKey: "services.gp.desc" as const },
+    { icon: Activity, titleKey: "services.physio.title" as const, descKey: "services.physio.desc" as const },
+    { icon: Heart, title: "Verloskundige", desc: "Verloskundige Praktijk De Poort — in ons gebouw" },
+    { icon: Droplets, title: "Bloedafname", desc: "RHMDC bloedafname service — snel en betrouwbaar" },
   ];
 
   return (
     <Layout>
-      {/* HERO — editorial magazine cover */}
-      <section style={{ background: "hsl(var(--paper))", paddingTop: "100px", paddingBottom: "80px", position: "relative", overflow: "hidden" }}>
+      {/* HERO — luxury spa */}
+      <section className="grain-texture" style={{
+        background: "hsl(var(--ivory))",
+        paddingTop: "100px", paddingBottom: "120px",
+        position: "relative", overflow: "hidden",
+      }}>
+        {/* Decorative gold circle */}
+        <div style={{
+          position: "absolute", top: "10%", right: "-200px",
+          width: "500px", height: "500px", borderRadius: "50%",
+          border: "1px solid hsl(var(--gold) / 0.3)",
+          pointerEvents: "none",
+        }} />
+        <div style={{
+          position: "absolute", top: "15%", right: "-150px",
+          width: "400px", height: "400px", borderRadius: "50%",
+          border: "1px solid hsl(var(--gold) / 0.2)",
+          pointerEvents: "none",
+        }} />
+
         <div className="page-container px-4 sm:px-6 lg:px-8" style={{ position: "relative" }}>
-          {/* Top masthead row */}
-          <div style={{
-            display: "flex", justifyContent: "space-between", alignItems: "center",
-            paddingBottom: "20px", marginBottom: "48px",
-            borderBottom: "1px solid hsl(222 47% 11% / 0.15)",
-            fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase",
-            color: "hsl(222 47% 11%)", fontWeight: 500,
-          }}>
-            <span>Vol. XXIV — Amsterdam Zuidoost</span>
-            <span className="hidden sm:inline">Est. sinds jaren · Huisartsenzorg</span>
-            <span style={{ color: "hsl(var(--warm))" }}>● Geopend vandaag</span>
-          </div>
+          <div className="text-center" style={{ maxWidth: "880px", margin: "0 auto" }}>
+            <p className="eyebrow mb-8">◦ Reigersbos · Amsterdam ◦</p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
-            {/* Left — display title */}
-            <div className={`lg:col-span-8 ${isRTL ? "text-right" : ""}`}>
-              <p className="eyebrow mb-6">— Welkom bij —</p>
-              <h1 className="font-serif-display" style={{
-                fontSize: "clamp(44px, 8vw, 104px)",
-                fontWeight: 500,
-                lineHeight: 0.95,
-                letterSpacing: "-0.04em",
-                color: "hsl(222 47% 11%)",
-                margin: 0,
-              }}>
-                Reigersbos<br />
-                <span style={{ fontStyle: "italic", fontWeight: 400, color: "hsl(var(--warm-deep))" }}>
-                  Medical
-                </span>{" "}
-                Center
-              </h1>
+            <h1 className="font-display" style={{
+              fontSize: "clamp(48px, 9vw, 124px)",
+              fontWeight: 300,
+              lineHeight: 0.95,
+              letterSpacing: "-0.02em",
+              color: "hsl(var(--moss))",
+              margin: "0 0 32px",
+            }}>
+              Een plek waar<br />
+              <em style={{ fontWeight: 400, color: "hsl(var(--gold))" }}>zorg</em> tot rust komt.
+            </h1>
+
+            <div className="gold-rule" style={{ margin: "32px auto" }} />
+
+            <p className="font-body" style={{
+              fontSize: "17px", lineHeight: 1.7,
+              color: "hsl(var(--moss) / 0.75)",
+              maxWidth: "560px", margin: "0 auto 48px",
+              fontWeight: 300,
+            }}>
+              {t("hero.tagline")}
+            </p>
+
+            <div className="flex flex-wrap gap-4 justify-center">
+              <button
+                onClick={() => openModal("inschrijven")}
+                style={{
+                  background: "hsl(var(--moss))", color: "hsl(var(--ivory))",
+                  border: "none", borderRadius: "999px",
+                  padding: "16px 36px", fontSize: "12px",
+                  fontWeight: 500, letterSpacing: "0.2em",
+                  cursor: "pointer", textTransform: "uppercase",
+                  display: "inline-flex", alignItems: "center", gap: "10px",
+                  transition: "all 0.4s ease",
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = "hsl(var(--gold))";
+                  e.currentTarget.style.letterSpacing = "0.25em";
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = "hsl(var(--moss))";
+                  e.currentTarget.style.letterSpacing = "0.2em";
+                }}
+              >
+                {t("hero.cta")}
+              </button>
+              <a href="#diensten" style={{
+                color: "hsl(var(--moss))",
+                background: "transparent",
+                border: "1px solid hsl(var(--moss) / 0.3)",
+                borderRadius: "999px",
+                padding: "16px 36px", fontSize: "12px",
+                fontWeight: 500, letterSpacing: "0.2em",
+                textDecoration: "none", textTransform: "uppercase",
+                display: "inline-flex", alignItems: "center", gap: "10px",
+                transition: "all 0.3s",
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = "hsl(var(--gold))"; e.currentTarget.style.color = "hsl(var(--gold))"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = "hsl(var(--moss) / 0.3)"; e.currentTarget.style.color = "hsl(var(--moss))"; }}
+              >
+                Onze diensten
+              </a>
             </div>
-
-            {/* Right — quiet intro + CTA */}
-            <div className="lg:col-span-4">
-              <div className="editorial-rule mb-5" />
-              <p style={{
-                fontFamily: "'Fraunces', serif",
-                fontSize: "18px", lineHeight: 1.5,
-                color: "hsl(222 47% 18%)",
-                fontStyle: "italic",
-                margin: "0 0 24px",
-              }}>
-                {t("hero.tagline")}
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <button
-                  onClick={() => openModal("inschrijven")}
-                  style={{
-                    background: "hsl(222 47% 11%)", color: "white",
-                    border: "none", borderRadius: "999px",
-                    padding: "14px 26px", fontSize: "13px",
-                    fontWeight: 600, letterSpacing: "0.05em",
-                    cursor: "pointer", textTransform: "uppercase",
-                    display: "inline-flex", alignItems: "center", gap: "8px",
-                    transition: "all 0.2s",
-                  }}
-                  onMouseEnter={e => { e.currentTarget.style.background = "hsl(var(--warm-deep))"; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = "hsl(222 47% 11%)"; }}
-                >
-                  {t("hero.cta")} <ArrowRight size={14} />
-                </button>
-                <a href="#diensten" style={{
-                  color: "hsl(222 47% 11%)",
-                  borderBottom: "1px solid hsl(222 47% 11%)",
-                  padding: "14px 4px", fontSize: "13px",
-                  fontWeight: 500, letterSpacing: "0.05em",
-                  textDecoration: "none", textTransform: "uppercase",
-                }}>
-                  Onze diensten
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom row — quick facts */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-8" style={{ borderTop: "1px solid hsl(222 47% 11% / 0.15)" }}>
-            {[
-              { k: "10.0", label: "Zorgkaart NL" },
-              { k: "020 737 14 26", label: "Bel ons" },
-              { k: "EN · NL · AR", label: "Talen" },
-              { k: "Reigersbos 100K", label: "3e etage" },
-            ].map((f, i) => (
-              <div key={i}>
-                <div className="font-serif-display" style={{ fontSize: "clamp(20px,2.4vw,28px)", fontWeight: 500, color: "hsl(222 47% 11%)", lineHeight: 1.1 }}>
-                  {f.k}
-                </div>
-                <div style={{ fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "hsl(215 16% 47%)", marginTop: "6px" }}>
-                  {f.label}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
-      {/* TRUST STRIP */}
-      <section style={{ background: "hsl(222 47% 11%)", padding: "20px 0" }}>
+      {/* TRUST RIBBON */}
+      <section style={{
+        background: "hsl(var(--cream))",
+        padding: "32px 0",
+        borderTop: "1px solid hsl(var(--gold) / 0.25)",
+        borderBottom: "1px solid hsl(var(--gold) / 0.25)",
+      }}>
         <div className="page-container px-4 sm:px-6 lg:px-8" style={{
           display: "flex", alignItems: "center", justifyContent: "center",
-          gap: "20px", flexWrap: "wrap", color: "white",
+          gap: "24px", flexWrap: "wrap",
         }}>
-          <span style={{ fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "hsl(0 0% 70%)" }}>
-            Zorgkaart Nederland
+          <span className="eyebrow">Zorgkaart Nederland</span>
+          <span style={{ color: "hsl(var(--gold))", fontSize: "14px" }}>✦</span>
+          <span className="font-display" style={{
+            fontSize: "32px", fontWeight: 400,
+            color: "hsl(var(--moss))",
+            fontStyle: "italic",
+          }}>
+            10.0 <span style={{ color: "hsl(var(--gold))", fontSize: "18px" }}>/ 10</span>
           </span>
-          <span style={{ width: "4px", height: "4px", background: "hsl(var(--warm))", borderRadius: "50%" }} />
-          <span className="font-serif-display" style={{ fontSize: "22px", fontWeight: 500 }}>
-            10.0<span style={{ color: "hsl(0 0% 60%)", fontSize: "16px" }}> / 10</span>
-          </span>
-          <span style={{ width: "4px", height: "4px", background: "hsl(var(--warm))", borderRadius: "50%" }} />
-          <span style={{ fontSize: "13px", color: "hsl(0 0% 80%)", fontStyle: "italic", fontFamily: "'Fraunces', serif" }}>
+          <span style={{ color: "hsl(var(--gold))", fontSize: "14px" }}>✦</span>
+          <span className="font-display" style={{
+            fontSize: "16px", color: "hsl(var(--moss) / 0.7)",
+            fontStyle: "italic",
+          }}>
             "Beoordeeld door onze patiënten"
           </span>
         </div>
       </section>
 
-      {/* ABOUT — editorial article with drop-cap */}
-      <section style={{ background: "white", padding: "100px 0" }}>
+      {/* ABOUT — full bleed sage */}
+      <section className="grain-texture" style={{
+        background: "hsl(var(--sage) / 0.25)",
+        padding: "120px 0",
+      }}>
         <div className="page-container px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-4">
-              <p className="eyebrow mb-4">§ 01 — Over ons</p>
-              <h2 className="font-serif-display" style={{
-                fontSize: "clamp(32px, 4.5vw, 52px)",
-                fontWeight: 500, lineHeight: 1.05,
-                letterSpacing: "-0.025em",
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            <div className="lg:col-span-5">
+              <p className="eyebrow mb-6">— Onze praktijk —</p>
+              <h2 className="font-display" style={{
+                fontSize: "clamp(36px, 5vw, 60px)",
+                fontWeight: 300, lineHeight: 1.05,
+                letterSpacing: "-0.02em",
+                color: "hsl(var(--moss-deep))",
                 margin: 0,
               }}>
-                {t("about.heading")}
+                {t("about.heading").split(" ").slice(0, -2).join(" ")}{" "}
+                <em style={{ color: "hsl(var(--gold))", fontWeight: 400 }}>
+                  {t("about.heading").split(" ").slice(-2).join(" ")}
+                </em>
               </h2>
-              <div className="editorial-rule mt-6" style={{ background: "hsl(var(--warm))" }} />
+              <div className="gold-rule mt-8" />
             </div>
 
-            <div className={`lg:col-span-7 lg:col-start-6 ${isRTL ? "text-right" : ""}`}>
-              <p style={{
-                fontFamily: "'Fraunces', serif",
-                fontSize: "20px", lineHeight: 1.6,
-                color: "hsl(222 47% 18%)",
-                margin: "0 0 24px",
+            <div className={`lg:col-span-6 lg:col-start-7 ${isRTL ? "text-right" : ""}`}>
+              <p className="font-display" style={{
+                fontSize: "22px", lineHeight: 1.55,
+                color: "hsl(var(--moss-deep))",
+                fontStyle: "italic", fontWeight: 400,
+                margin: "0 0 28px",
               }}>
-                <span className="font-serif-display" style={{
-                  float: isRTL ? "right" : "left",
-                  fontSize: "76px", lineHeight: 0.85,
-                  fontWeight: 600, color: "hsl(var(--warm-deep))",
-                  paddingRight: "12px", paddingTop: "6px",
-                  fontStyle: "italic",
-                }}>
-                  {t("about.p1").charAt(0)}
-                </span>
-                {t("about.p1").substring(1)}
+                {t("about.p1")}
               </p>
-              <p style={{ fontSize: "15px", lineHeight: 1.75, color: "hsl(220 9% 30%)", marginBottom: "16px" }}>
+              <p className="font-body" style={{
+                fontSize: "15px", lineHeight: 1.85,
+                color: "hsl(var(--moss) / 0.8)",
+                marginBottom: "20px", fontWeight: 300,
+              }}>
                 {t("about.p2")}
               </p>
-              <p style={{ fontSize: "15px", lineHeight: 1.75, color: "hsl(220 9% 30%)", marginBottom: "32px" }}>
+              <p className="font-body" style={{
+                fontSize: "15px", lineHeight: 1.85,
+                color: "hsl(var(--moss) / 0.8)",
+                marginBottom: "40px", fontWeight: 300,
+              }}>
                 {t("about.p3")}
               </p>
               <button
                 onClick={() => openModal("inschrijven")}
                 style={{
-                  background: "transparent", color: "hsl(222 47% 11%)",
-                  border: "1px solid hsl(222 47% 11%)", borderRadius: "999px",
-                  padding: "12px 24px", fontSize: "13px", fontWeight: 600,
-                  letterSpacing: "0.05em", cursor: "pointer", textTransform: "uppercase",
-                  display: "inline-flex", alignItems: "center", gap: "8px",
-                  transition: "all 0.2s",
+                  background: "transparent", color: "hsl(var(--moss))",
+                  border: "1px solid hsl(var(--moss))", borderRadius: "999px",
+                  padding: "14px 32px", fontSize: "11px", fontWeight: 500,
+                  letterSpacing: "0.22em", cursor: "pointer", textTransform: "uppercase",
+                  display: "inline-flex", alignItems: "center", gap: "10px",
+                  transition: "all 0.3s",
                 }}
                 onMouseEnter={e => {
-                  e.currentTarget.style.background = "hsl(222 47% 11%)";
-                  e.currentTarget.style.color = "white";
+                  e.currentTarget.style.background = "hsl(var(--moss))";
+                  e.currentTarget.style.color = "hsl(var(--ivory))";
                 }}
                 onMouseLeave={e => {
                   e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.color = "hsl(222 47% 11%)";
+                  e.currentTarget.style.color = "hsl(var(--moss))";
                 }}
               >
-                {t("about.cta")} <ArrowRight size={14} />
+                {t("about.cta")} <ArrowUpRight size={14} />
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SERVICES — editorial index */}
-      <section id="diensten" style={{ background: "hsl(var(--paper))", padding: "100px 0" }}>
+      {/* SERVICES — luxury cards */}
+      <section id="diensten" style={{
+        background: "hsl(var(--ivory))",
+        padding: "120px 0",
+      }}>
         <div className="page-container px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between flex-wrap gap-6 mb-16">
-            <div>
-              <p className="eyebrow mb-4">§ 02 — Index</p>
-              <h2 className="font-serif-display" style={{
-                fontSize: "clamp(32px, 4.5vw, 52px)",
-                fontWeight: 500, lineHeight: 1.05,
-                letterSpacing: "-0.025em", margin: 0,
-              }}>
-                {t("services.heading")}
-              </h2>
-            </div>
-            <p style={{ maxWidth: "320px", fontSize: "14px", lineHeight: 1.6, color: "hsl(215 16% 47%)", fontStyle: "italic", fontFamily: "'Fraunces', serif" }}>
-              Een compleet aanbod aan eerstelijnszorg, onder één dak in Reigersbos.
-            </p>
+          <div className="text-center mb-20">
+            <p className="eyebrow mb-6">◦ Ons aanbod ◦</p>
+            <h2 className="font-display" style={{
+              fontSize: "clamp(36px, 5vw, 60px)",
+              fontWeight: 300, lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              color: "hsl(var(--moss-deep))",
+              margin: 0,
+            }}>
+              Een volledige kring van <em style={{ color: "hsl(var(--gold))", fontWeight: 400 }}>zorg.</em>
+            </h2>
+            <div className="gold-rule" style={{ margin: "24px auto 0" }} />
           </div>
 
-          <div style={{ borderTop: "1px solid hsl(222 47% 11% / 0.15)" }}>
-            {services.map((svc) => {
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((svc, i) => {
               const Icon = svc.icon;
               return (
-                <article
-                  key={'titleKey' in svc ? svc.titleKey : svc.title}
+                <div
+                  key={i}
+                  className="grain-texture"
                   style={{
-                    display: "grid",
-                    gridTemplateColumns: "60px 1fr auto",
-                    gap: "24px",
-                    alignItems: "center",
-                    padding: "28px 0",
-                    borderBottom: "1px solid hsl(222 47% 11% / 0.15)",
+                    background: "hsl(var(--cream))",
+                    borderRadius: "0",
+                    padding: "48px 28px",
+                    textAlign: "center",
+                    border: "1px solid hsl(var(--gold) / 0.2)",
+                    transition: "all 0.5s ease",
                     cursor: "default",
-                    transition: "all 0.3s ease",
+                    position: "relative",
                   }}
                   onMouseEnter={e => {
-                    e.currentTarget.style.paddingLeft = "16px";
-                    e.currentTarget.style.background = "hsl(var(--warm-light))";
+                    e.currentTarget.style.background = "hsl(var(--moss))";
+                    e.currentTarget.style.transform = "translateY(-6px)";
                   }}
                   onMouseLeave={e => {
-                    e.currentTarget.style.paddingLeft = "0";
-                    e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.background = "hsl(var(--cream))";
+                    e.currentTarget.style.transform = "translateY(0)";
                   }}
                 >
-                  <span className="font-serif-display" style={{
-                    fontSize: "28px", fontWeight: 400, fontStyle: "italic",
-                    color: "hsl(var(--warm))",
+                  <div style={{
+                    width: "72px", height: "72px",
+                    borderRadius: "50%",
+                    border: "1px solid hsl(var(--gold))",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    margin: "0 auto 28px",
                   }}>
-                    {svc.num}
-                  </span>
-                  <div style={{ display: "flex", alignItems: "center", gap: "20px", flexWrap: "wrap" }}>
-                    <Icon size={22} style={{ color: "hsl(var(--warm-deep))", flexShrink: 0 }} />
-                    <h3 className="font-serif-display" style={{
-                      fontSize: "clamp(20px, 2.5vw, 28px)",
-                      fontWeight: 500, margin: 0,
-                      color: "hsl(222 47% 11%)",
-                    }}>
-                      {'titleKey' in svc ? t(svc.titleKey) : svc.title}
-                    </h3>
-                    <span style={{ fontSize: "14px", color: "hsl(215 16% 47%)", fontFamily: "'Fraunces', serif", fontStyle: "italic" }}>
-                      — {'descKey' in svc ? t(svc.descKey) : svc.desc}
-                    </span>
+                    <Icon size={26} style={{ color: "hsl(var(--gold))" }} strokeWidth={1.2} />
                   </div>
-                  <ArrowRight size={18} style={{ color: "hsl(222 47% 11%)" }} />
-                </article>
+                  <h3 className="font-display" style={{
+                    fontSize: "24px", fontWeight: 400,
+                    color: "hsl(var(--moss-deep))",
+                    margin: "0 0 12px", letterSpacing: "-0.01em",
+                    transition: "color 0.5s",
+                  }}>
+                    {'titleKey' in svc ? t(svc.titleKey) : svc.title}
+                  </h3>
+                  <p className="font-body" style={{
+                    fontSize: "13px", lineHeight: 1.7,
+                    color: "hsl(var(--moss) / 0.65)",
+                    margin: 0, fontWeight: 300,
+                  }}>
+                    {'descKey' in svc ? t(svc.descKey) : svc.desc}
+                  </p>
+                </div>
               );
             })}
           </div>
@@ -274,110 +288,108 @@ const Index = () => {
       </section>
 
       {/* DUAL FEATURE BANNERS */}
-      <section style={{ background: "white", padding: "80px 0" }}>
+      <section style={{ background: "hsl(var(--cream))", padding: "100px 0" }}>
         <div className="page-container px-4 sm:px-6 lg:px-8">
-          <p className="eyebrow mb-4">§ 03 — Voor iedereen</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0" style={{ border: "1px solid hsl(222 47% 11% / 0.15)" }}>
-            {/* Geen papieren */}
-            <a href="/ongedocumenteerden" style={{
-              padding: "40px 36px", background: "hsl(var(--warm-light))",
-              textDecoration: "none", display: "block",
-              transition: "background 0.3s",
-              borderRight: "1px solid hsl(222 47% 11% / 0.15)",
-            }}
-            onMouseEnter={e => { e.currentTarget.style.background = "hsl(var(--warm) / 0.15)"; }}
-            onMouseLeave={e => { e.currentTarget.style.background = "hsl(var(--warm-light))"; }}
-            >
-              <Shield size={28} style={{ color: "hsl(var(--warm-deep))", marginBottom: "20px" }} />
-              <p className="eyebrow mb-3">Geen papieren?</p>
-              <h3 className="font-serif-display" style={{
-                fontSize: "28px", fontWeight: 500, lineHeight: 1.15,
-                color: "hsl(222 47% 11%)", margin: "0 0 12px",
-              }}>
-                U heeft recht op zorg —<br />
-                <em style={{ color: "hsl(var(--warm-deep))" }}>wij helpen u.</em>
-              </h3>
-              <p style={{ fontSize: "14px", color: "hsl(220 9% 30%)", fontStyle: "italic", fontFamily: "'Fraunces', serif", margin: "0 0 16px" }}>
-                Vertrouwelijk · Beroepsgeheim · CAK contract
-              </p>
-              <span style={{ fontSize: "12px", letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600, color: "hsl(222 47% 11%)", display: "inline-flex", alignItems: "center", gap: "8px" }}>
-                Lees meer <ArrowRight size={14} />
-              </span>
-            </a>
-            {/* Expats */}
-            <a href="/expats" style={{
-              padding: "40px 36px", background: "white",
-              textDecoration: "none", display: "block",
-              transition: "background 0.3s",
-            }}
-            onMouseEnter={e => { e.currentTarget.style.background = "hsl(var(--paper))"; }}
-            onMouseLeave={e => { e.currentTarget.style.background = "white"; }}
-            >
-              <Globe size={28} style={{ color: "hsl(var(--warm-deep))", marginBottom: "20px" }} />
-              <p className="eyebrow mb-3">International patients</p>
-              <h3 className="font-serif-display" style={{
-                fontSize: "28px", fontWeight: 500, lineHeight: 1.15,
-                color: "hsl(222 47% 11%)", margin: "0 0 12px",
-              }}>
-                We welcome expats &<br />
-                <em style={{ color: "hsl(var(--warm-deep))" }}>English speakers.</em>
-              </h3>
-              <p style={{ fontSize: "14px", color: "hsl(220 9% 30%)", fontStyle: "italic", fontFamily: "'Fraunces', serif", margin: "0 0 16px" }}>
-                English spoken · Easy registration · Amsterdam Zuidoost
-              </p>
-              <span style={{ fontSize: "12px", letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600, color: "hsl(222 47% 11%)", display: "inline-flex", alignItems: "center", gap: "8px" }}>
-                Read more <ArrowRight size={14} />
-              </span>
-            </a>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              { href: "/ongedocumenteerden", icon: Shield, eyebrow: "Geen papieren?", title: "U heeft recht op zorg", italic: "wij helpen u.", sub: "Vertrouwelijk · Beroepsgeheim · CAK contract", cta: "Lees meer" },
+              { href: "/expats", icon: Globe, eyebrow: "International patients", title: "We welcome expats &", italic: "English speakers.", sub: "English spoken · Easy registration · Amsterdam", cta: "Read more" },
+            ].map((b, i) => {
+              const Icon = b.icon;
+              return (
+                <a key={i} href={b.href} className="grain-texture" style={{
+                  display: "block", padding: "56px 44px",
+                  background: i === 0 ? "hsl(var(--moss))" : "hsl(var(--ivory))",
+                  color: i === 0 ? "hsl(var(--ivory))" : "hsl(var(--moss))",
+                  textDecoration: "none",
+                  border: "1px solid hsl(var(--gold) / 0.25)",
+                  transition: "all 0.4s",
+                }}
+                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; }}
+                >
+                  <Icon size={28} style={{ color: "hsl(var(--gold))", marginBottom: "28px" }} strokeWidth={1.2} />
+                  <p className="eyebrow mb-4" style={{ color: "hsl(var(--gold))" }}>◦ {b.eyebrow} ◦</p>
+                  <h3 className="font-display" style={{
+                    fontSize: "32px", fontWeight: 300, lineHeight: 1.15,
+                    color: "inherit", margin: "0 0 16px",
+                  }}>
+                    {b.title}<br />
+                    <em style={{ color: "hsl(var(--gold))", fontWeight: 400 }}>{b.italic}</em>
+                  </h3>
+                  <p className="font-display" style={{
+                    fontSize: "15px", fontStyle: "italic",
+                    opacity: 0.7, margin: "0 0 28px",
+                  }}>
+                    {b.sub}
+                  </p>
+                  <span style={{
+                    fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase",
+                    fontWeight: 500, display: "inline-flex", alignItems: "center", gap: "10px",
+                    borderBottom: "1px solid currentColor", paddingBottom: "4px",
+                  }}>
+                    {b.cta} <ArrowUpRight size={14} />
+                  </span>
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* CONTACT — editorial colophon */}
-      <section style={{ background: "hsl(222 47% 11%)", color: "white", padding: "80px 0" }}>
+      {/* CONTACT — moss footer-section */}
+      <section className="grain-texture" style={{
+        background: "hsl(var(--moss-deep))",
+        color: "hsl(var(--ivory))",
+        padding: "120px 0",
+      }}>
         <div className="page-container px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            <div className="lg:col-span-5">
-              <p className="eyebrow mb-4" style={{ color: "hsl(var(--warm))" }}>§ 04 — Contact</p>
-              <h2 className="font-serif-display" style={{
-                fontSize: "clamp(32px, 4.5vw, 52px)",
-                fontWeight: 500, lineHeight: 1.05,
-                letterSpacing: "-0.025em",
-                color: "white", margin: 0,
-              }}>
-                Kom langs of <em style={{ color: "hsl(var(--warm))" }}>bel ons.</em>
-              </h2>
-            </div>
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {[
-                { label: "Adres", value: "Reigersbos 100 K (3e etage)\n1107 ES Amsterdam" },
-                { label: "Telefoon", value: "020 737 14 26", href: "tel:0207371426" },
-                { label: "E-mail", value: "Info@reigersbosmedicalcenter.nl", href: "mailto:Info@reigersbosmedicalcenter.nl" },
-                { label: "Openingstijden", value: "Ma–Vr · 08:00 – 17:00\nWeekend gesloten" },
-              ].map((c, i) => (
-                <div key={i} style={{ borderTop: "1px solid hsl(0 0% 100% / 0.2)", paddingTop: "16px" }}>
-                  <p style={{ fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "hsl(var(--warm))", margin: "0 0 8px" }}>
-                    {c.label}
-                  </p>
+          <div className="text-center mb-20">
+            <p className="eyebrow mb-6" style={{ color: "hsl(var(--gold))" }}>◦ Bezoek ons ◦</p>
+            <h2 className="font-display" style={{
+              fontSize: "clamp(40px, 6vw, 72px)",
+              fontWeight: 300, lineHeight: 1.05,
+              letterSpacing: "-0.02em",
+              color: "hsl(var(--ivory))",
+              margin: 0,
+            }}>
+              Wij verwelkomen u <em style={{ color: "hsl(var(--gold))", fontWeight: 400 }}>graag.</em>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 max-w-5xl mx-auto">
+            {[
+              { icon: MapPin, label: "Adres", value: "Reigersbos 100K\n3e etage, 1107 ES" },
+              { icon: Phone, label: "Telefoon", value: "020 737 14 26", href: "tel:0207371426" },
+              { icon: Mail, label: "E-mail", value: "Info@reigersbosmedicalcenter.nl", href: "mailto:Info@reigersbosmedicalcenter.nl" },
+              { icon: Clock, label: "Openingstijden", value: "Ma–Vr 08:00–17:00\nWeekend gesloten" },
+            ].map((c, i) => {
+              const Icon = c.icon;
+              return (
+                <div key={i} style={{ textAlign: "center" }}>
+                  <Icon size={22} style={{ color: "hsl(var(--gold))", margin: "0 auto 16px" }} strokeWidth={1.2} />
+                  <p className="eyebrow mb-3" style={{ color: "hsl(var(--gold))" }}>{c.label}</p>
                   {c.href ? (
-                    <a href={c.href} className="font-serif-display" style={{
-                      fontSize: "20px", fontWeight: 500,
-                      color: "white", textDecoration: "none",
-                      borderBottom: "1px solid hsl(0 0% 100% / 0.3)",
+                    <a href={c.href} className="font-display" style={{
+                      fontSize: "17px", color: "hsl(var(--ivory))",
+                      textDecoration: "none", fontStyle: "italic",
+                      lineHeight: 1.5, display: "block",
+                      wordBreak: "break-word",
                     }}>
                       {c.value}
                     </a>
                   ) : (
-                    <p className="font-serif-display" style={{
-                      fontSize: "18px", fontWeight: 500, color: "white",
-                      margin: 0, whiteSpace: "pre-line", lineHeight: 1.4,
+                    <p className="font-display" style={{
+                      fontSize: "17px", color: "hsl(var(--ivory))",
+                      margin: 0, fontStyle: "italic",
+                      lineHeight: 1.5, whiteSpace: "pre-line",
                     }}>
                       {c.value}
                     </p>
                   )}
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
