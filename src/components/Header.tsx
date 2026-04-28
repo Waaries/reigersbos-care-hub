@@ -83,16 +83,18 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className={`flex items-center justify-between h-16 lg:h-20 ${isRTL ? "flex-row-reverse" : ""}`}>
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 flex-shrink-0">
-            <img src={logo} alt="Reigersbos Medical Center" className="h-10 lg:h-12 w-auto" />
-            <span style={{
-              fontSize: "13px",
-              fontWeight: 700,
-              letterSpacing: "0.05em",
-              color: "hsl(222 47% 11%)",
-              lineHeight: 1.2,
+          <Link to="/" className="flex items-center gap-3 flex-shrink-0 group">
+            <img src={logo} alt="Reigersbos Medical Center" className="h-10 lg:h-12 w-auto transition-transform duration-500 group-hover:scale-105" />
+            <span className="font-display" style={{
+              fontSize: "20px",
+              fontWeight: 400,
+              letterSpacing: "-0.01em",
+              color: "hsl(var(--moss))",
+              lineHeight: 1.05,
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
             }}>
-              REIGERSBOS<br />MEDICAL CENTER
+              Reigersbos<br />
+              <em style={{ color: "hsl(var(--gold))", fontWeight: 400 }}>Medical Center</em>
             </span>
           </Link>
 
