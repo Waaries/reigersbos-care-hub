@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&display=swap');
 
 @layer base {
   :root {
@@ -30,6 +30,12 @@
     --accent: 174 43% 30%;
     --accent-foreground: 0 0% 100%;
     --accent-light: 166 76% 97%;
+
+    /* Editorial warm accent — terracotta/zalm */
+    --warm: 14 65% 55%;
+    --warm-light: 24 80% 96%;
+    --warm-deep: 14 55% 35%;
+    --paper: 36 33% 96%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
@@ -98,9 +104,30 @@
   }
 
   h1, h2, h3 {
-    font-family: 'Inter', -apple-system, system-ui, sans-serif;
-    letter-spacing: -0.025em;
+    font-family: 'Fraunces', 'Times New Roman', Georgia, serif;
+    letter-spacing: -0.02em;
     color: hsl(222 47% 11%);
+    font-weight: 600;
+  }
+}
+
+@layer utilities {
+  .font-serif-display {
+    font-family: 'Fraunces', 'Times New Roman', Georgia, serif;
+    font-optical-sizing: auto;
+  }
+  .editorial-rule {
+    height: 1px;
+    background: hsl(222 47% 11%);
+    width: 48px;
+  }
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: hsl(var(--warm));
   }
 }
 

@@ -1,295 +1,383 @@
 import Layout from "@/components/Layout";
 import { useModal } from "@/contexts/ModalContext";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Stethoscope, Activity, Heart, Droplets, Shield, Globe } from "lucide-react";
+import { Stethoscope, Activity, Heart, Droplets, Shield, Globe, ArrowRight } from "lucide-react";
 
 const Index = () => {
   const { openModal } = useModal();
   const { t, isRTL } = useLanguage();
 
   const services = [
-    { icon: Stethoscope, titleKey: "services.gp.title" as const, descKey: "services.gp.desc" as const },
-    { icon: Activity, titleKey: "services.physio.title" as const, descKey: "services.physio.desc" as const },
-    { icon: Heart, title: "Verloskundige", desc: "Verloskundige Praktijk De Poort — in ons gebouw" },
-    { icon: Droplets, title: "Bloedafname", desc: "RHMDC bloedafname service — snel en betrouwbaar" },
+    { num: "01", icon: Stethoscope, titleKey: "services.gp.title" as const, descKey: "services.gp.desc" as const },
+    { num: "02", icon: Activity, titleKey: "services.physio.title" as const, descKey: "services.physio.desc" as const },
+    { num: "03", icon: Heart, title: "Verloskundige", desc: "Verloskundige Praktijk De Poort — in ons gebouw" },
+    { num: "04", icon: Droplets, title: "Bloedafname", desc: "RHMDC bloedafname service — snel en betrouwbaar" },
   ];
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section style={{ background: "hsl(210 40% 98%)", paddingTop: "120px", paddingBottom: "80px" }}>
-        <div className="page-container px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
-            {/* Left side */}
-            <div className={`lg:col-span-3 ${isRTL ? "text-right" : ""}`}>
-              <p className="page-hero-label mb-4">{t("hero.welcome")}</p>
-              <div style={{ borderLeft: "3px solid hsl(174 43% 30%)", paddingLeft: "16px", marginBottom: "20px" }}>
-                <h1 style={{
-                  fontSize: "clamp(28px, 4vw, 42px)",
-                  fontWeight: 700,
-                  color: "hsl(222 47% 11%)",
-                  letterSpacing: "-0.025em",
-                  lineHeight: 1.15,
-                  margin: 0,
-                }}>
-                  Reigersbos Medical Center
-                </h1>
-              </div>
-              <p style={{ color: "hsl(215 16% 47%)", fontSize: "16px", marginBottom: "28px", lineHeight: 1.6 }}>
+      {/* HERO — editorial magazine cover */}
+      <section style={{ background: "hsl(var(--paper))", paddingTop: "100px", paddingBottom: "80px", position: "relative", overflow: "hidden" }}>
+        <div className="page-container px-4 sm:px-6 lg:px-8" style={{ position: "relative" }}>
+          {/* Top masthead row */}
+          <div style={{
+            display: "flex", justifyContent: "space-between", alignItems: "center",
+            paddingBottom: "20px", marginBottom: "48px",
+            borderBottom: "1px solid hsl(222 47% 11% / 0.15)",
+            fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase",
+            color: "hsl(222 47% 11%)", fontWeight: 500,
+          }}>
+            <span>Vol. XXIV — Amsterdam Zuidoost</span>
+            <span className="hidden sm:inline">Est. sinds jaren · Huisartsenzorg</span>
+            <span style={{ color: "hsl(var(--warm))" }}>● Geopend vandaag</span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+            {/* Left — display title */}
+            <div className={`lg:col-span-8 ${isRTL ? "text-right" : ""}`}>
+              <p className="eyebrow mb-6">— Welkom bij —</p>
+              <h1 className="font-serif-display" style={{
+                fontSize: "clamp(44px, 8vw, 104px)",
+                fontWeight: 500,
+                lineHeight: 0.95,
+                letterSpacing: "-0.04em",
+                color: "hsl(222 47% 11%)",
+                margin: 0,
+              }}>
+                Reigersbos<br />
+                <span style={{ fontStyle: "italic", fontWeight: 400, color: "hsl(var(--warm-deep))" }}>
+                  Medical
+                </span>{" "}
+                Center
+              </h1>
+            </div>
+
+            {/* Right — quiet intro + CTA */}
+            <div className="lg:col-span-4">
+              <div className="editorial-rule mb-5" />
+              <p style={{
+                fontFamily: "'Fraunces', serif",
+                fontSize: "18px", lineHeight: 1.5,
+                color: "hsl(222 47% 18%)",
+                fontStyle: "italic",
+                margin: "0 0 24px",
+              }}>
                 {t("hero.tagline")}
               </p>
               <div className="flex flex-wrap gap-3">
                 <button
                   onClick={() => openModal("inschrijven")}
                   style={{
-                    background: "hsl(222 47% 11%)",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "6px",
-                    padding: "12px 24px",
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    transition: "background 0.2s",
+                    background: "hsl(222 47% 11%)", color: "white",
+                    border: "none", borderRadius: "999px",
+                    padding: "14px 26px", fontSize: "13px",
+                    fontWeight: 600, letterSpacing: "0.05em",
+                    cursor: "pointer", textTransform: "uppercase",
+                    display: "inline-flex", alignItems: "center", gap: "8px",
+                    transition: "all 0.2s",
                   }}
-                  onMouseEnter={e => { e.currentTarget.style.background = "hsl(222 47% 15%)"; }}
+                  onMouseEnter={e => { e.currentTarget.style.background = "hsl(var(--warm-deep))"; }}
                   onMouseLeave={e => { e.currentTarget.style.background = "hsl(222 47% 11%)"; }}
                 >
-                  {t("hero.cta")}
+                  {t("hero.cta")} <ArrowRight size={14} />
                 </button>
-                <a
-                  href="#diensten"
-                  style={{
-                    background: "transparent",
-                    color: "hsl(222 47% 11%)",
-                    border: "1px solid hsl(214 32% 91%)",
-                    borderRadius: "6px",
-                    padding: "12px 24px",
-                    fontSize: "14px",
-                    fontWeight: 400,
-                    textDecoration: "none",
-                    transition: "background 0.2s",
-                  }}
-                  onMouseEnter={e => { e.currentTarget.style.background = "hsl(210 40% 98%)"; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
-                >
+                <a href="#diensten" style={{
+                  color: "hsl(222 47% 11%)",
+                  borderBottom: "1px solid hsl(222 47% 11%)",
+                  padding: "14px 4px", fontSize: "13px",
+                  fontWeight: 500, letterSpacing: "0.05em",
+                  textDecoration: "none", textTransform: "uppercase",
+                }}>
                   Onze diensten
                 </a>
               </div>
             </div>
+          </div>
 
-            {/* Right side — contact card */}
-            <div className="lg:col-span-2">
-              <div style={{
-                background: "white",
-                border: "1px solid hsl(214 32% 91%)",
-                borderRadius: "10px",
-                padding: "24px",
-              }}>
-                <h3 style={{ fontWeight: 700, color: "hsl(222 47% 11%)", marginBottom: "20px", fontSize: "16px" }}>
-                  {t("contact.title")}
-                </h3>
-
-                {[
-                  { emoji: "📍", content: <span style={{ fontSize: "14px", color: "hsl(220 9% 26%)", lineHeight: "1.6" }}>Reigersbos 100 K (3e etage)<br />1107 ES Amsterdam</span> },
-                  { emoji: "📞", content: <a href="tel:0207371426" style={{ color: "hsl(174 43% 30%)", fontWeight: 600, textDecoration: "none", fontSize: "14px" }}>020 737 14 26</a> },
-                  { emoji: "📠", content: <span style={{ fontSize: "14px", color: "hsl(220 9% 26%)" }}>020 737 03 79</span> },
-                  { emoji: "📧", content: <a href="mailto:Info@reigersbosmedicalcenter.nl" style={{ color: "hsl(174 43% 30%)", fontWeight: 600, textDecoration: "none", fontSize: "14px", wordBreak: "break-all" as const }}>Info@reigersbosmedicalcenter.nl</a> },
-                ].map((item, i) => (
-                  <div key={i} style={{ display: "flex", gap: "12px", marginBottom: "14px", paddingBottom: "14px", borderBottom: "1px solid hsl(214 32% 91%)" }}>
-                    <span style={{ fontSize: "18px", flexShrink: 0 }}>{item.emoji}</span>
-                    <div>{item.content}</div>
-                  </div>
-                ))}
-
-                <div style={{ display: "flex", gap: "12px" }}>
-                  <span style={{ fontSize: "18px", flexShrink: 0 }}>🕐</span>
-                  <div style={{ fontSize: "14px", color: "hsl(220 9% 26%)", lineHeight: "1.8" }}>
-                    <div style={{ fontWeight: 600, marginBottom: "4px" }}>{t("contact.hours.label")}</div>
-                    <div>{t("contact.hours.weekdays")}</div>
-                    <div style={{ color: "hsl(215 16% 47%)" }}>{t("contact.hours.weekend")}</div>
-                  </div>
+          {/* Bottom row — quick facts */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-8" style={{ borderTop: "1px solid hsl(222 47% 11% / 0.15)" }}>
+            {[
+              { k: "10.0", label: "Zorgkaart NL" },
+              { k: "020 737 14 26", label: "Bel ons" },
+              { k: "EN · NL · AR", label: "Talen" },
+              { k: "Reigersbos 100K", label: "3e etage" },
+            ].map((f, i) => (
+              <div key={i}>
+                <div className="font-serif-display" style={{ fontSize: "clamp(20px,2.4vw,28px)", fontWeight: 500, color: "hsl(222 47% 11%)", lineHeight: 1.1 }}>
+                  {f.k}
+                </div>
+                <div style={{ fontSize: "11px", letterSpacing: "0.12em", textTransform: "uppercase", color: "hsl(215 16% 47%)", marginTop: "6px" }}>
+                  {f.label}
                 </div>
               </div>
-
-              <div style={{ marginTop: "12px" }}>
-                <span style={{
-                  display: "inline-block",
-                  background: "hsl(166 76% 97%)",
-                  color: "hsl(174 43% 30%)",
-                  border: "1px solid hsl(168 76% 78%)",
-                  borderRadius: "4px",
-                  padding: "6px 12px",
-                  fontSize: "13px",
-                  fontWeight: 600,
-                }}>
-                  {t("contact.open")}
-                </span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Trust Badge */}
-      <section style={{ background: "white", padding: "16px 0", borderTop: "1px solid hsl(214 32% 91%)", borderBottom: "1px solid hsl(214 32% 91%)" }}>
-        <div className="page-container" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "16px", flexWrap: "wrap" }}>
-          <span style={{ fontSize: "13px", fontWeight: 700, color: "hsl(222 47% 11%)" }}>Zorgkaart Nederland</span>
-          <span style={{ fontSize: "18px", color: "#F59E0B" }}>⭐</span>
-          <span style={{ fontSize: "20px", fontWeight: 700, color: "hsl(222 47% 11%)" }}>10.0 / 10</span>
-          <span style={{ fontSize: "13px", color: "hsl(215 16% 47%)" }}>— Beoordeeld door onze patiënten</span>
+      {/* TRUST STRIP */}
+      <section style={{ background: "hsl(222 47% 11%)", padding: "20px 0" }}>
+        <div className="page-container px-4 sm:px-6 lg:px-8" style={{
+          display: "flex", alignItems: "center", justifyContent: "center",
+          gap: "20px", flexWrap: "wrap", color: "white",
+        }}>
+          <span style={{ fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "hsl(0 0% 70%)" }}>
+            Zorgkaart Nederland
+          </span>
+          <span style={{ width: "4px", height: "4px", background: "hsl(var(--warm))", borderRadius: "50%" }} />
+          <span className="font-serif-display" style={{ fontSize: "22px", fontWeight: 500 }}>
+            10.0<span style={{ color: "hsl(0 0% 60%)", fontSize: "16px" }}> / 10</span>
+          </span>
+          <span style={{ width: "4px", height: "4px", background: "hsl(var(--warm))", borderRadius: "50%" }} />
+          <span style={{ fontSize: "13px", color: "hsl(0 0% 80%)", fontStyle: "italic", fontFamily: "'Fraunces', serif" }}>
+            "Beoordeeld door onze patiënten"
+          </span>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="page-section" style={{ background: "white", paddingTop: "48px" }}>
-        <div className="page-container">
-          <p className="page-hero-label mb-2">OVER ONS</p>
-          <h2 className={`page-heading ${isRTL ? "text-right" : ""}`}>{t("about.heading")}</h2>
-          <div className={`grid grid-cols-1 lg:grid-cols-5 gap-10 items-start ${isRTL ? "direction-rtl" : ""}`}>
-            <div className={`lg:col-span-3 space-y-4 ${isRTL ? "text-right" : ""}`}>
-              <p className="page-text">{t("about.p1")}</p>
-              <p className="page-text">{t("about.p2")}</p>
-              <p className="page-text">{t("about.p3")}</p>
-              <div className="mt-6">
-                <button
-                  onClick={() => openModal("inschrijven")}
-                  style={{
-                    background: "hsl(222 47% 11%)",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "6px",
-                    padding: "12px 24px",
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    cursor: "pointer",
-                  }}
-                >
-                  {t("about.cta")}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services section */}
-      <section id="diensten" style={{ background: "hsl(210 40% 98%)", padding: "60px 0" }}>
+      {/* ABOUT — editorial article with drop-cap */}
+      <section style={{ background: "white", padding: "100px 0" }}>
         <div className="page-container px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <p className="page-hero-label mb-2">{t("services.label")}</p>
-            <h2 style={{ fontSize: "clamp(1.75rem, 4vw, 2.25rem)", fontWeight: 700, color: "hsl(222 47% 11%)", margin: 0 }}>
-              {t("services.heading")}
-            </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-4">
+              <p className="eyebrow mb-4">§ 01 — Over ons</p>
+              <h2 className="font-serif-display" style={{
+                fontSize: "clamp(32px, 4.5vw, 52px)",
+                fontWeight: 500, lineHeight: 1.05,
+                letterSpacing: "-0.025em",
+                margin: 0,
+              }}>
+                {t("about.heading")}
+              </h2>
+              <div className="editorial-rule mt-6" style={{ background: "hsl(var(--warm))" }} />
+            </div>
+
+            <div className={`lg:col-span-7 lg:col-start-6 ${isRTL ? "text-right" : ""}`}>
+              <p style={{
+                fontFamily: "'Fraunces', serif",
+                fontSize: "20px", lineHeight: 1.6,
+                color: "hsl(222 47% 18%)",
+                margin: "0 0 24px",
+              }}>
+                <span className="font-serif-display" style={{
+                  float: isRTL ? "right" : "left",
+                  fontSize: "76px", lineHeight: 0.85,
+                  fontWeight: 600, color: "hsl(var(--warm-deep))",
+                  paddingRight: "12px", paddingTop: "6px",
+                  fontStyle: "italic",
+                }}>
+                  {t("about.p1").charAt(0)}
+                </span>
+                {t("about.p1").substring(1)}
+              </p>
+              <p style={{ fontSize: "15px", lineHeight: 1.75, color: "hsl(220 9% 30%)", marginBottom: "16px" }}>
+                {t("about.p2")}
+              </p>
+              <p style={{ fontSize: "15px", lineHeight: 1.75, color: "hsl(220 9% 30%)", marginBottom: "32px" }}>
+                {t("about.p3")}
+              </p>
+              <button
+                onClick={() => openModal("inschrijven")}
+                style={{
+                  background: "transparent", color: "hsl(222 47% 11%)",
+                  border: "1px solid hsl(222 47% 11%)", borderRadius: "999px",
+                  padding: "12px 24px", fontSize: "13px", fontWeight: 600,
+                  letterSpacing: "0.05em", cursor: "pointer", textTransform: "uppercase",
+                  display: "inline-flex", alignItems: "center", gap: "8px",
+                  transition: "all 0.2s",
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = "hsl(222 47% 11%)";
+                  e.currentTarget.style.color = "white";
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.color = "hsl(222 47% 11%)";
+                }}
+              >
+                {t("about.cta")} <ArrowRight size={14} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES — editorial index */}
+      <section id="diensten" style={{ background: "hsl(var(--paper))", padding: "100px 0" }}>
+        <div className="page-container px-4 sm:px-6 lg:px-8">
+          <div className="flex items-end justify-between flex-wrap gap-6 mb-16">
+            <div>
+              <p className="eyebrow mb-4">§ 02 — Index</p>
+              <h2 className="font-serif-display" style={{
+                fontSize: "clamp(32px, 4.5vw, 52px)",
+                fontWeight: 500, lineHeight: 1.05,
+                letterSpacing: "-0.025em", margin: 0,
+              }}>
+                {t("services.heading")}
+              </h2>
+            </div>
+            <p style={{ maxWidth: "320px", fontSize: "14px", lineHeight: 1.6, color: "hsl(215 16% 47%)", fontStyle: "italic", fontFamily: "'Fraunces', serif" }}>
+              Een compleet aanbod aan eerstelijnszorg, onder één dak in Reigersbos.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div style={{ borderTop: "1px solid hsl(222 47% 11% / 0.15)" }}>
             {services.map((svc) => {
               const Icon = svc.icon;
               return (
-                <div
+                <article
                   key={'titleKey' in svc ? svc.titleKey : svc.title}
                   style={{
-                    background: "white",
-                    borderRadius: "10px",
-                    padding: "24px",
-                    textAlign: "center",
-                    border: "1px solid hsl(214 32% 91%)",
-                    boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
-                    transition: "all 0.2s ease",
+                    display: "grid",
+                    gridTemplateColumns: "60px 1fr auto",
+                    gap: "24px",
+                    alignItems: "center",
+                    padding: "28px 0",
+                    borderBottom: "1px solid hsl(222 47% 11% / 0.15)",
                     cursor: "default",
+                    transition: "all 0.3s ease",
                   }}
                   onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = "hsl(174 43% 30%)";
-                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(13,148,136,0.1)";
+                    e.currentTarget.style.paddingLeft = "16px";
+                    e.currentTarget.style.background = "hsl(var(--warm-light))";
                   }}
                   onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = "hsl(214 32% 91%)";
-                    e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.06)";
+                    e.currentTarget.style.paddingLeft = "0";
+                    e.currentTarget.style.background = "transparent";
                   }}
                 >
-                  <div style={{ marginBottom: "16px", display: "flex", justifyContent: "center" }}>
-                    <Icon size={32} style={{ color: "hsl(174 43% 30%)" }} />
+                  <span className="font-serif-display" style={{
+                    fontSize: "28px", fontWeight: 400, fontStyle: "italic",
+                    color: "hsl(var(--warm))",
+                  }}>
+                    {svc.num}
+                  </span>
+                  <div style={{ display: "flex", alignItems: "center", gap: "20px", flexWrap: "wrap" }}>
+                    <Icon size={22} style={{ color: "hsl(var(--warm-deep))", flexShrink: 0 }} />
+                    <h3 className="font-serif-display" style={{
+                      fontSize: "clamp(20px, 2.5vw, 28px)",
+                      fontWeight: 500, margin: 0,
+                      color: "hsl(222 47% 11%)",
+                    }}>
+                      {'titleKey' in svc ? t(svc.titleKey) : svc.title}
+                    </h3>
+                    <span style={{ fontSize: "14px", color: "hsl(215 16% 47%)", fontFamily: "'Fraunces', serif", fontStyle: "italic" }}>
+                      — {'descKey' in svc ? t(svc.descKey) : svc.desc}
+                    </span>
                   </div>
-                  <div style={{ fontSize: "16px", fontWeight: 600, color: "hsl(222 47% 11%)", marginBottom: "8px" }}>
-                    {'titleKey' in svc ? t(svc.titleKey) : svc.title}
-                  </div>
-                  <p style={{ fontSize: "14px", color: "hsl(215 16% 47%)", margin: 0 }}>
-                    {'descKey' in svc ? t(svc.descKey) : svc.desc}
-                  </p>
-                </div>
+                  <ArrowRight size={18} style={{ color: "hsl(222 47% 11%)" }} />
+                </article>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Geen papieren Banner */}
-      <section style={{ padding: "40px 0" }}>
+      {/* DUAL FEATURE BANNERS */}
+      <section style={{ background: "white", padding: "80px 0" }}>
         <div className="page-container px-4 sm:px-6 lg:px-8">
-          <div style={{
-            background: "hsl(166 76% 97%)",
-            border: "1px solid hsl(168 76% 78%)",
-            borderRadius: "10px",
-            padding: "28px 32px",
-            display: "flex", alignItems: "center",
-            justifyContent: "space-between", gap: "24px", flexWrap: "wrap",
-          }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-              <Shield size={28} style={{ color: "hsl(174 43% 30%)", flexShrink: 0 }} />
-              <div>
-                <p className="page-hero-label" style={{ margin: "0 0 4px" }}>GEEN PAPIEREN?</p>
-                <h3 style={{ color: "hsl(222 47% 11%)", fontSize: "18px", fontWeight: 700, margin: 0 }}>
-                  U heeft recht op zorg — wij helpen u
-                </h3>
-                <p style={{ color: "hsl(215 16% 47%)", fontSize: "14px", margin: "4px 0 0" }}>
-                  Vertrouwelijk · Beroepsgeheim · CAK contract
-                </p>
-              </div>
-            </div>
+          <p className="eyebrow mb-4">§ 03 — Voor iedereen</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-0" style={{ border: "1px solid hsl(222 47% 11% / 0.15)" }}>
+            {/* Geen papieren */}
             <a href="/ongedocumenteerden" style={{
-              background: "hsl(222 47% 11%)", color: "white",
-              borderRadius: "6px", padding: "10px 20px",
-              fontSize: "14px", fontWeight: 600, textDecoration: "none",
-              whiteSpace: "nowrap", flexShrink: 0,
-            }}>
-              Meer informatie →
+              padding: "40px 36px", background: "hsl(var(--warm-light))",
+              textDecoration: "none", display: "block",
+              transition: "background 0.3s",
+              borderRight: "1px solid hsl(222 47% 11% / 0.15)",
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = "hsl(var(--warm) / 0.15)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "hsl(var(--warm-light))"; }}
+            >
+              <Shield size={28} style={{ color: "hsl(var(--warm-deep))", marginBottom: "20px" }} />
+              <p className="eyebrow mb-3">Geen papieren?</p>
+              <h3 className="font-serif-display" style={{
+                fontSize: "28px", fontWeight: 500, lineHeight: 1.15,
+                color: "hsl(222 47% 11%)", margin: "0 0 12px",
+              }}>
+                U heeft recht op zorg —<br />
+                <em style={{ color: "hsl(var(--warm-deep))" }}>wij helpen u.</em>
+              </h3>
+              <p style={{ fontSize: "14px", color: "hsl(220 9% 30%)", fontStyle: "italic", fontFamily: "'Fraunces', serif", margin: "0 0 16px" }}>
+                Vertrouwelijk · Beroepsgeheim · CAK contract
+              </p>
+              <span style={{ fontSize: "12px", letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600, color: "hsl(222 47% 11%)", display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                Lees meer <ArrowRight size={14} />
+              </span>
+            </a>
+            {/* Expats */}
+            <a href="/expats" style={{
+              padding: "40px 36px", background: "white",
+              textDecoration: "none", display: "block",
+              transition: "background 0.3s",
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = "hsl(var(--paper))"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "white"; }}
+            >
+              <Globe size={28} style={{ color: "hsl(var(--warm-deep))", marginBottom: "20px" }} />
+              <p className="eyebrow mb-3">International patients</p>
+              <h3 className="font-serif-display" style={{
+                fontSize: "28px", fontWeight: 500, lineHeight: 1.15,
+                color: "hsl(222 47% 11%)", margin: "0 0 12px",
+              }}>
+                We welcome expats &<br />
+                <em style={{ color: "hsl(var(--warm-deep))" }}>English speakers.</em>
+              </h3>
+              <p style={{ fontSize: "14px", color: "hsl(220 9% 30%)", fontStyle: "italic", fontFamily: "'Fraunces', serif", margin: "0 0 16px" }}>
+                English spoken · Easy registration · Amsterdam Zuidoost
+              </p>
+              <span style={{ fontSize: "12px", letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600, color: "hsl(222 47% 11%)", display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                Read more <ArrowRight size={14} />
+              </span>
             </a>
           </div>
         </div>
       </section>
 
-      {/* Expats Banner */}
-      <section style={{ padding: "0 0 40px" }}>
+      {/* CONTACT — editorial colophon */}
+      <section style={{ background: "hsl(222 47% 11%)", color: "white", padding: "80px 0" }}>
         <div className="page-container px-4 sm:px-6 lg:px-8">
-          <div style={{
-            background: "white",
-            border: "1px solid hsl(214 32% 91%)",
-            borderRadius: "10px",
-            padding: "28px 32px",
-            display: "flex", alignItems: "center",
-            justifyContent: "space-between", gap: "24px", flexWrap: "wrap",
-          }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-              <Globe size={28} style={{ color: "hsl(174 43% 30%)", flexShrink: 0 }} />
-              <div>
-                <p className="page-hero-label" style={{ margin: "0 0 4px" }}>INTERNATIONAL PATIENTS?</p>
-                <h3 style={{ color: "hsl(222 47% 11%)", fontSize: "18px", fontWeight: 700, margin: 0 }}>
-                  We welcome expats & English speakers
-                </h3>
-                <p style={{ color: "hsl(215 16% 47%)", fontSize: "14px", margin: "4px 0 0" }}>
-                  English spoken · Easy registration · Central Amsterdam Zuidoost
-                </p>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <div className="lg:col-span-5">
+              <p className="eyebrow mb-4" style={{ color: "hsl(var(--warm))" }}>§ 04 — Contact</p>
+              <h2 className="font-serif-display" style={{
+                fontSize: "clamp(32px, 4.5vw, 52px)",
+                fontWeight: 500, lineHeight: 1.05,
+                letterSpacing: "-0.025em",
+                color: "white", margin: 0,
+              }}>
+                Kom langs of <em style={{ color: "hsl(var(--warm))" }}>bel ons.</em>
+              </h2>
             </div>
-            <a href="/expats" style={{
-              background: "hsl(222 47% 11%)", color: "white",
-              borderRadius: "6px", padding: "10px 20px",
-              fontSize: "14px", fontWeight: 600, textDecoration: "none",
-              whiteSpace: "nowrap", flexShrink: 0,
-            }}>
-              More information →
-            </a>
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
+              {[
+                { label: "Adres", value: "Reigersbos 100 K (3e etage)\n1107 ES Amsterdam" },
+                { label: "Telefoon", value: "020 737 14 26", href: "tel:0207371426" },
+                { label: "E-mail", value: "Info@reigersbosmedicalcenter.nl", href: "mailto:Info@reigersbosmedicalcenter.nl" },
+                { label: "Openingstijden", value: "Ma–Vr · 08:00 – 17:00\nWeekend gesloten" },
+              ].map((c, i) => (
+                <div key={i} style={{ borderTop: "1px solid hsl(0 0% 100% / 0.2)", paddingTop: "16px" }}>
+                  <p style={{ fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "hsl(var(--warm))", margin: "0 0 8px" }}>
+                    {c.label}
+                  </p>
+                  {c.href ? (
+                    <a href={c.href} className="font-serif-display" style={{
+                      fontSize: "20px", fontWeight: 500,
+                      color: "white", textDecoration: "none",
+                      borderBottom: "1px solid hsl(0 0% 100% / 0.3)",
+                    }}>
+                      {c.value}
+                    </a>
+                  ) : (
+                    <p className="font-serif-display" style={{
+                      fontSize: "18px", fontWeight: 500, color: "white",
+                      margin: 0, whiteSpace: "pre-line", lineHeight: 1.4,
+                    }}>
+                      {c.value}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
