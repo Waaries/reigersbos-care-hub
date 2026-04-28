@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', '-apple-system', 'system-ui', 'sans-serif'],
-        serif: ['Fraunces', 'Times New Roman', 'Georgia', 'serif'],
+        sans: ['Manrope', '-apple-system', 'system-ui', 'sans-serif'],
+        serif: ['Cormorant Garamond', 'Times New Roman', 'Georgia', 'serif'],
+        display: ['Cormorant Garamond', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -47,11 +48,23 @@ export default {
           light: "hsl(var(--accent-light))",
         },
         warm: {
-          DEFAULT: "hsl(var(--warm))",
-          light: "hsl(var(--warm-light))",
-          deep: "hsl(var(--warm-deep))",
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-soft))",
+          deep: "hsl(var(--moss-deep))",
         },
-        paper: "hsl(var(--paper))",
+        moss: {
+          DEFAULT: "hsl(var(--moss))",
+          deep: "hsl(var(--moss-deep))",
+        },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          soft: "hsl(var(--gold-soft))",
+        },
+        sage: "hsl(var(--sage))",
+        ivory: "hsl(var(--ivory))",
+        cream: "hsl(var(--cream))",
+        linen: "hsl(var(--linen))",
+        paper: "hsl(var(--cream))",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",

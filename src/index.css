@@ -46,9 +46,9 @@
     --input: 35 20% 82%;
     --ring: 36 35% 55%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 174 43% 30%;
+    --border: 35 20% 82%;
+    --input: 35 20% 82%;
+    --ring: 36 35% 55%;
 
     --radius: 0.5rem;
 
@@ -106,35 +106,50 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    font-family: 'Manrope', -apple-system, system-ui, sans-serif;
+    font-weight: 400;
   }
 
   h1, h2, h3 {
-    font-family: 'Fraunces', 'Times New Roman', Georgia, serif;
-    letter-spacing: -0.02em;
-    color: hsl(222 47% 11%);
-    font-weight: 600;
+    font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+    letter-spacing: -0.01em;
+    color: hsl(var(--moss));
+    font-weight: 400;
   }
 }
 
 @layer utilities {
-  .font-serif-display {
-    font-family: 'Fraunces', 'Times New Roman', Georgia, serif;
-    font-optical-sizing: auto;
+  .font-display {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
   }
-  .editorial-rule {
+  .font-body {
+    font-family: 'Manrope', sans-serif;
+  }
+  .gold-rule {
     height: 1px;
-    background: hsl(222 47% 11%);
-    width: 48px;
+    background: hsl(var(--gold));
+    width: 56px;
   }
   .eyebrow {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Manrope', sans-serif;
     font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
+    font-weight: 500;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: hsl(var(--warm));
+    color: hsl(var(--gold));
   }
+  .grain-texture {
+    position: relative;
+  }
+  .grain-texture::after {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+}
 }
 
 @layer components {
