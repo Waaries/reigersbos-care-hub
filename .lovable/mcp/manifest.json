@@ -70,10 +70,14 @@
           "openWorldHint": false
         },
         "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
           "type": "object",
-          "properties": {},
-          "additionalProperties": false,
-          "$schema": "http://json-schema.org/draft-07/schema#"
+          "properties": {
+            "role": {
+              "description": "Optioneel filter op functie, bijvoorbeeld 'Huisarts' of 'Fysiotherapeut'.",
+              "type": "string"
+            }
+          }
         },
         "outputSchema": null
       },
@@ -103,10 +107,14 @@
           "openWorldHint": false
         },
         "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
           "type": "object",
-          "properties": {},
-          "additionalProperties": false,
-          "$schema": "http://json-schema.org/draft-07/schema#"
+          "properties": {
+            "query": {
+              "description": "Optionele zoekterm, bijvoorbeeld 'herhaalrecept' of 'klacht'.",
+              "type": "string"
+            }
+          }
         },
         "outputSchema": null
       }

@@ -1,4 +1,5 @@
 import { defineTool } from "@lovable.dev/mcp-js";
+import { z } from "zod";
 import { patientInfo } from "../data";
 
 export default defineTool({
@@ -7,12 +8,11 @@ export default defineTool({
   description:
     "Zoekt in de publieke patiënteninformatie van Reigersbos Medical Center: inschrijven, herhaalrecept, afspraak maken, klachten, omgangsregels, privacy, expats, ongedocumenteerde patiënten en vacatures. Zonder zoekterm worden alle onderwerpen teruggegeven.",
   inputSchema: {
-    query: {
-      type: "string",
-      description: "Optionele zoekterm, bijvoorbeeld 'herhaalrecept' of 'klacht'.",
-      optional: true,
-    },
-  } as never,
+    query: z
+      .string()
+      .optional()
+      .describe("Optionele zoekterm, bijvoorbeeld 'herhaalrecept' of 'klacht'."),
+  },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: (input: { query?: string }) => {
     const query = input?.query?.trim().toLowerCase();

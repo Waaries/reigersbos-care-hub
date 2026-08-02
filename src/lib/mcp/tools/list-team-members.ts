@@ -1,4 +1,5 @@
 import { defineTool } from "@lovable.dev/mcp-js";
+import { z } from "zod";
 import { team } from "../data";
 
 export default defineTool({
@@ -7,13 +8,11 @@ export default defineTool({
   description:
     "Geeft de zorgverleners van Reigersbos Medical Center met hun functie en, waar van toepassing, hun BIG-nummer. Optioneel te filteren op functie.",
   inputSchema: {
-    role: {
-      type: "string",
-      description:
-        "Optioneel filter op functie, bijvoorbeeld 'Huisarts', 'Doktersassistent' of 'Fysiotherapeut'.",
-      optional: true,
-    },
-  } as never,
+    role: z
+      .string()
+      .optional()
+      .describe("Optioneel filter op functie, bijvoorbeeld 'Huisarts' of 'Fysiotherapeut'."),
+  },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: (input: { role?: string }) => {
     const role = input?.role?.trim().toLowerCase();
