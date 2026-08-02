@@ -118,15 +118,16 @@ const Header = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 flex-shrink-0 group py-2">
               <img src={logo} alt="Reigersbos Medical Center" className="h-20 lg:h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-105" />
-              <span className="font-display hidden sm:block" style={{
-                fontSize: "20px",
-                fontWeight: 600,
-                letterSpacing: "-0.02em",
+              <span className="font-serif hidden sm:block leading-none" style={{
                 color: "hsl(var(--foreground))",
-                lineHeight: 1.05,
               }}>
-                Reigersbos<br />
-                <span className="text-taupe font-medium" style={{ fontSize: "14px", letterSpacing: "0.04em" }}>Medical Center</span>
+                <span style={{ fontSize: "22px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                  Reigersbos
+                </span>
+                <br />
+                <span style={{ fontSize: "15px", fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                  Medical Center
+                </span>
               </span>
             </Link>
 
