@@ -11,7 +11,7 @@ const Klachten = () => (
       </div>
     </section>
     <section className="page-section">
-      <div className="page-container">
+      <div className="page-container max-w-3xl">
         <p className="page-text">
           Wij willen graag ons werk professioneel uitvoeren en vinden het belangrijk dat u ons vertrouwt.
           Desondanks is het mogelijk dat u geen goed gevoel heeft na contact met een medewerker van onze
@@ -25,22 +25,22 @@ const Klachten = () => (
           een schriftelijke klacht indienen bij de onderstaande klachten- en geschilleninstantie.
         </p>
         <div className="mt-8 info-card max-w-lg">
-          <p style={{ fontWeight: 700, fontSize: "16px", color: "hsl(222 47% 11%)", marginBottom: "16px" }}>
+          <p className="font-display font-bold text-foreground text-base mb-4">
             Stichting Klachten & Geschillen Eerstelijnszorg
           </p>
-          <div className="space-y-3 text-sm" style={{ color: "hsl(220 9% 26%)" }}>
+          <div className="space-y-3 text-sm text-foreground font-body">
             <p>Postbus 8018, 5601 KA Eindhoven</p>
             <div className="flex items-center gap-2">
-              <Phone className="w-4 h-4" style={{ color: "hsl(174 43% 30%)" }} />
-              <a href="tel:0880229100" className="transition-colors hover:underline" style={{ color: "hsl(174 43% 30%)" }}>088 – 022 91 00</a>
+              <Phone className="w-4 h-4 text-primary" />
+              <a href="tel:0880229100" className="text-primary hover:underline transition-colors">088 – 022 91 00</a>
             </div>
             <div className="flex items-center gap-2">
-              <Mail className="w-4 h-4" style={{ color: "hsl(174 43% 30%)" }} />
-              <a href="mailto:info@skge.nl" className="transition-colors hover:underline" style={{ color: "hsl(174 43% 30%)" }}>info@skge.nl</a>
+              <Mail className="w-4 h-4 text-primary" />
+              <a href="mailto:info@skge.nl" className="text-primary hover:underline transition-colors">info@skge.nl</a>
             </div>
             <div className="flex items-center gap-2">
-              <Globe className="w-4 h-4" style={{ color: "hsl(174 43% 30%)" }} />
-              <a href="https://www.skge.nl" target="_blank" rel="noopener noreferrer" className="transition-colors hover:underline" style={{ color: "hsl(174 43% 30%)" }}>www.skge.nl</a>
+              <Globe className="w-4 h-4 text-primary" />
+              <a href="https://www.skge.nl" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline transition-colors">www.skge.nl</a>
             </div>
           </div>
         </div>

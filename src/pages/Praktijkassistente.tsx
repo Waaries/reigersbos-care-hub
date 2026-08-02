@@ -17,7 +17,7 @@ const Praktijkassistente = () => (
       </div>
     </section>
     <section className="page-section">
-      <div className="page-container">
+      <div className="page-container max-w-3xl">
         <p className="page-text">
           De assistente staat u als eerste te woord wanneer u met de praktijk belt. Ze maakt afspraken voor
           het spreekuur, de huisbezoeken en het telefonische spreekuur. U kunt haar ook bellen voor uitslagen
@@ -28,8 +28,8 @@ const Praktijkassistente = () => (
           <h3 className="page-subheading">Handelingen door de assistente</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
             {handelingen.map(item => (
-              <div key={item} className="flex items-center gap-2 text-sm" style={{ color: "hsl(220 9% 26%)" }}>
-                <CheckCircle className="w-4 h-4 flex-shrink-0" style={{ color: "hsl(174 43% 30%)" }} />
+              <div key={item} className="flex items-center gap-2 text-sm text-foreground font-body">
+                <CheckCircle className="w-4 h-4 flex-shrink-0 text-primary" />
                 {item}
               </div>
             ))}

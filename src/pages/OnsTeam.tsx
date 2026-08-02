@@ -7,7 +7,6 @@ const team = [
   { name: "Sandra Bediako", title: "Huisarts", big: "BIG: 39918036001" },
   { name: "Warcha Ganpat", title: "Doktersassistent", big: null },
   { name: "Lois Oduro", title: "Doktersassistent", big: null },
-  { name: "Indra Jhingoeri", title: "Diëtist", big: null },
   { name: "Derek Che", title: "Fysiotherapeut", big: "BIG: 39915224904" },
   { name: "Sylvia Ohagwu", title: "Fysiotherapeut", big: "BIG: 79928616104" },
 ];
@@ -19,31 +18,18 @@ const TeamCard = ({ member }: { member: typeof team[0] }) => {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{
-        borderRadius: "10px",
-        boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
-        transform: hovered ? "translateY(-2px)" : "translateY(0)",
-        transition: "all 0.2s ease",
-        border: `1px solid ${hovered ? "hsl(174 43% 30%)" : "hsl(214 32% 91%)"}`,
-        background: "white",
-      }}
-      className="flex flex-col items-center text-center p-5"
+      className={`flex flex-col items-center text-center p-6 rounded-2xl bg-card border transition-all duration-200 ${
+        hovered ? "border-primary shadow-warm -translate-y-1" : "border-border shadow-subtle"
+      }`}
     >
       <div
-        className="flex items-center justify-center mb-4"
-        style={{
-          width: 80,
-          height: 80,
-          borderRadius: "50%",
-          border: "2px solid hsl(214 32% 91%)",
-          background: "hsl(210 40% 98%)",
-        }}
+        className="flex items-center justify-center mb-4 w-20 h-20 rounded-full border-2 border-border bg-sand-deep"
       >
-        <User className="w-10 h-10" style={{ color: "hsl(215 16% 47%)" }} />
+        <User className="w-10 h-10 text-muted-foreground" />
       </div>
-      <p style={{ fontWeight: 600, color: "hsl(222 47% 11%)", fontSize: "14px", lineHeight: 1.3 }}>{member.name}</p>
-      <p style={{ color: "hsl(174 43% 30%)", fontSize: "12px", marginTop: "4px", fontWeight: 500 }}>{member.title}</p>
-      {member.big && <p style={{ color: "hsl(215 16% 47%)", fontSize: "11px", marginTop: "4px" }}>{member.big}</p>}
+      <p className="font-display font-semibold text-foreground text-sm leading-tight">{member.name}</p>
+      <p className="text-primary text-xs font-semibold mt-1">{member.title}</p>
+      {member.big && <p className="text-muted-foreground text-[11px] mt-1">{member.big}</p>}
     </div>
   );
 };
@@ -59,7 +45,7 @@ const OnsTeam = () => (
     </section>
 
     <div className="flex justify-center px-4 mt-10 mb-2">
-      <p className="text-center text-sm leading-relaxed max-w-[600px]" style={{ color: "hsl(215 16% 47%)" }}>
+      <p className="text-center text-sm leading-relaxed max-w-[600px] text-muted-foreground font-body">
         Ons team bestaat uit gedreven zorgprofessionals die klaarstaan om u de beste zorg te bieden. Samen werken wij aan uw gezondheid.
       </p>
     </div>

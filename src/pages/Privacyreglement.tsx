@@ -55,27 +55,24 @@ const Privacyreglement = () => {
       </section>
 
       <section className="page-section">
-        <div className="page-container">
-          <div className="border border-border rounded-lg overflow-hidden">
-            <div style={{ background: "hsl(210 40% 98%)", padding: "12px 20px", borderBottom: "1px solid hsl(214 32% 91%)" }}>
-              <p style={{ fontWeight: 600, color: "hsl(222 47% 11%)", fontSize: "14px" }}>Privacyreglement van onze Medisch Centrum</p>
+        <div className="page-container max-w-3xl">
+          <div className="border border-border rounded-2xl overflow-hidden bg-card">
+            <div className="bg-sand-deep px-5 py-3 border-b border-border">
+              <p className="font-display font-semibold text-foreground text-sm">Privacyreglement van onze Medisch Centrum</p>
             </div>
             {sections.map((section, idx) => (
               <div key={idx} className="border-b border-border last:border-b-0">
                 <button
-                  className="w-full flex items-center justify-between px-5 py-4 text-left transition-colors"
+                  className="w-full flex items-center justify-between px-5 py-4 text-left transition-colors hover:bg-sand-deep"
                   onClick={() => setOpen(open === idx ? null : idx)}
-                  onMouseEnter={e => { e.currentTarget.style.background = "hsl(210 40% 98%)"; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
                 >
-                  <span style={{ fontWeight: 500, color: "hsl(222 47% 11%)" }}>{section.title}</span>
+                  <span className="font-medium text-foreground font-body">{section.title}</span>
                   <ChevronDown
-                    className={`w-4 h-4 transition-transform duration-200 ${open === idx ? "rotate-180" : ""}`}
-                    style={{ color: "hsl(215 16% 47%)" }}
+                    className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${open === idx ? "rotate-180" : ""}`}
                   />
                 </button>
                 {open === idx && (
-                  <div className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "hsl(220 9% 26%)" }}>
+                  <div className="px-5 pb-5 text-sm leading-relaxed text-foreground font-body">
                     {section.content}
                   </div>
                 )}

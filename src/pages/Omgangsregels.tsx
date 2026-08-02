@@ -22,13 +22,13 @@ const Omgangsregels = () => (
       </div>
     </section>
     <section className="page-section">
-      <div className="page-container">
+      <div className="page-container max-w-3xl">
         <p className="page-text">Om een prettige en veilige omgeving te waarborgen voor zowel patiënten als medewerkers, hanteren wij de volgende omgangsregels:</p>
         <ul className="space-y-4 mt-4">
           {regels.map(regel => (
             <li key={regel} className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "hsl(174 43% 30%)" }} />
-              <span className="text-base" style={{ color: "hsl(220 9% 26%)" }}>{regel}</span>
+              <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-primary" />
+              <span className="text-base text-foreground font-body">{regel}</span>
             </li>
           ))}
         </ul>

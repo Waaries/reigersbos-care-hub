@@ -42,35 +42,29 @@ const InschrijvenModal = () => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ background: "rgba(15,23,42,0.5)", backdropFilter: "blur(4px)" }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 warm-overlay"
       onClick={handleClose}
     >
       <div
-        className="bg-white w-full max-w-2xl max-h-[92vh] overflow-hidden flex flex-col rounded-[10px] border border-border"
-        style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}
+        className="bg-card w-full max-w-2xl max-h-[92vh] overflow-hidden flex flex-col rounded-[10px] border border-border shadow-warm"
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
         <div className="bg-primary p-7 relative flex-shrink-0">
           <button
             onClick={handleClose}
-            className="absolute top-5 right-5 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer border-none transition-all duration-200"
-            style={{ background: "rgba(255,255,255,0.15)" }}
-            onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.25)")}
-            onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.15)")}
+            className="absolute top-5 right-5 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer border-none transition-all duration-200 bg-white/15 hover:bg-white/25"
           >
-            <X size={16} color="white" />
+            <X size={16} className="text-primary-foreground" />
           </button>
 
-          <p className="text-xs font-semibold tracking-widest uppercase mb-1.5" style={{ color: "rgba(255,255,255,0.6)" }}>
+          <p className="text-xs font-semibold tracking-widest uppercase mb-1.5 text-primary-foreground/60">
             Reigersbos Medical Center
           </p>
-          <h2 className="text-2xl font-bold text-white m-0">
+          <h2 className="text-2xl font-bold text-primary-foreground m-0">
             Inschrijven als patiënt
           </h2>
 
-          {/* Step indicator */}
           {!submitted && (
             <div className="flex items-center gap-2 mt-5">
               {steps.map((s, i) => {
@@ -82,24 +76,16 @@ const InschrijvenModal = () => {
                     <div className="flex items-center gap-2">
                       <div
                         className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300"
-                        style={{
-                          background: isActive ? "white" : isDone ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.15)",
-                        }}
+                        style={{ background: isActive ? "white" : isDone ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.15)" }}
                       >
                         <Icon size={14} style={{ color: isActive ? "hsl(var(--primary))" : "white" }} />
                       </div>
-                      <span
-                        className="text-xs whitespace-nowrap"
-                        style={{
-                          fontWeight: isActive ? 700 : 500,
-                          color: isActive ? "white" : "rgba(255,255,255,0.5)",
-                        }}
-                      >
+                      <span className="text-xs whitespace-nowrap" style={{ fontWeight: isActive ? 700 : 500, color: isActive ? "white" : "rgba(255,255,255,0.5)" }}>
                         {s.label}
                       </span>
                     </div>
                     {i < steps.length - 1 && (
-                      <div className="w-6 h-px flex-shrink-0" style={{ background: "rgba(255,255,255,0.2)" }} />
+                      <div className="w-6 h-px flex-shrink-0 bg-white/20" />
                     )}
                   </div>
                 );
@@ -112,14 +98,10 @@ const InschrijvenModal = () => {
         <div className="overflow-y-auto flex-1">
           {submitted ? (
             <div className="py-14 px-8 text-center">
-              <div
-                className="w-[72px] h-[72px] rounded-full flex items-center justify-center mx-auto mb-5 bg-accent-light border-2 border-accent"
-              >
+              <div className="w-[72px] h-[72px] rounded-full flex items-center justify-center mx-auto mb-5 bg-accent-light border-2 border-accent">
                 <CheckCircle size={36} className="text-accent" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">
-                Aanvraag ontvangen!
-              </h3>
+              <h3 className="text-xl font-bold text-foreground mb-2">Aanvraag ontvangen!</h3>
               <p className="text-muted-foreground text-sm max-w-[340px] mx-auto mb-8">
                 Wij nemen zo spoedig mogelijk contact met u op om uw inschrijving te bevestigen.
               </p>
@@ -134,7 +116,6 @@ const InschrijvenModal = () => {
             <form onSubmit={handleSubmit}>
               <div className="p-7 flex flex-col gap-5">
 
-                {/* STEP 1: Persoonlijk */}
                 {step === 1 && (
                   <div className="flex flex-col gap-5">
                     <div className="grid grid-cols-[1fr_auto_1fr] gap-3">
@@ -186,7 +167,6 @@ const InschrijvenModal = () => {
                   </div>
                 )}
 
-                {/* STEP 2: Adres */}
                 {step === 2 && (
                   <div className="flex flex-col gap-5">
                     <div>
@@ -206,7 +186,6 @@ const InschrijvenModal = () => {
                   </div>
                 )}
 
-                {/* STEP 3: Medisch */}
                 {step === 3 && (
                   <div className="flex flex-col gap-5">
                     <div className="grid grid-cols-2 gap-3">
@@ -252,7 +231,6 @@ const InschrijvenModal = () => {
                   </div>
                 )}
 
-                {/* STEP 4: Akkoord */}
                 {step === 4 && (
                   <div className="flex flex-col gap-4">
                     <p className="text-sm text-foreground mb-2">
@@ -281,7 +259,7 @@ const InschrijvenModal = () => {
                           border: `1px solid ${checked ? "hsl(var(--accent))" : "hsl(var(--border))"}`,
                           background: checked ? "hsl(var(--accent))" : "white",
                         }}>
-                          {checked && <CheckCircle size={12} color="white" />}
+                          {checked && <CheckCircle size={12} className="text-primary-foreground" />}
                         </div>
                         <input type="checkbox" required checked={checked} onChange={e => set(key, e.target.checked)} style={{ display: "none" }} />
                         <div>
@@ -301,12 +279,11 @@ const InschrijvenModal = () => {
                 )}
               </div>
 
-              {/* Footer buttons */}
               <div className="px-7 pb-7 pt-4 flex gap-3 justify-between border-t border-border">
                 <button
                   type="button"
                   onClick={() => step > 1 ? setStep((step - 1) as Step) : handleClose()}
-                  className="px-6 py-3 rounded-md text-sm font-semibold border border-border bg-white text-muted-foreground cursor-pointer transition-all duration-200 hover:bg-secondary"
+                  className="px-6 py-3 rounded-md text-sm font-semibold border border-border bg-card text-muted-foreground cursor-pointer transition-all duration-200 hover:bg-secondary"
                 >
                   {step === 1 ? "Annuleren" : "← Terug"}
                 </button>

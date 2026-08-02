@@ -1,417 +1,441 @@
-import Layout from "@/components/Layout";
-import { useModal } from "@/contexts/ModalContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useModal } from "@/contexts/ModalContext";
+import Layout from "@/components/Layout";
 import {
-  Calendar, FileText, UserPlus, AlertCircle, Phone, MessageSquare,
-  Stethoscope, Activity, Heart, Droplets, Shield, Globe,
-  ArrowUpRight, MapPin, Mail, Clock,
+  Phone,
+  MapPin,
+  Clock,
+  Mail,
+  ArrowRight,
+  Calendar,
+  FileText,
+  AlertCircle,
+  Activity,
+  Users,
+  HeartPulse,
+  Baby,
+  FlaskConical,
+  Globe,
+  Shield,
 } from "lucide-react";
-import heroImage from "@/assets/hero-medical.jpg";
+import { Link } from "react-router-dom";
 
 const Index = () => {
+  const { t } = useLanguage();
   const { openModal } = useModal();
-  const { t, isRTL } = useLanguage();
 
   const quickActions = [
-    { icon: Calendar, title: "Afspraak maken", desc: "Bel ons of plan online een afspraak in", action: () => window.location.href = "tel:0207371426", cta: "Bel direct" },
-    { icon: FileText, title: "Herhaalrecept", desc: "Vraag eenvoudig uw medicatie aan", action: () => openModal("herhaalrecept"), cta: "Aanvragen" },
-    { icon: UserPlus, title: "Inschrijven", desc: "Word patiënt bij onze praktijk", action: () => openModal("inschrijven"), cta: "Start" },
-    { icon: AlertCircle, title: "Spoed", desc: "Direct hulp nodig? Bel onze spoedlijn", action: () => openModal("spoed"), cta: "Spoednummer", urgent: true },
+    {
+      icon: Calendar,
+      label: "Inschrijven",
+      desc: "Schrijf u in als patiënt",
+      onClick: () => openModal("inschrijven"),
+      color: "bg-warm text-sand",
+    },
+    {
+      icon: FileText,
+      label: "Herhaalrecept",
+      desc: "Vraag medicatie aan",
+      onClick: () => openModal("herhaalrecept"),
+      color: "bg-taupe text-sand",
+    },
+    {
+      icon: AlertCircle,
+      label: "Spoed",
+      desc: "Bij acute situaties",
+      onClick: () => openModal("spoed"),
+      color: "bg-red-700 text-white",
+    },
+    {
+      icon: Activity,
+      label: "Fysiotherapie",
+      desc: "Maak een afspraak",
+      onClick: () => openModal("fysiotherapie"),
+      color: "bg-warm-light text-sand",
+    },
   ];
 
   const services = [
-    { icon: Stethoscope, titleKey: "services.gp.title" as const, descKey: "services.gp.desc" as const },
-    { icon: Activity, titleKey: "services.physio.title" as const, descKey: "services.physio.desc" as const },
-    { icon: Heart, title: "Verloskundige", desc: "Verloskundige Praktijk De Poort — in ons gebouw" },
-    { icon: Droplets, title: "Bloedafname", desc: "RHMDC bloedafname service — snel en betrouwbaar" },
+    {
+      icon: HeartPulse,
+      title: "Huisartsenzorg",
+      desc: "Reguliere consulten, onderzoek, behandeling en verwijzingen.",
+      href: "/huisartspraktijk",
+    },
+    {
+      icon: Users,
+      title: "Praktijkassistente",
+      desc: "Triage, uitslagen en kleine medische handelingen.",
+      href: "/praktijkassistente",
+    },
+    {
+      icon: Activity,
+      title: "POH-S (somatiek)",
+      desc: "Begeleiding bij diabetes, hart- en vaatziekten en COPD/astma.",
+      href: "/poh-s",
+    },
+    {
+      icon: Shield,
+      title: "POH-GGZ",
+      desc: "Ondersteuning bij psychische klachten en begeleiding.",
+      href: "/poh-ggz",
+    },
+    {
+      icon: Activity,
+      title: "Fysiotherapie",
+      desc: "Fysiotherapie in hetzelfde gebouw, inclusief oefentherapie.",
+      href: "/fysiotherapie",
+    },
+    {
+      icon: Baby,
+      title: "Verloskunde",
+      desc: "Verloskundigenpraktijk De Poort, gevestigd in ons pand.",
+      href: "/overig-zorgaanbod",
+    },
+    {
+      icon: FlaskConical,
+      title: "Bloedafname",
+      desc: "RHMDC bloedafname en diagnostisch onderzoek op onze locatie.",
+      href: "/overig-zorgaanbod",
+    },
   ];
 
   const partners = [
-    { icon: Phone, title: "Huisarts Dichtbij", desc: "Buiten openingstijden bereikbaar voor spoedzorg in de regio Amsterdam.", link: "Meer informatie" },
-    { icon: MessageSquare, title: "Uw mening telt!", desc: "Beoordeel ons op Zorgkaart Nederland — wij zijn beoordeeld met een 10.0.", link: "Geef uw beoordeling" },
-    { icon: Globe, title: "Thuisarts.nl", desc: "Betrouwbare medische informatie van Nederlandse huisartsen.", link: "Bezoek website" },
+    {
+      name: "Verloskundigenpraktijk De Poort",
+      category: "Verloskunde",
+      phone: "020 358 58 47",
+      website: "https://www.verloskundigenpraktijkdepoort.nl",
+    },
+    {
+      name: "RHMDC Bloedafname",
+      category: "Diagnostiek",
+      phone: "088 260 4000",
+      website: "https://www.rhmdc.nl/locaties/reigersbos-medical-center",
+      hours: "Do 09:00 – 12:00",
+    },
   ];
 
   return (
     <Layout>
-      {/* HERO — photo with color overlay (GAZO style) */}
-      <section style={{
-        position: "relative",
-        minHeight: "440px",
-        marginTop: "0",
-        overflow: "hidden",
-        backgroundImage: `url(${heroImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}>
-        {/* Color overlay */}
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "linear-gradient(100deg, hsl(var(--moss-deep) / 0.92) 0%, hsl(var(--moss) / 0.85) 45%, hsl(var(--moss) / 0.45) 75%, hsl(var(--moss) / 0.2) 100%)",
-        }} />
-
-        <div className="page-container px-4 sm:px-6 lg:px-8" style={{
-          position: "relative",
-          paddingTop: "140px",
-          paddingBottom: "100px",
-        }}>
-          <p className="eyebrow mb-6" style={{ color: "hsl(var(--gold))" }}>
-            ◦ De beste zorg voor alle inwoners van de wijk ◦
-          </p>
-          <h1 className="font-display" style={{
-            fontSize: "clamp(44px, 7vw, 88px)",
-            fontWeight: 400,
-            lineHeight: 1.0,
-            letterSpacing: "-0.02em",
-            color: "white",
-            margin: 0,
-            maxWidth: "780px",
-          }}>
-            Reigersbos<br />
-            <em style={{ color: "hsl(var(--gold))", fontWeight: 400 }}>Medical Center</em>
-          </h1>
-          <div className="gold-rule mt-8" />
-          <p style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontStyle: "italic",
-            fontSize: "20px",
-            color: "rgba(255,255,255,0.9)",
-            maxWidth: "520px",
-            marginTop: "20px",
-            lineHeight: 1.5,
-          }}>
-            {t("hero.tagline")}
-          </p>
+      {/* Hero */}
+      <section className="relative min-h-[88vh] flex items-center overflow-hidden">
+        {/* Background image with warm overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/placeholder.svg"
+            alt="Reigersbos Medical Center"
+            className="w-full h-full object-cover"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(135deg, rgba(139,115,85,0.92) 0%, rgba(139,115,85,0.75) 45%, rgba(139,115,85,0.35) 100%)",
+            }}
+          />
         </div>
-      </section>
 
-      {/* WAT WILT U DOEN? — action grid (GAZO layout) */}
-      <section style={{ background: "hsl(var(--cream))", padding: "80px 0 100px" }}>
-        <div className="page-container px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="eyebrow mb-4">— Wat wilt u doen? —</p>
-            <h2 className="font-display" style={{
-              fontSize: "clamp(32px, 4.5vw, 48px)",
-              fontWeight: 300,
-              color: "hsl(var(--moss-deep))",
-              margin: 0,
-              letterSpacing: "-0.02em",
-            }}>
-              Snel naar wat u <em style={{ color: "hsl(var(--gold))", fontWeight: 400 }}>nodig heeft.</em>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {quickActions.map((a, i) => {
-              const Icon = a.icon;
-              const urgent = a.urgent;
-              return (
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 pt-32">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-sand">
+              <p className="eyebrow mb-4 text-sand/80">{t("hero.welcome")}</p>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6 text-white">
+                Uw gezondheid,<br />
+                <span className="text-taupe-light">onze zorg.</span>
+              </h1>
+              <p className="text-lg sm:text-xl text-sand/90 mb-8 max-w-lg leading-relaxed font-body">
+                Reigersbos Medical Center: een kleinschalige huisartspraktijk in Amsterdam-Zuidoost, waar persoonlijke aandacht en kwalitatieve zorg centraal staan.
+              </p>
+              <div className="flex flex-wrap gap-4">
                 <button
-                  key={i}
-                  onClick={a.action}
-                  className="grain-texture group"
-                  style={{
-                    background: urgent ? "hsl(var(--moss-deep))" : "hsl(var(--ivory))",
-                    border: urgent ? "1px solid hsl(0 60% 50%)" : "1px solid hsl(var(--gold) / 0.25)",
-                    padding: "36px 24px",
-                    textAlign: "left",
-                    cursor: "pointer",
-                    transition: "all 0.4s ease",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                    minHeight: "240px",
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.background = urgent ? "hsl(0 60% 40%)" : "hsl(var(--moss))";
-                    e.currentTarget.style.transform = "translateY(-4px)";
-                    const t = e.currentTarget.querySelectorAll("[data-flip]");
-                    t.forEach(el => (el as HTMLElement).style.color = "hsl(var(--ivory))");
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.background = urgent ? "hsl(var(--moss-deep))" : "hsl(var(--ivory))";
-                    e.currentTarget.style.transform = "translateY(0)";
-                    const t = e.currentTarget.querySelectorAll("[data-flip]");
-                    t.forEach(el => (el as HTMLElement).style.color = (el as HTMLElement).dataset.original || "");
-                  }}
+                  onClick={() => openModal("inschrijven")}
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                  style={{ background: "hsl(var(--sand))", color: "hsl(var(--primary))" }}
                 >
-                  <div style={{
-                    width: "56px", height: "56px",
-                    borderRadius: "50%",
-                    border: `1px solid ${urgent ? "hsl(0 60% 70%)" : "hsl(var(--gold))"}`,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    marginBottom: "20px",
-                  }}>
-                    <Icon size={22} strokeWidth={1.3} style={{ color: urgent ? "hsl(0 80% 80%)" : "hsl(var(--gold))" }} />
-                  </div>
-                  <h3 className="font-display" data-flip data-original={urgent ? "hsl(var(--ivory))" : "hsl(var(--moss-deep))"} style={{
-                    fontSize: "24px", fontWeight: 400, margin: "0 0 8px",
-                    color: urgent ? "hsl(var(--ivory))" : "hsl(var(--moss-deep))",
-                    transition: "color 0.4s",
-                  }}>
-                    {a.title}
-                  </h3>
-                  <p data-flip data-original={urgent ? "rgba(245,241,232,0.7)" : "hsl(var(--moss) / 0.7)"} style={{
-                    fontSize: "13px",
-                    lineHeight: 1.6,
-                    color: urgent ? "rgba(245,241,232,0.7)" : "hsl(var(--moss) / 0.7)",
-                    margin: "0 0 auto",
-                    fontWeight: 300,
-                    transition: "color 0.4s",
-                  }}>
-                    {a.desc}
-                  </p>
-                  <span data-flip data-original={urgent ? "hsl(var(--ivory))" : "hsl(var(--moss))"} style={{
-                    fontSize: "11px",
-                    letterSpacing: "0.2em",
-                    textTransform: "uppercase",
-                    fontWeight: 500,
-                    color: urgent ? "hsl(var(--ivory))" : "hsl(var(--moss))",
-                    marginTop: "20px",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    borderBottom: `1px solid currentColor`,
-                    paddingBottom: "4px",
-                    transition: "color 0.4s",
-                  }}>
-                    {a.cta} <ArrowUpRight size={12} />
-                  </span>
+                  {t("hero.cta")}
+                  <ArrowRight className="w-4 h-4" />
                 </button>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* TRUST RIBBON */}
-      <section style={{
-        background: "hsl(var(--ivory))",
-        padding: "28px 0",
-        borderTop: "1px solid hsl(var(--gold) / 0.25)",
-        borderBottom: "1px solid hsl(var(--gold) / 0.25)",
-      }}>
-        <div className="page-container px-4 sm:px-6 lg:px-8" style={{
-          display: "flex", alignItems: "center", justifyContent: "center",
-          gap: "20px", flexWrap: "wrap",
-        }}>
-          <span className="eyebrow">Zorgkaart Nederland</span>
-          <span style={{ color: "hsl(var(--gold))" }}>✦</span>
-          <span className="font-display" style={{ fontSize: "30px", fontWeight: 400, color: "hsl(var(--moss))", fontStyle: "italic" }}>
-            10.0 <span style={{ color: "hsl(var(--gold))", fontSize: "16px" }}>/ 10</span>
-          </span>
-          <span style={{ color: "hsl(var(--gold))" }}>✦</span>
-          <span className="font-display" style={{ fontSize: "15px", color: "hsl(var(--moss) / 0.7)", fontStyle: "italic" }}>
-            "Beoordeeld door onze patiënten"
-          </span>
-        </div>
-      </section>
-
-      {/* WELKOM (about) */}
-      <section className="grain-texture" style={{ background: "hsl(var(--sage) / 0.2)", padding: "100px 0" }}>
-        <div className="page-container px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-4">
-              <p className="eyebrow mb-5">— Welkom —</p>
-              <h2 className="font-display" style={{
-                fontSize: "clamp(32px, 4.5vw, 52px)", fontWeight: 300, lineHeight: 1.05,
-                color: "hsl(var(--moss-deep))", margin: 0, letterSpacing: "-0.02em",
-              }}>
-                {t("about.heading").split(" ").slice(0, -2).join(" ")}{" "}
-                <em style={{ color: "hsl(var(--gold))", fontWeight: 400 }}>
-                  {t("about.heading").split(" ").slice(-2).join(" ")}
-                </em>
-              </h2>
-              <div className="gold-rule mt-6" />
-            </div>
-            <div className={`lg:col-span-7 lg:col-start-6 ${isRTL ? "text-right" : ""}`}>
-              <p className="font-display" style={{ fontSize: "20px", lineHeight: 1.6, color: "hsl(var(--moss-deep))", fontStyle: "italic", margin: "0 0 24px" }}>
-                {t("about.p1")}
-              </p>
-              <p style={{ fontSize: "15px", lineHeight: 1.85, color: "hsl(var(--moss) / 0.8)", marginBottom: "16px", fontWeight: 300 }}>
-                {t("about.p2")}
-              </p>
-              <p style={{ fontSize: "15px", lineHeight: 1.85, color: "hsl(var(--moss) / 0.8)", marginBottom: "32px", fontWeight: 300 }}>
-                {t("about.p3")}
-              </p>
-              <button
-                onClick={() => openModal("inschrijven")}
-                style={{
-                  background: "transparent", color: "hsl(var(--moss))",
-                  border: "1px solid hsl(var(--moss))", borderRadius: "999px",
-                  padding: "14px 30px", fontSize: "11px", fontWeight: 500,
-                  letterSpacing: "0.22em", cursor: "pointer", textTransform: "uppercase",
-                  display: "inline-flex", alignItems: "center", gap: "10px",
-                  transition: "all 0.3s",
-                }}
-                onMouseEnter={e => { e.currentTarget.style.background = "hsl(var(--moss))"; e.currentTarget.style.color = "hsl(var(--ivory))"; }}
-                onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "hsl(var(--moss))"; }}
-              >
-                {t("about.cta")} <ArrowUpRight size={14} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section id="diensten" style={{ background: "hsl(var(--ivory))", padding: "100px 0" }}>
-        <div className="page-container px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="eyebrow mb-4">◦ Ons aanbod ◦</p>
-            <h2 className="font-display" style={{ fontSize: "clamp(32px, 4.5vw, 52px)", fontWeight: 300, color: "hsl(var(--moss-deep))", margin: 0, letterSpacing: "-0.02em" }}>
-              Een volledige kring van <em style={{ color: "hsl(var(--gold))", fontWeight: 400 }}>zorg.</em>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((svc, i) => {
-              const Icon = svc.icon;
-              return (
-                <div key={i} className="grain-texture" style={{
-                  background: "hsl(var(--cream))", padding: "44px 24px", textAlign: "center",
-                  border: "1px solid hsl(var(--gold) / 0.2)", transition: "all 0.5s ease",
-                }}
-                onMouseEnter={e => { e.currentTarget.style.background = "hsl(var(--moss))"; e.currentTarget.style.transform = "translateY(-4px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.background = "hsl(var(--cream))"; e.currentTarget.style.transform = "translateY(0)"; }}
+                <a
+                  href="tel:0207371426"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm border transition-colors hover:bg-white/10"
+                  style={{ borderColor: "rgba(245,241,232,0.4)", color: "hsl(var(--sand))" }}
                 >
-                  <div style={{
-                    width: "64px", height: "64px", borderRadius: "50%",
-                    border: "1px solid hsl(var(--gold))",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    margin: "0 auto 24px",
-                  }}>
-                    <Icon size={24} strokeWidth={1.2} style={{ color: "hsl(var(--gold))" }} />
+                  <Phone className="w-4 h-4" />
+                  020 737 14 26
+                </a>
+              </div>
+            </div>
+
+            {/* Quick action cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {quickActions.map((action, idx) => {
+                const Icon = action.icon;
+                return (
+                  <button
+                    key={idx}
+                    onClick={action.onClick}
+                    className="group text-left p-5 rounded-2xl bg-white/95 backdrop-blur-md border border-white/20 shadow-subtle transition-all duration-200 hover:-translate-y-1 hover:shadow-warm"
+                  >
+                    <div className={`w-11 h-11 rounded-xl ${action.color} flex items-center justify-center mb-4`}>
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <h3 className="font-display font-semibold text-foreground mb-1">{action.label}</h3>
+                    <p className="text-sm text-muted-foreground font-body">{action.desc}</p>
+                    <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                      Direct openen <ArrowRight className="w-3 h-3" />
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Info band */}
+      <section className="bg-sand-deep border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-sm">
+            <div className="flex items-center gap-3 text-foreground">
+              <Clock className="w-4 h-4 text-taupe" />
+              <span className="font-body">Ma–Vr 08:00–17:00</span>
+              <span className="text-muted-foreground">|</span>
+              <span className="text-muted-foreground">Weekend gesloten</span>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+              <a href="tel:0207371426" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-body">
+                <Phone className="w-4 h-4 text-taupe" />
+                020 737 14 26
+              </a>
+              <div className="flex items-center gap-2 text-muted-foreground font-body">
+                <MapPin className="w-4 h-4 text-taupe" />
+                Reigersbos 100K, Amsterdam
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Welcome section */}
+      <section className="py-20 lg:py-28 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div>
+              <p className="eyebrow mb-4">{t("about.heading")}</p>
+              <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-6 leading-tight">
+                Persoonlijke zorg in uw eigen buurt.
+              </h2>
+              <div className="space-y-4 text-muted-foreground font-body leading-relaxed">
+                <p>{t("about.p1")}</p>
+                <p>{t("about.p2")}</p>
+                <p>{t("about.p3")}</p>
+              </div>
+              <div className="mt-8">
+                <button
+                  onClick={() => openModal("inschrijven")}
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm bg-primary text-primary-foreground transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  {t("about.cta")}
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden bg-sand-deep">
+                <img
+                  src="/placeholder.svg"
+                  alt="Medische zorg"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-background border border-border rounded-2xl p-5 shadow-warm max-w-xs hidden sm:block">
+                <p className="text-xs font-semibold uppercase tracking-wider text-taupe mb-1">Open voor</p>
+                <p className="font-display font-semibold text-foreground">{t("contact.open")}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="py-20 lg:py-28 bg-sand-deep">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <p className="eyebrow mb-4">{t("services.label")}</p>
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-4">
+              {t("services.heading")}
+            </h2>
+            <p className="text-muted-foreground font-body">
+              Een breed aanbod aan medische zorg, dichtbij huis en afgestemd op uw behoeften.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {services.map((service, idx) => {
+              const Icon = service.icon;
+              return (
+                <Link
+                  key={idx}
+                  to={service.href}
+                  className="group bg-background rounded-2xl p-6 border border-border shadow-subtle transition-all duration-200 hover:-translate-y-1 hover:shadow-warm"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-sand-deep flex items-center justify-center mb-5 group-hover:bg-taupe/20 transition-colors">
+                    <Icon className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="font-display" style={{ fontSize: "22px", fontWeight: 400, color: "hsl(var(--moss-deep))", margin: "0 0 10px" }}>
-                    {'titleKey' in svc ? t(svc.titleKey) : svc.title}
-                  </h3>
-                  <p style={{ fontSize: "13px", lineHeight: 1.7, color: "hsl(var(--moss) / 0.65)", margin: 0, fontWeight: 300 }}>
-                    {'descKey' in svc ? t(svc.descKey) : svc.desc}
-                  </p>
-                </div>
+                  <h3 className="font-display font-semibold text-foreground mb-2">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground font-body leading-relaxed mb-4">{service.desc}</p>
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary">
+                    Lees meer <ArrowRight className="w-3 h-3" />
+                  </span>
+                </Link>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* PARTNERS / EXTERNAL — GAZO 3-block footer feature */}
-      <section style={{ background: "hsl(var(--cream))", padding: "100px 0", borderTop: "1px solid hsl(var(--gold) / 0.2)" }}>
-        <div className="page-container px-4 sm:px-6 lg:px-8">
-          <p className="eyebrow text-center mb-4">— Voor u beschikbaar —</p>
-          <h2 className="font-display text-center" style={{
-            fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 300, color: "hsl(var(--moss-deep))",
-            margin: "0 auto 56px", letterSpacing: "-0.02em", maxWidth: "640px",
-          }}>
-            Extra zorg en <em style={{ color: "hsl(var(--gold))", fontWeight: 400 }}>informatie.</em>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0" style={{ borderTop: "1px solid hsl(var(--gold) / 0.3)", borderBottom: "1px solid hsl(var(--gold) / 0.3)" }}>
-            {partners.map((p, i) => {
-              const Icon = p.icon;
-              return (
-                <div key={i} style={{
-                  padding: "44px 32px",
-                  borderRight: i < partners.length - 1 ? "1px solid hsl(var(--gold) / 0.3)" : "none",
-                  textAlign: "center",
-                }}>
-                  <Icon size={28} strokeWidth={1.2} style={{ color: "hsl(var(--gold))", margin: "0 auto 18px" }} />
-                  <h3 className="font-display" style={{ fontSize: "22px", fontWeight: 400, color: "hsl(var(--moss-deep))", margin: "0 0 12px" }}>
-                    {p.title}
-                  </h3>
-                  <p style={{ fontSize: "14px", lineHeight: 1.7, color: "hsl(var(--moss) / 0.75)", margin: "0 0 20px", fontWeight: 300 }}>
-                    {p.desc}
-                  </p>
-                  <a href="#" style={{
-                    fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase",
-                    fontWeight: 500, color: "hsl(var(--moss))",
-                    borderBottom: "1px solid hsl(var(--moss))", paddingBottom: "3px",
-                    textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "8px",
-                  }}>
-                    {p.link} <ArrowUpRight size={12} />
+      {/* Partners */}
+      <section className="py-20 lg:py-28 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+            <div className="lg:col-span-1">
+              <p className="eyebrow mb-4">Samenwerking</p>
+              <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-4">
+                Zorgpartners in ons pand.
+              </h2>
+              <p className="text-muted-foreground font-body leading-relaxed">
+                Naast onze eigen huisartsenzorg werken we samen met gespecialiseerde zorgpartners die gevestigd zijn in hetzelfde gebouw.
+              </p>
+            </div>
+            <div className="lg:col-span-2 grid sm:grid-cols-2 gap-5">
+              {partners.map((partner, idx) => (
+                <div key={idx} className="bg-sand-deep rounded-2xl p-6 border border-border">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-taupe mb-2">{partner.category}</p>
+                  <h3 className="font-display font-semibold text-foreground mb-3">{partner.name}</h3>
+                  <div className="space-y-2 text-sm font-body">
+                    {partner.phone && (
+                      <a href={`tel:${partner.phone.replace(/\s/g, "")}`} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                        <Phone className="w-4 h-4" />
+                        {partner.phone}
+                      </a>
+                    )}
+                    {partner.hours && (
+                      <p className="flex items-center gap-2 text-muted-foreground">
+                        <Clock className="w-4 h-4" />
+                        {partner.hours}
+                      </p>
+                    )}
+                    {partner.website && (
+                      <a href={partner.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary hover:underline">
+                        <Globe className="w-4 h-4" />
+                        Website bezoeken
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Special groups */}
+      <section className="py-20 lg:py-28 bg-sand-deep">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <p className="eyebrow mb-4">Iedereen is welkom</p>
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-4">
+              Zorg voor iedereen.
+            </h2>
+            <p className="text-muted-foreground font-body">
+              Ook als u niet verzekerd bent of niet uit Nederland komt, kunt u bij ons terecht.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <Link
+              to="/expats"
+              className="group relative overflow-hidden rounded-3xl bg-background border border-border p-8 transition-all duration-200 hover:-translate-y-1 hover:shadow-warm"
+            >
+              <div className="flex items-start justify-between mb-6">
+                <div className="w-12 h-12 rounded-xl bg-sand-deep flex items-center justify-center">
+                  <Globe className="w-6 h-6 text-primary" />
+                </div>
+                <ArrowRight className="w-5 h-5 text-taupe transition-transform group-hover:translate-x-1" />
+              </div>
+              <h3 className="font-display font-semibold text-foreground text-xl mb-2">Expats</h3>
+              <p className="text-sm text-muted-foreground font-body leading-relaxed">
+                Engelstalige informatie voor expats over inschrijven, het Nederlandse zorgsysteem en verzekering.
+              </p>
+            </Link>
+
+            <Link
+              to="/ongedocumenteerden"
+              className="group relative overflow-hidden rounded-3xl bg-background border border-border p-8 transition-all duration-200 hover:-translate-y-1 hover:shadow-warm"
+            >
+              <div className="flex items-start justify-between mb-6">
+                <div className="w-12 h-12 rounded-xl bg-sand-deep flex items-center justify-center">
+                  <Shield className="w-6 h-6 text-primary" />
+                </div>
+                <ArrowRight className="w-5 h-5 text-taupe transition-transform group-hover:translate-x-1" />
+              </div>
+              <h3 className="font-display font-semibold text-foreground text-xl mb-2">Zonder papieren</h3>
+              <p className="text-sm text-muted-foreground font-body leading-relaxed">
+                Ook zonder verblijfsstatus of verzekering heeft u recht op medisch noodzakelijke zorg.
+              </p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="py-20 lg:py-28 bg-warm text-sand">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="eyebrow mb-4 text-sand/80">Bezoek ons</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white mb-6 leading-tight">
+                Wij verwelkomen u graag.
+              </h2>
+              <p className="text-sand/90 font-body leading-relaxed max-w-lg">
+                Heeft u vragen of wilt u een afspraak maken? Neem contact met ons op tijdens openingstijden.
+              </p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-taupe-light mb-2">Adres</p>
+                  <p className="font-body text-white">Reigersbos 100K</p>
+                  <p className="font-body text-sand/80">3e etage, 1107 ES Amsterdam</p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-taupe-light mb-2">Telefoon</p>
+                  <a href="tel:0207371426" className="font-body text-white hover:text-taupe-light transition-colors">
+                    020 737 14 26
                   </a>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* SPECIAL GROUPS */}
-      <section style={{ background: "hsl(var(--ivory))", padding: "80px 0" }}>
-        <div className="page-container px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { href: "/ongedocumenteerden", icon: Shield, eyebrow: "Geen papieren?", title: "U heeft recht op zorg —", italic: "wij helpen u.", sub: "Vertrouwelijk · Beroepsgeheim · CAK", cta: "Lees meer", dark: true },
-              { href: "/expats", icon: Globe, eyebrow: "International patients", title: "We welcome expats &", italic: "English speakers.", sub: "English spoken · Easy registration", cta: "Read more", dark: false },
-            ].map((b, i) => {
-              const Icon = b.icon;
-              return (
-                <a key={i} href={b.href} className="grain-texture" style={{
-                  display: "block", padding: "44px 36px",
-                  background: b.dark ? "hsl(var(--moss))" : "hsl(var(--cream))",
-                  color: b.dark ? "hsl(var(--ivory))" : "hsl(var(--moss))",
-                  textDecoration: "none", border: "1px solid hsl(var(--gold) / 0.25)",
-                  transition: "all 0.4s",
-                }}
-                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; }}
-                >
-                  <Icon size={26} strokeWidth={1.2} style={{ color: "hsl(var(--gold))", marginBottom: "20px" }} />
-                  <p className="eyebrow mb-3" style={{ color: "hsl(var(--gold))" }}>◦ {b.eyebrow} ◦</p>
-                  <h3 className="font-display" style={{ fontSize: "28px", fontWeight: 300, lineHeight: 1.15, color: "inherit", margin: "0 0 12px" }}>
-                    {b.title}<br />
-                    <em style={{ color: "hsl(var(--gold))", fontWeight: 400 }}>{b.italic}</em>
-                  </h3>
-                  <p className="font-display" style={{ fontSize: "14px", fontStyle: "italic", opacity: 0.7, margin: "0 0 20px" }}>
-                    {b.sub}
-                  </p>
-                  <span style={{
-                    fontSize: "11px", letterSpacing: "0.22em", textTransform: "uppercase",
-                    fontWeight: 500, display: "inline-flex", alignItems: "center", gap: "8px",
-                    borderBottom: "1px solid currentColor", paddingBottom: "3px",
-                  }}>
-                    {b.cta} <ArrowUpRight size={12} />
-                  </span>
-                </a>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section className="grain-texture" style={{ background: "hsl(var(--moss-deep))", color: "hsl(var(--ivory))", padding: "100px 0" }}>
-        <div className="page-container px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="eyebrow mb-5" style={{ color: "hsl(var(--gold))" }}>◦ Bezoek ons ◦</p>
-            <h2 className="font-display" style={{ fontSize: "clamp(36px, 5vw, 60px)", fontWeight: 300, color: "hsl(var(--ivory))", margin: 0, letterSpacing: "-0.02em" }}>
-              Wij verwelkomen u <em style={{ color: "hsl(var(--gold))", fontWeight: 400 }}>graag.</em>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 max-w-5xl mx-auto">
-            {[
-              { icon: MapPin, label: "Adres", value: "Reigersbos 100K\n3e etage, 1107 ES" },
-              { icon: Phone, label: "Telefoon", value: "020 737 14 26", href: "tel:0207371426" },
-              { icon: Mail, label: "E-mail", value: "Info@reigersbosmedicalcenter.nl", href: "mailto:Info@reigersbosmedicalcenter.nl" },
-              { icon: Clock, label: "Openingstijden", value: "Ma–Vr 08:00–17:00\nWeekend gesloten" },
-            ].map((c, i) => {
-              const Icon = c.icon;
-              return (
-                <div key={i} style={{ textAlign: "center" }}>
-                  <Icon size={22} strokeWidth={1.2} style={{ color: "hsl(var(--gold))", margin: "0 auto 14px" }} />
-                  <p className="eyebrow mb-3" style={{ color: "hsl(var(--gold))" }}>{c.label}</p>
-                  {c.href ? (
-                    <a href={c.href} className="font-display" style={{ fontSize: "16px", color: "hsl(var(--ivory))", textDecoration: "none", fontStyle: "italic", lineHeight: 1.5, display: "block", wordBreak: "break-word" }}>
-                      {c.value}
-                    </a>
-                  ) : (
-                    <p className="font-display" style={{ fontSize: "16px", color: "hsl(var(--ivory))", margin: 0, fontStyle: "italic", lineHeight: 1.5, whiteSpace: "pre-line" }}>
-                      {c.value}
-                    </p>
-                  )}
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-taupe-light mb-2">E-mail</p>
+                  <a href="mailto:Info@reigersbosmedicalcenter.nl" className="font-body text-white hover:text-taupe-light transition-colors break-words">
+                    Info@reigersbosmedicalcenter.nl
+                  </a>
                 </div>
-              );
-            })}
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-taupe-light mb-2">Openingstijden</p>
+                  <p className="font-body text-white">Ma–Vr 08:00–17:00</p>
+                  <p className="font-body text-sand/80">Weekend gesloten</p>
+                </div>
+              </div>
+              <div className="mt-8 pt-6 border-t border-white/20">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm bg-sand text-primary transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <Mail className="w-4 h-4" />
+                  Contact opnemen
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -10,7 +10,7 @@ const PohS = () => (
       </div>
     </section>
     <section className="page-section">
-      <div className="page-container">
+      <div className="page-container max-w-3xl">
         <h2 className="page-subheading">POH-S</h2>
         <p className="page-text">
           In onze praktijk zijn praktijkondersteuners-somatiek (POH-S) werkzaam. De POH-S ondersteunt uw
