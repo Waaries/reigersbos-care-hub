@@ -10,7 +10,7 @@ const PohGGZ = () => (
       </div>
     </section>
     <section className="page-section">
-      <div className="page-container">
+      <div className="page-container max-w-3xl">
         <h2 className="page-subheading">POH-GGZ</h2>
         <p className="page-text">
           De POH-GGZ is binnen de huisartsenpraktijk ingevoerd om u tijdig bij te staan bij psychosociale
