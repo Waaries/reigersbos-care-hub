@@ -114,10 +114,10 @@ const Header = () => {
       {/* Main header */}
       <div className={`bg-background border-b border-border transition-shadow duration-200 ${scrolled ? "shadow-warm" : ""}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className={`flex items-center justify-between h-20 lg:h-24 ${isRTL ? "flex-row-reverse" : ""}`}>
+          <div className={`flex items-center justify-between h-24 lg:h-28 ${isRTL ? "flex-row-reverse" : ""}`}>
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 flex-shrink-0 group py-2">
-              <img src={logo} alt="Reigersbos Medical Center" className="h-16 lg:h-20 w-auto object-contain transition-transform duration-500 group-hover:scale-105" />
+              <img src={logo} alt="Reigersbos Medical Center" className="h-20 lg:h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-105" />
               <span className="font-display hidden sm:block" style={{
                 fontSize: "20px",
                 fontWeight: 600,
