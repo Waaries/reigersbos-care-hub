@@ -17,6 +17,7 @@ export default {
         sans: ['Manrope', '-apple-system', 'system-ui', 'sans-serif'],
         display: ['Sora', '-apple-system', 'system-ui', 'sans-serif'],
         body: ['Manrope', '-apple-system', 'system-ui', 'sans-serif'],
+        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
