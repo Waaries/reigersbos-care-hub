@@ -15,8 +15,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Manrope', '-apple-system', 'system-ui', 'sans-serif'],
-        serif: ['Cormorant Garamond', 'Times New Roman', 'Georgia', 'serif'],
-        display: ['Cormorant Garamond', 'Georgia', 'serif'],
+        display: ['Sora', '-apple-system', 'system-ui', 'sans-serif'],
+        body: ['Manrope', '-apple-system', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -48,23 +48,21 @@ export default {
           light: "hsl(var(--accent-light))",
         },
         warm: {
-          DEFAULT: "hsl(var(--gold))",
-          light: "hsl(var(--gold-soft))",
-          deep: "hsl(var(--moss-deep))",
+          DEFAULT: "hsl(var(--warm-brown))",
+          light: "hsl(var(--warm-brown-light))",
+          taupe: "hsl(var(--warm-taupe))",
+          "taupe-light": "hsl(var(--warm-taupe-light))",
+          sand: "hsl(var(--sand))",
+          "sand-deep": "hsl(var(--sand-deep))",
         },
-        moss: {
-          DEFAULT: "hsl(var(--moss))",
-          deep: "hsl(var(--moss-deep))",
+        sand: {
+          DEFAULT: "hsl(var(--sand))",
+          deep: "hsl(var(--sand-deep))",
         },
-        gold: {
-          DEFAULT: "hsl(var(--gold))",
-          soft: "hsl(var(--gold-soft))",
+        taupe: {
+          DEFAULT: "hsl(var(--warm-taupe))",
+          light: "hsl(var(--warm-taupe-light))",
         },
-        sage: "hsl(var(--sage))",
-        ivory: "hsl(var(--ivory))",
-        cream: "hsl(var(--cream))",
-        linen: "hsl(var(--linen))",
-        paper: "hsl(var(--cream))",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -114,9 +112,10 @@ export default {
         "fade-in": "fade-in 0.3s ease-out",
       },
       boxShadow: {
-        subtle: "0 1px 3px rgba(0,0,0,0.06)",
-        card: "0 1px 3px rgba(0,0,0,0.06)",
-        modal: "0 16px 48px rgba(0,0,0,0.12)",
+        subtle: "0 1px 3px rgba(139,115,85,0.06)",
+        card: "0 1px 3px rgba(139,115,85,0.06)",
+        modal: "0 16px 48px rgba(139,115,85,0.12)",
+        warm: "0 10px 30px rgba(139,115,85,0.12)",
       },
     },
   },
