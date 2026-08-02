@@ -38,15 +38,10 @@ const OverigZorgaanbod = () => {
         </div>
       </section>
 
-      <div className="max-w-5xl mx-auto px-4 py-12 space-y-8">
-
-        <div style={{
-          background: "hsl(166 76% 97%)", border: "1px solid hsl(168 76% 78%)",
-          borderRadius: "10px", padding: "20px 24px",
-          display: "flex", gap: "16px", alignItems: "flex-start",
-        }}>
-          <span style={{ fontSize: "24px" }}>🤝</span>
-          <p style={{ color: "hsl(215 16% 47%)", lineHeight: 1.7, fontSize: "14px" }}>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-8">
+        <div className="flex gap-4 items-start bg-sand-deep border border-accent-light rounded-xl p-5">
+          <span className="text-2xl">🤝</span>
+          <p className="text-sm text-muted-foreground leading-relaxed font-body">
             Samenwerking in één pand. Doordat alle zorgverleners onder één dak werken,
             kunnen wij snel schakelen en de continuïteit van uw zorg waarborgen.
             Elke zorgverlener heeft zijn eigen administratie en afsprakensysteem.
@@ -55,65 +50,48 @@ const OverigZorgaanbod = () => {
 
         <div className="space-y-6">
           {zorgverleners.map((z) => (
-            <div key={z.naam} style={{
-              background: "white", border: "1px solid hsl(214 32% 91%)",
-              borderRadius: "10px", overflow: "hidden",
-              boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
-            }}>
+            <div key={z.naam} className="bg-card border border-border rounded-2xl overflow-hidden shadow-subtle">
               <div className="p-6 md:p-8 flex flex-col md:flex-row gap-8">
                 <div className="flex-1 space-y-4">
                   <div>
                     <span className="page-hero-label">{z.categorie}</span>
-                    <h2 style={{ fontSize: "18px", fontWeight: 700, color: "hsl(222 47% 11%)", marginTop: "4px" }}>
-                      {z.naam}
-                    </h2>
+                    <h2 className="font-display font-bold text-foreground text-lg mt-1">{z.naam}</h2>
                   </div>
-                  <p style={{ color: "hsl(215 16% 47%)", lineHeight: 1.7, fontSize: "14px" }}>{z.beschrijving}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed font-body">{z.beschrijving}</p>
                   <div className="flex flex-wrap gap-2">
                     {z.diensten.map(d => (
-                      <span key={d} style={{
-                        background: "hsl(210 40% 98%)", color: "hsl(222 47% 11%)",
-                        fontSize: "12px", fontWeight: 500, padding: "4px 12px",
-                        borderRadius: "50px", border: "1px solid hsl(214 32% 91%)",
-                      }}>
+                      <span key={d} className="bg-sand-deep text-foreground text-xs font-semibold px-3 py-1 rounded-full border border-border">
                         {d}
                       </span>
                     ))}
                   </div>
-                  <div style={{
-                    background: "hsl(210 40% 98%)", border: "1px solid hsl(214 32% 91%)",
-                    borderRadius: "8px", padding: "12px", fontSize: "13px",
-                    color: "hsl(215 16% 47%)", lineHeight: 1.6,
-                  }}>
+                  <div className="bg-sand-deep border border-border rounded-lg p-3 text-sm text-muted-foreground font-body">
                     ℹ️ {z.opmerking}
                   </div>
                 </div>
 
                 <div className="md:w-64 shrink-0">
-                  <div style={{
-                    background: "hsl(210 40% 98%)", border: "1px solid hsl(214 32% 91%)",
-                    borderRadius: "8px", padding: "20px",
-                  }}>
+                  <div className="bg-sand-deep border border-border rounded-xl p-5">
                     <p className="page-hero-label mb-3">Contact & Info</p>
                     <div className="space-y-3">
-                      <div className="flex items-start gap-2.5 text-sm" style={{ color: "hsl(222 47% 11%)" }}>
-                        <MapPin className="w-4 h-4 mt-0.5 shrink-0" style={{ color: "hsl(174 43% 30%)" }} />
+                      <div className="flex items-start gap-2.5 text-sm text-foreground font-body">
+                        <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-primary" />
                         <span>Reigersbos 100 K (3e etage)<br />1107 ES Amsterdam</span>
                       </div>
                       {z.openingstijden && (
-                        <div className="flex items-center gap-2.5 text-sm" style={{ color: "hsl(222 47% 11%)" }}>
-                          <Clock className="w-4 h-4 shrink-0" style={{ color: "hsl(174 43% 30%)" }} />
+                        <div className="flex items-center gap-2.5 text-sm text-foreground font-body">
+                          <Clock className="w-4 h-4 shrink-0 text-primary" />
                           {z.openingstijden}
                         </div>
                       )}
                       {z.contact && (
-                        <a href={`tel:${z.contact.replace(/\s/g, "")}`} className="flex items-center gap-2.5 text-sm" style={{ color: "hsl(174 43% 30%)", fontWeight: 600, textDecoration: "none" }}>
+                        <a href={`tel:${z.contact.replace(/\s/g, "")}`} className="flex items-center gap-2.5 text-sm text-primary font-semibold no-underline">
                           <Phone className="w-4 h-4 shrink-0" />
                           {z.contact}
                         </a>
                       )}
                       {z.website && (
-                        <a href={z.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm" style={{ color: "hsl(174 43% 30%)", fontWeight: 600, textDecoration: "none" }}>
+                        <a href={z.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-primary font-semibold no-underline">
                           <ExternalLink className="w-4 h-4 shrink-0" />
                           Bezoek website
                         </a>

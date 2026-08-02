@@ -1,5 +1,4 @@
 import Layout from "@/components/Layout";
-import { Stethoscope } from "lucide-react";
 
 const Huisartspraktijk = () => (
   <Layout>
@@ -11,7 +10,7 @@ const Huisartspraktijk = () => (
       </div>
     </section>
     <section className="page-section">
-      <div className="page-container">
+      <div className="page-container max-w-3xl">
         <h2 className="page-subheading">Huisarts</h2>
         <p className="page-text">
           Als u vragen heeft of ondersteuning zoekt op het gebied van uw gezondheid, dan is de huisarts,

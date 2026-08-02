@@ -44,13 +44,13 @@ const Fysiotherapie = () => {
             netwerk aan zorgprofessionals, waarvan we gebruik maken in gecompliceerde casussen.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
             <div className="info-card">
               <h3 className="page-subheading">Wij behandelen</h3>
               <ul className="space-y-2">
                 {behandelingen.map(item => (
-                  <li key={item} className="flex items-start gap-2 text-sm" style={{ color: "hsl(220 9% 26%)" }}>
-                    <span className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5" style={{ background: "hsl(222 47% 11%)" }} />
+                  <li key={item} className="flex items-start gap-2 text-sm text-foreground">
+                    <span className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5 bg-foreground" />
                     {item}
                   </li>
                 ))}
@@ -60,8 +60,8 @@ const Fysiotherapie = () => {
               <h3 className="page-subheading">Wij bieden ook</h3>
               <ul className="space-y-2">
                 {aanbod.map(item => (
-                  <li key={item} className="flex items-start gap-2 text-sm" style={{ color: "hsl(220 9% 26%)" }}>
-                    <span className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5" style={{ background: "hsl(174 43% 30%)" }} />
+                  <li key={item} className="flex items-start gap-2 text-sm text-foreground">
+                    <span className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5 bg-primary" />
                     {item}
                   </li>
                 ))}
@@ -71,17 +71,7 @@ const Fysiotherapie = () => {
 
           <button
             onClick={() => openModal("fysiotherapie")}
-            className="mt-8"
-            style={{
-              background: "hsl(222 47% 11%)",
-              color: "white",
-              border: "none",
-              borderRadius: "6px",
-              padding: "12px 24px",
-              fontSize: "14px",
-              fontWeight: 600,
-              cursor: "pointer",
-            }}
+            className="mt-8 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-semibold text-sm hover:opacity-90 transition-opacity"
           >
             Maak een afspraak Fysiotherapie
           </button>
