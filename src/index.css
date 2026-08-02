@@ -136,6 +136,16 @@
     text-transform: uppercase;
     color: hsl(var(--accent));
   }
+  .shadow-subtle {
+    box-shadow: 0 1px 3px rgba(139, 115, 85, 0.06);
+  }
+  .shadow-warm {
+    box-shadow: 0 8px 24px rgba(139, 115, 85, 0.1);
+  }
+  .warm-overlay {
+    background: rgba(60, 48, 36, 0.45);
+    backdrop-filter: blur(4px);
+  }
 }
 
 @layer components {
