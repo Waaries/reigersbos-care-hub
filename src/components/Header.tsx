@@ -222,7 +222,7 @@ const Header = () => {
               ))}
             </nav>
 
-            {/* Right: Phone + Lang + Mobile Toggle */}
+            {/* Right: Phone + Mobile Toggle */}
             <div className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
               <a
                 href="tel:0207371426"
