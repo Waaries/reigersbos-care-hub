@@ -13,6 +13,8 @@ const Header = () => {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [langOpen, setLangOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
+  const topLangRef = useRef<HTMLDivElement>(null);
+  const [topLangOpen, setTopLangOpen] = useState(false);
   const location = useLocation();
 
   const navItems = [
