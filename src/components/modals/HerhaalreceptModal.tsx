@@ -28,38 +28,30 @@ const HerhaalreceptModal = () => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ background: "rgba(15,23,42,0.5)", backdropFilter: "blur(4px)" }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 warm-overlay"
       onClick={handleClose}
     >
       <div
-        className="bg-white w-full max-w-2xl max-h-[92vh] overflow-hidden flex flex-col rounded-[10px] border border-border"
-        style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}
+        className="bg-card w-full max-w-2xl max-h-[92vh] overflow-hidden flex flex-col rounded-[10px] border border-border shadow-warm"
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
         <div className="bg-primary p-7 relative flex-shrink-0">
           <button
             onClick={handleClose}
-            className="absolute top-5 right-5 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer border-none transition-all duration-200"
-            style={{ background: "rgba(255,255,255,0.15)" }}
-            onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.25)")}
-            onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.15)")}
+            className="absolute top-5 right-5 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer border-none transition-all duration-200 bg-white/15 hover:bg-white/25"
           >
-            <X size={16} color="white" />
+            <X size={16} className="text-primary-foreground" />
           </button>
 
-          <p className="text-xs font-semibold tracking-widest uppercase mb-1.5" style={{ color: "rgba(255,255,255,0.6)" }}>
+          <p className="text-xs font-semibold tracking-widest uppercase mb-1.5 text-primary-foreground/60">
             Reigersbos Medical Center
           </p>
-          <h2 className="text-2xl font-bold text-white m-0">
-            Herhaalrecept aanvragen
-          </h2>
-          <p className="text-xs mt-1.5" style={{ color: "rgba(255,255,255,0.6)" }}>
+          <h2 className="text-2xl font-bold text-primary-foreground m-0">Herhaalrecept aanvragen</h2>
+          <p className="text-xs mt-1.5 text-primary-foreground/60">
             Vul uw gegevens in en wij verwerken uw aanvraag
           </p>
 
-          {/* Info strip */}
           <div className="flex items-center gap-5 mt-5">
             {[
               { icon: User, text: "Uw gegevens" },
@@ -67,10 +59,10 @@ const HerhaalreceptModal = () => {
               { icon: ClipboardList, text: "Akkoord" },
             ].map(({ icon: Icon, text }) => (
               <div key={text} className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ background: "rgba(255,255,255,0.15)" }}>
-                  <Icon size={13} color="white" />
+                <div className="w-7 h-7 rounded-full flex items-center justify-center bg-white/15">
+                  <Icon size={13} className="text-primary-foreground" />
                 </div>
-                <span className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.7)" }}>{text}</span>
+                <span className="text-xs font-medium text-primary-foreground/70">{text}</span>
               </div>
             ))}
           </div>
@@ -83,9 +75,7 @@ const HerhaalreceptModal = () => {
               <div className="w-[72px] h-[72px] rounded-full flex items-center justify-center mx-auto mb-5 bg-accent-light border-2 border-accent">
                 <CheckCircle size={36} className="text-accent" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">
-                Aanvraag ontvangen!
-              </h3>
+              <h3 className="text-xl font-bold text-foreground mb-2">Aanvraag ontvangen!</h3>
               <p className="text-muted-foreground text-sm max-w-[340px] mx-auto mb-2">
                 Uw herhaalrecept wordt zo spoedig mogelijk verwerkt.
               </p>
@@ -103,11 +93,8 @@ const HerhaalreceptModal = () => {
             <form onSubmit={handleSubmit}>
               <div className="p-7 flex flex-col gap-6">
 
-                {/* Uw gegevens */}
                 <div className="flex flex-col gap-4">
-                  <p className="text-xs font-bold text-foreground uppercase tracking-wider m-0">
-                    Uw gegevens
-                  </p>
+                  <p className="text-xs font-bold text-foreground uppercase tracking-wider m-0">Uw gegevens</p>
                   <div className="grid grid-cols-[1fr_auto_1fr] gap-3">
                     <div>
                       <label className={labelClass}>Voornaam *</label>
@@ -140,11 +127,8 @@ const HerhaalreceptModal = () => {
 
                 <div className="h-px bg-border" />
 
-                {/* Medicatie */}
                 <div className="flex flex-col gap-4">
-                  <p className="text-xs font-bold text-foreground uppercase tracking-wider m-0">
-                    Medicatie
-                  </p>
+                  <p className="text-xs font-bold text-foreground uppercase tracking-wider m-0">Medicatie</p>
                   <div>
                     <label className={labelClass}>Naam medicijn *</label>
                     <input required className={inputClass} value={form.medicijn} onChange={e => set("medicijn", e.target.value)} placeholder="Bijv. Metformine" />
@@ -174,7 +158,6 @@ const HerhaalreceptModal = () => {
 
                 <div className="h-px bg-border" />
 
-                {/* AVG */}
                 <label className="flex items-start gap-3.5 p-4 rounded-md cursor-pointer transition-all duration-200" style={{
                   border: `1px solid ${form.avg ? "hsl(var(--accent))" : "hsl(var(--border))"}`,
                   background: form.avg ? "hsl(var(--accent-light))" : "hsl(var(--secondary))",
@@ -183,7 +166,7 @@ const HerhaalreceptModal = () => {
                     border: `1px solid ${form.avg ? "hsl(var(--accent))" : "hsl(var(--border))"}`,
                     background: form.avg ? "hsl(var(--accent))" : "white",
                   }}>
-                    {form.avg && <CheckCircle size={12} color="white" />}
+                    {form.avg && <CheckCircle size={12} className="text-primary-foreground" />}
                   </div>
                   <input type="checkbox" required checked={form.avg} onChange={e => set("avg", e.target.checked)} style={{ display: "none" }} />
                   <div>
@@ -194,17 +177,16 @@ const HerhaalreceptModal = () => {
 
                 <div className="bg-accent-light border border-accent/20 rounded-md p-3.5">
                   <p className="text-xs text-accent leading-relaxed m-0">
-                    💊 <strong>Let op:</strong> Een herhaalrecept kunt u alleen aanvragen voor medicatie die u al gebruikt. Voor een nieuw medicijn dient u een afspraak te maken.
+                    <strong>Let op:</strong> Een herhaalrecept kunt u alleen aanvragen voor medicatie die u al gebruikt. Voor een nieuw medicijn dient u een afspraak te maken.
                   </p>
                 </div>
               </div>
 
-              {/* Footer */}
               <div className="px-7 pb-7 pt-4 flex gap-3 justify-between border-t border-border">
                 <button
                   type="button"
                   onClick={handleClose}
-                  className="px-6 py-3 rounded-md text-sm font-semibold border border-border bg-white text-muted-foreground cursor-pointer hover:bg-secondary transition-all"
+                  className="px-6 py-3 rounded-md text-sm font-semibold border border-border bg-card text-muted-foreground cursor-pointer hover:bg-secondary transition-all"
                 >
                   Annuleren
                 </button>

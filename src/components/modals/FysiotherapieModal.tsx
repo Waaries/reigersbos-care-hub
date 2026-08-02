@@ -38,33 +38,27 @@ const FysiotherapieModal = () => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ background: "rgba(15,23,42,0.5)", backdropFilter: "blur(4px)" }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 warm-overlay"
       onClick={handleClose}
     >
       <div
-        className="bg-white w-full max-w-lg overflow-hidden flex flex-col rounded-[10px] border border-border"
-        style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)", maxHeight: "90vh" }}
+        className="bg-card w-full max-w-lg overflow-hidden flex flex-col rounded-[10px] border border-border shadow-warm"
+        style={{ maxHeight: "90vh" }}
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
         <div className="bg-primary p-7 relative flex-shrink-0">
           <button
             onClick={handleClose}
-            className="absolute top-5 right-5 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer border-none transition-all duration-200"
-            style={{ background: "rgba(255,255,255,0.15)" }}
-            onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.25)")}
-            onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.15)")}
+            className="absolute top-5 right-5 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer border-none transition-all duration-200 bg-white/15 hover:bg-white/25"
           >
-            <X size={16} color="white" />
+            <X size={16} className="text-primary-foreground" />
           </button>
 
-          <p className="text-xs font-semibold tracking-widest uppercase mb-1.5" style={{ color: "rgba(255,255,255,0.6)" }}>
+          <p className="text-xs font-semibold tracking-widest uppercase mb-1.5 text-primary-foreground/60">
             Reigersbos Medical Center
           </p>
-          <h2 className="text-2xl font-bold text-white m-0 mb-5">
-            Afspraak Fysiotherapie
-          </h2>
+          <h2 className="text-2xl font-bold text-primary-foreground m-0 mb-5">Afspraak Fysiotherapie</h2>
 
           {!submitted && (
             <div className="flex items-center gap-2">
@@ -77,16 +71,11 @@ const FysiotherapieModal = () => {
                     <div className="flex items-center gap-1.5">
                       <div
                         className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300"
-                        style={{
-                          background: isActive ? "white" : isDone ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.15)",
-                        }}
+                        style={{ background: isActive ? "white" : isDone ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.15)" }}
                       >
                         <Icon size={13} style={{ color: isActive ? "hsl(var(--primary))" : "white" }} />
                       </div>
-                      <span
-                        className="text-xs font-semibold transition-all duration-300"
-                        style={{ color: isActive ? "white" : "rgba(255,255,255,0.5)" }}
-                      >
+                      <span className="text-xs font-semibold transition-all duration-300" style={{ color: isActive ? "white" : "rgba(255,255,255,0.5)" }}>
                         {s.label}
                       </span>
                     </div>
@@ -107,9 +96,7 @@ const FysiotherapieModal = () => {
               <div className="w-[72px] h-[72px] rounded-full flex items-center justify-center mx-auto mb-5 bg-accent-light border-2 border-accent">
                 <CheckCircle size={36} className="text-accent" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">
-                Aanvraag ontvangen!
-              </h3>
+              <h3 className="text-xl font-bold text-foreground mb-2">Aanvraag ontvangen!</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-6">
                 Wij nemen zo spoedig mogelijk contact met u op voor uw fysiotherapie afspraak.
               </p>
@@ -210,7 +197,7 @@ const FysiotherapieModal = () => {
                       border: `1px solid ${form.avg ? "hsl(var(--accent))" : "hsl(var(--border))"}`,
                       background: form.avg ? "hsl(var(--accent))" : "white",
                     }}>
-                      {form.avg && <CheckCircle size={12} color="white" />}
+                      {form.avg && <CheckCircle size={12} className="text-primary-foreground" />}
                     </div>
                     <input type="checkbox" required checked={form.avg} onChange={e => set("avg", e.target.checked)} style={{ display: "none" }} />
                     <div>
@@ -220,7 +207,7 @@ const FysiotherapieModal = () => {
                   </label>
                   <div className="bg-accent-light border border-accent/20 rounded-md p-3.5">
                     <p className="text-xs text-accent leading-relaxed m-0">
-                      🏃 <strong>Sessies van 30 minuten.</strong> Wij nemen binnen 2 werkdagen contact op om een passende tijd in te plannen.
+                      <strong>Sessies van 30 minuten.</strong> Wij nemen binnen 2 werkdagen contact op om een passende tijd in te plannen.
                     </p>
                   </div>
                 </>)}
@@ -230,7 +217,7 @@ const FysiotherapieModal = () => {
                 <button
                   type="button"
                   onClick={() => step > 1 ? setStep((step - 1) as Step) : handleClose()}
-                  className="px-6 py-3 rounded-md text-sm font-semibold border border-border bg-white text-muted-foreground cursor-pointer hover:bg-secondary transition-all"
+                  className="px-6 py-3 rounded-md text-sm font-semibold border border-border bg-card text-muted-foreground cursor-pointer hover:bg-secondary transition-all"
                 >
                   {step === 1 ? "Annuleren" : "← Terug"}
                 </button>
