@@ -68,6 +68,9 @@ const Header = () => {
       if (langRef.current && !langRef.current.contains(e.target as Node)) {
         setLangOpen(false);
       }
+      if (topLangRef.current && !topLangRef.current.contains(e.target as Node)) {
+        setTopLangOpen(false);
+      }
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
