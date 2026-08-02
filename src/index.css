@@ -32,6 +32,9 @@
     --accent-foreground: 40 33% 97%;
     --accent-light: 38 29% 88%;
 
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 40 33% 97%;
+
     /* Warm-specific */
     --sand: 40 33% 97%;
     --sand-deep: 36 24% 91%;
