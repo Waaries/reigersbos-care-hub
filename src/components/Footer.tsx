@@ -72,48 +72,37 @@ const Footer = () => {
   const { t, isRTL, language } = useLanguage();
   const nieuws = nieuwsByLang[language] ?? nieuwsByLang["NL"];
 
-  const colHeadingStyle = {
-    color: "white",
-    fontSize: "12px",
-    letterSpacing: "0.08em",
-    textTransform: "uppercase" as const,
-    borderBottom: "1px solid hsl(222 28% 18%)",
-    paddingBottom: "8px",
-    marginBottom: "16px",
-    fontWeight: 600,
-  };
-
   return (
-    <footer style={{ background: "hsl(222 47% 11%)" }}>
+    <footer className="bg-warm text-sand">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className={`grid grid-cols-1 md:grid-cols-3 gap-10 ${isRTL ? "text-right" : ""}`}>
           {/* Column 1 */}
           <div>
             <div className="mb-4">
-              <img src={logoFooter} alt="Reigersbos Medical Center" style={{ width: "140px", height: "auto", marginBottom: "12px", opacity: 0.9 }} />
+              <img src={logoFooter} alt="Reigersbos Medical Center" className="w-36 h-auto mb-3 opacity-90" />
             </div>
-            <p style={{ color: "hsl(215 25% 64%)", fontSize: "12px", fontStyle: "italic", marginBottom: "20px" }}>
+            <p className="text-sm italic text-sand/70 mb-6">
               {t("footer.tagline")}
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div className={`flex items-start gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
-                <Clock className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "hsl(215 25% 64%)" }} />
+                <Clock className="w-4 h-4 mt-0.5 flex-shrink-0 text-taupe-light" />
                 <div>
-                  <p style={{ fontSize: "11px", fontWeight: 600, color: "hsl(215 25% 64%)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "4px" }}>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-sand/80 mb-1">
                     {t("footer.hours.practice")}
                   </p>
-                  <p style={{ fontSize: "13px", color: "hsl(215 25% 74%)" }}>Ma-Vr 08:00–17:00</p>
+                  <p className="text-sm text-sand/90">Ma-Vr 08:00–17:00</p>
                 </div>
               </div>
               <div className={`flex items-start gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
-                <Clock className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "hsl(215 25% 64%)" }} />
+                <Clock className="w-4 h-4 mt-0.5 flex-shrink-0 text-taupe-light" />
                 <div>
-                  <p style={{ fontSize: "11px", fontWeight: 600, color: "hsl(215 25% 64%)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "4px" }}>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-sand/80 mb-1">
                     {t("footer.hours.physio")}
                   </p>
-                  <p style={{ fontSize: "13px", color: "hsl(215 25% 74%)" }}>Ma-Vr 09:00–18:00</p>
-                  <p style={{ fontSize: "13px", color: "hsl(215 25% 74%)" }}>{t("footer.hours.weekend")}</p>
+                  <p className="text-sm text-sand/90">Ma-Vr 09:00–18:00</p>
+                  <p className="text-sm text-sand/90">{t("footer.hours.weekend")}</p>
                 </div>
               </div>
             </div>
@@ -123,28 +112,19 @@ const Footer = () => {
               href="https://www.zorgkaartnederland.nl/zorginstelling/huisartsenpraktijk-reigersbos-medical-center-amsterdam-10017001"
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: 'block',
-                marginTop: '16px',
-                padding: '12px',
-                backgroundColor: 'white',
-                borderRadius: '8px',
-                border: '1px solid hsl(214 32% 91%)',
-                textDecoration: 'none',
-                maxWidth: '220px',
-              }}
+              className="block mt-5 p-3 bg-white rounded-lg border border-sand/20 max-w-[220px] transition-transform hover:scale-[1.02]"
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <span style={{ color: '#e85d04', fontWeight: 900, fontSize: '13px', lineHeight: 1 }}>Zorgkaart</span>
-                  <span style={{ color: 'hsl(222 47% 11%)', fontWeight: 900, fontSize: '13px', lineHeight: 1 }}>Nederland</span>
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-1">
+                  <span className="text-[#e85d04] font-black text-xs">Zorgkaart</span>
+                  <span className="text-foreground font-black text-xs">Nederland</span>
                 </div>
-                <div style={{ background: '#e85d04', color: 'white', borderRadius: '4px', padding: '2px 6px', fontSize: '12px', fontWeight: 900 }}>+Q</div>
+                <div className="bg-[#e85d04] text-white rounded px-1.5 py-0.5 text-xs font-black">+Q</div>
               </div>
-              <p style={{ color: 'hsl(220 9% 26%)', fontSize: '13px', margin: '0 0 6px', lineHeight: '1.4' }}>
+              <p className="text-foreground text-xs mb-1.5 leading-snug">
                 Reigersbos Medical Center is 2 keer gewaardeerd en heeft een gemiddeld cijfer van <strong>10.0</strong>.
               </p>
-              <span style={{ color: 'hsl(174 43% 30%)', fontSize: '13px', fontWeight: 500 }}>
+              <span className="text-primary text-xs font-medium">
                 Bekijk alle waarderingen
               </span>
             </a>
@@ -152,18 +132,17 @@ const Footer = () => {
 
           {/* Column 2 */}
           <div>
-            <h4 style={colHeadingStyle}>{t("footer.medical_sites")}</h4>
-            <ul className="space-y-1.5">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white border-b border-white/20 pb-2 mb-4">
+              {t("footer.medical_sites")}
+            </h4>
+            <ul className="space-y-2">
               {medischeLinks.map((link) => (
                 <li key={link.url}>
                   <a
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center gap-1.5 text-sm transition-colors ${isRTL ? "flex-row-reverse" : ""}`}
-                    style={{ color: "hsl(215 25% 64%)" }}
-                    onMouseEnter={e => { e.currentTarget.style.color = "white"; }}
-                    onMouseLeave={e => { e.currentTarget.style.color = "hsl(215 25% 64%)"; }}
+                    className={`flex items-center gap-1.5 text-sm text-sand/70 hover:text-white transition-colors ${isRTL ? "flex-row-reverse" : ""}`}
                   >
                     <Globe className="w-3 h-3 flex-shrink-0" />
                     {link.label}
@@ -175,18 +154,17 @@ const Footer = () => {
 
           {/* Column 3 */}
           <div>
-            <h4 style={colHeadingStyle}>{t("footer.support")}</h4>
-            <ul className="space-y-1.5 mb-7">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white border-b border-white/20 pb-2 mb-4">
+              {t("footer.support")}
+            </h4>
+            <ul className="space-y-2 mb-8">
               {supportLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm transition-colors"
-                    style={{ color: "hsl(215 25% 64%)" }}
-                    onMouseEnter={e => { e.currentTarget.style.color = "white"; }}
-                    onMouseLeave={e => { e.currentTarget.style.color = "hsl(215 25% 64%)"; }}
+                    className="text-sm text-sand/70 hover:text-white transition-colors"
                   >
                     → {link.label}
                   </a>
@@ -194,17 +172,16 @@ const Footer = () => {
               ))}
             </ul>
 
-            <h4 style={colHeadingStyle}>{t("footer.news")}</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white border-b border-white/20 pb-2 mb-4">
+              {t("footer.news")}
+            </h4>
             <ul className="space-y-3">
               {nieuws.map((item) => (
                 <li key={item.title} className="flex flex-col">
-                  <span className="text-sm leading-snug cursor-pointer transition-colors" style={{ color: "hsl(215 25% 74%)" }}
-                    onMouseEnter={e => { e.currentTarget.style.color = "white"; }}
-                    onMouseLeave={e => { e.currentTarget.style.color = "hsl(215 25% 74%)"; }}
-                  >
+                  <span className="text-sm leading-snug text-sand/80 hover:text-white transition-colors cursor-pointer">
                     {item.title}
                   </span>
-                  <span style={{ fontSize: "11px", color: "hsl(215 16% 47%)", marginTop: "2px" }}>{item.date}</span>
+                  <span className="text-xs text-sand/50 mt-0.5">{item.date}</span>
                 </li>
               ))}
             </ul>
@@ -213,9 +190,9 @@ const Footer = () => {
       </div>
 
       {/* Copyright bar */}
-      <div style={{ borderTop: "1px solid hsl(222 28% 18%)", background: "hsl(222 47% 7%)" }}>
+      <div className="border-t border-white/15 bg-warm/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p style={{ fontSize: "12px", color: "hsl(215 16% 47%)", textAlign: "center" }}>
+          <p className="text-xs text-sand/60 text-center">
             {t("footer.copyright")}
           </p>
         </div>

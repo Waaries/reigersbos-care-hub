@@ -51,23 +51,23 @@ const FloatingSideButtons = () => {
     alignItems: "center",
     justifyContent: "flex-end",
     gap: "8px",
-    border: "1px solid hsl(214 32% 91%)",
+    border: "1px solid hsl(var(--border))",
     borderRight: "none",
-    borderRadius: "8px 0 0 8px",
+    borderRadius: "10px 0 0 10px",
     padding: "10px 14px",
     fontSize: "13px",
-    fontWeight: 500,
+    fontWeight: 600,
     cursor: "pointer",
     whiteSpace: "nowrap",
     writingMode: "horizontal-tb",
     minWidth: "fit-content",
     transform: "translateX(0)",
     transition: "all 0.2s ease",
-    boxShadow: "-2px 2px 8px rgba(0,0,0,0.08)",
+    boxShadow: "-2px 2px 8px rgba(139,115,85,0.08)",
     marginLeft: "auto",
     overflow: "visible",
-    background: "white",
-    color: "hsl(222 47% 11%)",
+    background: "hsl(var(--background))",
+    color: "hsl(var(--foreground))",
   };
 
   const handleMouseEnter = (e: MouseEvent<HTMLButtonElement>, isSpoed: boolean) => {
@@ -75,9 +75,9 @@ const FloatingSideButtons = () => {
     if (isSpoed) {
       e.currentTarget.style.background = "hsl(0 72% 45%)";
     } else {
-      e.currentTarget.style.background = "hsl(210 40% 98%)";
-      e.currentTarget.style.borderColor = "hsl(174 43% 30%)";
-      e.currentTarget.style.color = "hsl(174 43% 30%)";
+      e.currentTarget.style.background = "hsl(var(--sand-deep))";
+      e.currentTarget.style.borderColor = "hsl(var(--primary))";
+      e.currentTarget.style.color = "hsl(var(--primary))";
     }
   };
 
@@ -86,9 +86,9 @@ const FloatingSideButtons = () => {
     if (isSpoed) {
       e.currentTarget.style.background = "hsl(0 72% 51%)";
     } else {
-      e.currentTarget.style.background = "white";
-      e.currentTarget.style.borderColor = "hsl(214 32% 91%)";
-      e.currentTarget.style.color = "hsl(222 47% 11%)";
+      e.currentTarget.style.background = "hsl(var(--background))";
+      e.currentTarget.style.borderColor = "hsl(var(--border))";
+      e.currentTarget.style.color = "hsl(var(--foreground))";
     }
   };
 

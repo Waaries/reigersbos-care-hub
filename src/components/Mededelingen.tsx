@@ -11,30 +11,17 @@ const Mededelingen = () => {
   if (!showMededeling || dismissed) return null;
 
   return (
-    <div
-      className="mx-4 sm:mx-6 lg:mx-8 my-6 max-w-5xl lg:mx-auto"
-      style={{
-        backgroundColor: "#EFF6FF",
-        borderLeft: "4px solid #1B4F8A",
-        borderRadius: "8px",
-        padding: "20px 24px",
-      }}
-    >
+    <div className="mx-4 sm:mx-6 lg:mx-8 my-6 max-w-5xl lg:mx-auto bg-sand-deep border-l-4 border-taupe rounded-lg px-6 py-5">
       <div className="flex gap-3 items-start">
         <span className="text-xl flex-shrink-0 mt-0.5">ℹ️</span>
         <div className="flex-1">
-          <p className="font-bold text-sm mb-1" style={{ color: "#1B4F8A" }}>
-            Mededeling
-          </p>
-          <p className="text-sm leading-relaxed" style={{ color: "#1e3a5f" }}>
-            {mededeling_tekst}
-          </p>
+          <p className="font-bold text-sm mb-1 text-foreground">Mededeling</p>
+          <p className="text-sm leading-relaxed text-muted-foreground">{mededeling_tekst}</p>
         </div>
         <button
           onClick={() => setDismissed(true)}
-          className="flex-shrink-0 ml-2 p-1 rounded hover:bg-blue-100 transition-colors"
+          className="flex-shrink-0 ml-2 p-1 rounded hover:bg-taupe/20 transition-colors text-foreground"
           aria-label="Sluiten"
-          style={{ color: "#1B4F8A" }}
         >
           <X className="w-4 h-4" />
         </button>
