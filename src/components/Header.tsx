@@ -11,8 +11,8 @@ const Header = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
-  const [langOpen, setLangOpen] = useState(false);
-  const langRef = useRef<HTMLDivElement>(null);
+  const topLangRef = useRef<HTMLDivElement>(null);
+  const [topLangOpen, setTopLangOpen] = useState(false);
   const location = useLocation();
 
   const navItems = [
@@ -63,8 +63,8 @@ const Header = () => {
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (langRef.current && !langRef.current.contains(e.target as Node)) {
-        setLangOpen(false);
+      if (topLangRef.current && !topLangRef.current.contains(e.target as Node)) {
+        setTopLangOpen(false);
       }
     };
     document.addEventListener("mousedown", handler);
@@ -105,9 +105,43 @@ const Header = () => {
             a+
           </button>
           <span className="w-px h-4 bg-sand/30" />
-          <a href="tel:0207371426" className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase text-sand hover:text-white transition-colors">
-            <Phone className="w-3 h-3" /> 020 737 14 26
-          </a>
+          <div className="relative" ref={topLangRef}>
+            <button
+              onClick={() => setTopLangOpen(!topLangOpen)}
+              className="flex items-center gap-1 text-xs font-semibold tracking-wider uppercase text-sand hover:text-white transition-colors"
+            >
+              <span>{currentLang.flag}</span>
+              <span>{currentLang.label}</span>
+            </button>
+            {topLangOpen && (
+              <div
+                className={`absolute top-full mt-2 w-44 bg-background border border-border rounded-xl z-50 overflow-hidden ${
+                  isRTL ? "left-0" : "right-0"
+                }`}
+                style={{ boxShadow: "0 4px 20px rgba(139,115,85,0.10)" }}
+              >
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => { setLanguage(lang.code); setTopLangOpen(false); }}
+                    className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm transition-colors text-left font-body"
+                    style={{
+                      color: language === lang.code ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))",
+                      fontWeight: language === lang.code ? 600 : 500,
+                      background: language === lang.code ? "hsl(var(--sand-deep))" : "transparent",
+                    }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = "hsl(var(--sand-deep))"; }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = language === lang.code ? "hsl(var(--sand-deep))" : "transparent";
+                    }}
+                  >
+                    <span className="text-base">{lang.flag}</span>
+                    <span>{lang.label}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -188,7 +222,7 @@ const Header = () => {
               ))}
             </nav>
 
-            {/* Right: Phone + Lang + Mobile Toggle */}
+            {/* Right: Phone + Mobile Toggle */}
             <div className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
               <a
                 href="tel:0207371426"
@@ -205,47 +239,6 @@ const Header = () => {
                 <Phone className="w-3.5 h-3.5" />
                 020 737 14 26
               </a>
-
-              {/* Language Switcher */}
-              <div className="relative hidden sm:block" ref={langRef}>
-                <button
-                  onClick={() => setLangOpen(!langOpen)}
-                  className="flex items-center gap-1 px-2 py-1.5 text-sm transition-colors font-body"
-                  style={{ color: "hsl(var(--muted-foreground))", fontWeight: 500 }}
-                >
-                  <span>{currentLang.flag}</span>
-                  <span>{currentLang.label}</span>
-                </button>
-
-                {langOpen && (
-                  <div
-                    className={`absolute top-full mt-2 w-44 bg-background border border-border rounded-xl z-50 overflow-hidden ${
-                      isRTL ? "left-0" : "right-0"
-                    }`}
-                    style={{ boxShadow: "0 4px 20px rgba(139,115,85,0.10)" }}
-                  >
-                    {languages.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
-                        className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm transition-colors text-left font-body"
-                        style={{
-                          color: language === lang.code ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))",
-                          fontWeight: language === lang.code ? 600 : 500,
-                          background: language === lang.code ? "hsl(var(--sand-deep))" : "transparent",
-                        }}
-                        onMouseEnter={(e) => { e.currentTarget.style.background = "hsl(var(--sand-deep))"; }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = language === lang.code ? "hsl(var(--sand-deep))" : "transparent";
-                        }}
-                      >
-                        <span className="text-base">{lang.flag}</span>
-                        <span>{lang.label}</span>
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
 
               <button
                 className="lg:hidden p-2 rounded-lg text-foreground"
