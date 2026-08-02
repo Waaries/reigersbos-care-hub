@@ -245,47 +245,6 @@ const Header = () => {
                 020 737 14 26
               </a>
 
-              {/* Language Switcher */}
-              <div className="relative hidden sm:block" ref={langRef}>
-                <button
-                  onClick={() => setLangOpen(!langOpen)}
-                  className="flex items-center gap-1 px-2 py-1.5 text-sm transition-colors font-body"
-                  style={{ color: "hsl(var(--muted-foreground))", fontWeight: 500 }}
-                >
-                  <span>{currentLang.flag}</span>
-                  <span>{currentLang.label}</span>
-                </button>
-
-                {langOpen && (
-                  <div
-                    className={`absolute top-full mt-2 w-44 bg-background border border-border rounded-xl z-50 overflow-hidden ${
-                      isRTL ? "left-0" : "right-0"
-                    }`}
-                    style={{ boxShadow: "0 4px 20px rgba(139,115,85,0.10)" }}
-                  >
-                    {languages.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => { setLanguage(lang.code); setLangOpen(false); }}
-                        className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm transition-colors text-left font-body"
-                        style={{
-                          color: language === lang.code ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))",
-                          fontWeight: language === lang.code ? 600 : 500,
-                          background: language === lang.code ? "hsl(var(--sand-deep))" : "transparent",
-                        }}
-                        onMouseEnter={(e) => { e.currentTarget.style.background = "hsl(var(--sand-deep))"; }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = language === lang.code ? "hsl(var(--sand-deep))" : "transparent";
-                        }}
-                      >
-                        <span className="text-base">{lang.flag}</span>
-                        <span>{lang.label}</span>
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-
               <button
                 className="lg:hidden p-2 rounded-lg text-foreground"
                 onClick={() => setMobileOpen(!mobileOpen)}
