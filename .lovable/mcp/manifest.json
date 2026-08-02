@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.1",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "reigersbos-medical-center-mcp",
+      "version": "0.1.0",
+      "title": "Reigersbos Medical Center"
+    },
+    "tools": [
+      {
+        "name": "get_practice_info",
+        "title": "Praktijkinformatie",
+        "description": "Geeft de algemene praktijkgegevens van Reigersbos Medical Center: naam, adres, telefoon, fax, e-mail, openingstijden en website.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_emergency_contacts",
+        "title": "Spoednummers",
+        "description": "Geeft de spoednummers van Reigersbos Medical Center: 112 bij levensgevaar, de praktijk tijdens openingstijden en de huisartsenpost buiten openingstijden.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_services",
+        "title": "Diensten",
+        "description": "Geeft een lijst van de zorgdiensten van Reigersbos Medical Center, met een korte omschrijving en de bijbehorende pagina op de website.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_team_members",
+        "title": "Team",
+        "description": "Geeft de zorgverleners van Reigersbos Medical Center met hun functie en, waar van toepassing, hun BIG-nummer. Optioneel te filteren op functie.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "role": {
+              "description": "Optioneel filter op functie, bijvoorbeeld 'Huisarts' of 'Fysiotherapeut'.",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_care_partners",
+        "title": "Zorgpartners",
+        "description": "Geeft de zorgpartners die in het pand van Reigersbos Medical Center werken (verloskunde en diagnostiek), met diensten, contactgegevens en openingstijden.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_patient_info",
+        "title": "Patiënteninformatie",
+        "description": "Zoekt in de publieke patiënteninformatie van Reigersbos Medical Center: inschrijven, herhaalrecept, afspraak maken, klachten, omgangsregels, privacy, expats, ongedocumenteerde patiënten en vacatures. Zonder zoekterm worden alle onderwerpen teruggegeven.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "query": {
+              "description": "Optionele zoekterm, bijvoorbeeld 'herhaalrecept' of 'klacht'.",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
