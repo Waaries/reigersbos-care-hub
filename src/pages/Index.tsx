@@ -43,7 +43,7 @@ const Index = () => {
       icon: AlertCircle,
       label: "Spoed",
       desc: "Bij acute situaties",
-      onClick: () => openModal("spoed"),
+      href: "/spoed",
       color: "bg-red-700 text-white",
     },
     {
