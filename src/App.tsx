@@ -22,6 +22,12 @@ import Vacatures from "./pages/Vacatures";
 import Contact from "./pages/Contact";
 import Expats from "./pages/Expats";
 import Ongedocumenteerden from "./pages/Ongedocumenteerden";
+import AfspraakMaken from "./pages/AfspraakMaken";
+import Praktijkinformatie from "./pages/Praktijkinformatie";
+import Huisartsenzorg from "./pages/Huisartsenzorg";
+import Verloskundige from "./pages/Verloskundige";
+import Bloedafname from "./pages/Bloedafname";
+import Cookiebeleid from "./pages/Cookiebeleid";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +55,12 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/expats" element={<Expats />} />
               <Route path="/ongedocumenteerden" element={<Ongedocumenteerden />} />
+              <Route path="/afspraak-maken" element={<AfspraakMaken />} />
+              <Route path="/praktijkinformatie" element={<Praktijkinformatie />} />
+              <Route path="/huisartsenzorg" element={<Huisartsenzorg />} />
+              <Route path="/verloskundige" element={<Verloskundige />} />
+              <Route path="/bloedafname" element={<Bloedafname />} />
+              <Route path="/cookiebeleid" element={<Cookiebeleid />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </ModalProvider>
