@@ -15,33 +15,38 @@ const Header = () => {
   const [topLangOpen, setTopLangOpen] = useState(false);
   const location = useLocation();
 
-  const navItems = [
+  const navItems: {
+    label: string;
+    href: string;
+    children?: { label: string; href?: string; modal?: "inschrijven" | "herhaalrecept" }[];
+  }[] = [
     {
       label: t("nav.huisartspraktijk"),
       href: "/huisartspraktijk",
       children: [
+        { label: "Afspraak maken", href: "/afspraak-maken" },
+        { label: "Inschrijven", modal: "inschrijven" },
+        { label: "Herhaalrecept", modal: "herhaalrecept" },
         { label: t("nav.poh_s"), href: "/poh-s" },
         { label: t("nav.poh_ggz"), href: "/poh-ggz" },
-        { label: t("nav.praktijkassistente"), href: "/praktijkassistente" },
-        { label: t("nav.klachten"), href: "/klachten" },
-        { label: t("nav.omgangsregels"), href: "/omgangsregels" },
-        { label: t("nav.privacyreglement"), href: "/privacyreglement" },
+        { label: "Praktijkinformatie", href: "/praktijkinformatie" },
       ],
     },
     {
       label: "Zorgaanbod",
-      href: "/fysiotherapie",
+      href: "/huisartsenzorg",
       children: [
+        { label: "Huisartsenzorg", href: "/huisartsenzorg" },
         { label: "Fysiotherapie", href: "/fysiotherapie" },
-        { label: "Overig Zorgaanbod", href: "/overig-zorgaanbod" },
         { label: "Verloskundige", href: "/verloskundige" },
+        { label: "Bloedafname", href: "/bloedafname" },
       ],
     },
     {
       label: "Over ons",
       href: "/ons-team",
       children: [
-        { label: "Ons Team", href: "/ons-team" },
+        { label: "Ons team", href: "/ons-team" },
         { label: "Vacatures", href: "/vacatures" },
       ],
     },
@@ -49,6 +54,7 @@ const Header = () => {
     { label: "Zonder papieren", href: "/ongedocumenteerden" },
     { label: t("nav.contact"), href: "/contact" },
   ];
+
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
