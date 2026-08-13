@@ -88,9 +88,9 @@ const Index = () => {
     },
     {
       icon: Baby,
-      title: "Verloskunde",
+      title: "Verloskundige",
       desc: "Verloskundigenpraktijk De Poort, gevestigd in ons pand.",
-      href: "/overig-zorgaanbod",
+      href: "/verloskundige",
     },
     {
       icon: FlaskConical,
