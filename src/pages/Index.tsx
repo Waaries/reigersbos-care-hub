@@ -24,7 +24,14 @@ const Index = () => {
   const { t } = useLanguage();
   const { openModal } = useModal();
 
-  const quickActions = [
+  const quickActions: {
+    icon: typeof Calendar;
+    label: string;
+    desc: string;
+    color: string;
+    onClick?: () => void;
+    href?: string;
+  }[] = [
     {
       icon: Calendar,
       label: "Inschrijven",
