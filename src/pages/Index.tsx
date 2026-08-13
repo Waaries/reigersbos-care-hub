@@ -110,7 +110,7 @@ const Index = () => {
   const partners = [
     {
       name: "Verloskundigenpraktijk De Poort",
-      category: "Verloskunde",
+      category: "Verloskundige",
       phone: "020 358 58 47",
       website: "https://www.verloskundigenpraktijkdepoort.nl",
     },
