@@ -1,7 +1,26 @@
 import { Link } from "react-router-dom";
 import logoFooter from "@/assets/logo-footer.png";
-import { Clock, Globe } from "lucide-react";
+import { Clock, MapPin, Phone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useModal } from "@/contexts/ModalContext";
+
+const zorgLinks = [
+  { label: "Huisartsenzorg", href: "/huisartsenzorg" },
+  { label: "POH-S", href: "/poh-s" },
+  { label: "POH-GGZ", href: "/poh-ggz" },
+  { label: "Fysiotherapie", href: "/fysiotherapie" },
+  { label: "Verloskundige", href: "/verloskundige" },
+  { label: "Bloedafname", href: "/bloedafname" },
+];
+
+const organisatieLinks = [
+  { label: "Ons team", href: "/ons-team" },
+  { label: "Vacatures", href: "/vacatures" },
+  { label: "Privacy", href: "/privacyreglement" },
+  { label: "Klachtenregeling", href: "/klachten" },
+  { label: "Omgangsregels", href: "/omgangsregels" },
+  { label: "Cookiebeleid", href: "/cookiebeleid" },
+];
 
 const medischeLinks = [
   { label: "thuisarts.nl", url: "https://www.thuisarts.nl" },
@@ -70,39 +89,38 @@ const nieuwsByLang: Record<string, { title: string; date: string }[]> = {
 
 const Footer = () => {
   const { t, isRTL, language } = useLanguage();
+  const { openModal } = useModal();
   const nieuws = nieuwsByLang[language] ?? nieuwsByLang["NL"];
+
+  const colTitle = "text-[11px] font-semibold uppercase tracking-[0.08em] text-white border-b border-white/15 pb-2 mb-4";
+  const linkCls = "text-sm text-sand/75 hover:text-white transition-colors";
 
   return (
     <footer className="bg-warm text-sand">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-        <div className={`grid grid-cols-1 md:grid-cols-3 gap-10 ${isRTL ? "text-right" : ""}`}>
-          {/* Column 1 */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 ${isRTL ? "text-right" : ""}`}>
+          {/* Column 1 — Praktijk */}
           <div>
-            <div className="mb-4">
-              <img src={logoFooter} alt="Reigersbos Medical Center" className="w-36 h-auto mb-3 opacity-90" />
-            </div>
-            <p className="text-sm italic text-sand/70 mb-6">
-              {t("footer.tagline")}
-            </p>
+            <img src={logoFooter} alt="Reigersbos Medical Center" className="w-32 h-auto mb-4" />
+            <p className="text-sm text-sand/70 mb-5">{t("footer.tagline")}</p>
 
-            <div className="space-y-4">
-              <div className={`flex items-start gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
-                <Clock className="w-4 h-4 mt-0.5 flex-shrink-0 text-taupe-light" />
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-sand/80 mb-1">
-                    {t("footer.hours.practice")}
-                  </p>
-                  <p className="text-sm text-sand/90">Ma-Vr 08:00–17:00</p>
-                </div>
+            <div className="space-y-3">
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "hsl(var(--accent))" }} />
+                <p className="text-sm text-sand/90">Reigersbos 100 K (3e etage)<br />1107 ES Amsterdam</p>
               </div>
-              <div className={`flex items-start gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
-                <Clock className="w-4 h-4 mt-0.5 flex-shrink-0 text-taupe-light" />
+              <div className="flex items-start gap-2">
+                <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "hsl(var(--accent))" }} />
+                <a href="tel:0207371426" className="text-sm text-sand/90 hover:text-white transition-colors">
+                  020 737 14 26
+                </a>
+              </div>
+              <div className="flex items-start gap-2">
+                <Clock className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "hsl(var(--accent))" }} />
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-sand/80 mb-1">
-                    {t("footer.hours.physio")}
-                  </p>
-                  <p className="text-sm text-sand/90">Ma-Vr 09:00–18:00</p>
-                  <p className="text-sm text-sand/90">{t("footer.hours.weekend")}</p>
+                  <p className="text-sm text-sand/90">{t("footer.hours.practice")}: Ma-Vr 08:00–17:00</p>
+                  <p className="text-sm text-sand/90">{t("footer.hours.physio")}: Ma-Vr 09:00–18:00</p>
+                  <p className="text-sm text-sand/70">{t("footer.hours.weekend")}</p>
                 </div>
               </div>
             </div>
@@ -112,89 +130,119 @@ const Footer = () => {
               href="https://www.zorgkaartnederland.nl/zorginstelling/huisartsenpraktijk-reigersbos-medical-center-amsterdam-10017001"
               target="_blank"
               rel="noopener noreferrer"
-              className="block mt-5 p-3 bg-white rounded-lg border border-sand/20 max-w-[220px] transition-transform hover:scale-[1.02]"
+              className="block mt-5 p-3 bg-white border border-border max-w-[220px]"
+              style={{ borderRadius: "10px" }}
             >
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-1">
-                  <span className="text-[#e85d04] font-black text-xs">Zorgkaart</span>
-                  <span className="text-foreground font-black text-xs">Nederland</span>
+                  <span className="text-[#e85d04] font-bold text-xs">Zorgkaart</span>
+                  <span className="font-bold text-xs" style={{ color: "hsl(var(--primary))" }}>Nederland</span>
                 </div>
-                <div className="bg-[#e85d04] text-white rounded px-1.5 py-0.5 text-xs font-black">+Q</div>
+                <div className="bg-[#e85d04] text-white rounded px-1.5 py-0.5 text-xs font-bold">+Q</div>
               </div>
-              <p className="text-foreground text-xs mb-1.5 leading-snug">
+              <p className="text-xs mb-1.5 leading-snug" style={{ color: "hsl(220 13% 26%)" }}>
                 Reigersbos Medical Center is 2 keer gewaardeerd en heeft een gemiddeld cijfer van <strong>10.0</strong>.
               </p>
-              <span className="text-primary text-xs font-medium">
+              <span className="text-xs font-semibold" style={{ color: "hsl(var(--accent))" }}>
                 Bekijk alle waarderingen
               </span>
             </a>
           </div>
 
-          {/* Column 2 */}
+          {/* Column 2 — Zorg */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-white border-b border-white/20 pb-2 mb-4">
-              {t("footer.medical_sites")}
-            </h4>
+            <h4 className={colTitle}>Zorg</h4>
             <ul className="space-y-2">
-              {medischeLinks.map((link) => (
-                <li key={link.url}>
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center gap-1.5 text-sm text-sand/70 hover:text-white transition-colors ${isRTL ? "flex-row-reverse" : ""}`}
-                  >
-                    <Globe className="w-3 h-3 flex-shrink-0" />
-                    {link.label}
-                  </a>
+              {zorgLinks.map((link) => (
+                <li key={link.href}>
+                  <Link to={link.href} className={linkCls}>{link.label}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 3 */}
+          {/* Column 3 — Patiënten */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-white border-b border-white/20 pb-2 mb-4">
-              {t("footer.support")}
-            </h4>
+            <h4 className={colTitle}>Patiënten</h4>
+            <ul className="space-y-2">
+              <li><Link to="/afspraak-maken" className={linkCls}>Afspraak maken</Link></li>
+              <li><button onClick={() => openModal("inschrijven")} className={linkCls}>Inschrijven</button></li>
+              <li><button onClick={() => openModal("herhaalrecept")} className={linkCls}>Herhaalrecept</button></li>
+              <li>
+                <button onClick={() => openModal("spoed")} className="text-sm font-semibold hover:opacity-80 transition-opacity" style={{ color: "hsl(var(--destructive))" }}>
+                  Spoed
+                </button>
+              </li>
+              <li><Link to="/expats" className={linkCls}>Expats</Link></li>
+              <li><Link to="/ongedocumenteerden" className={linkCls}>Zonder papieren</Link></li>
+              <li><Link to="/contact" className={linkCls}>Contact</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 4 — Organisatie */}
+          <div>
+            <h4 className={colTitle}>Organisatie</h4>
             <ul className="space-y-2 mb-8">
-              {supportLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-sand/70 hover:text-white transition-colors"
-                  >
-                    → {link.label}
-                  </a>
+              {organisatieLinks.map((link) => (
+                <li key={link.href}>
+                  <Link to={link.href} className={linkCls}>{link.label}</Link>
                 </li>
               ))}
             </ul>
 
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-white border-b border-white/20 pb-2 mb-4">
-              {t("footer.news")}
-            </h4>
+            <h4 className={colTitle}>{t("footer.news")}</h4>
             <ul className="space-y-3">
               {nieuws.map((item) => (
                 <li key={item.title} className="flex flex-col">
-                  <span className="text-sm leading-snug text-sand/80 hover:text-white transition-colors cursor-pointer">
-                    {item.title}
-                  </span>
+                  <span className="text-sm leading-snug text-sand/80">{item.title}</span>
                   <span className="text-xs text-sand/50 mt-0.5">{item.date}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
+
+        {/* Compacte rij met externe links */}
+        <div className="mt-12 pt-6 border-t border-white/10 space-y-3">
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-sand/50">
+              {t("footer.medical_sites")}
+            </span>
+            {medischeLinks.map((link) => (
+              <a
+                key={link.url}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-sand/55 hover:text-white transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-sand/50">
+              {t("footer.support")}
+            </span>
+            {supportLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-sand/55 hover:text-white transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Copyright bar */}
-      <div className="border-t border-white/15 bg-warm/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-sand/60 text-center">
-            {t("footer.copyright")}
-          </p>
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+          <p className="text-xs text-sand/55 text-center">{t("footer.copyright")}</p>
         </div>
       </div>
     </footer>

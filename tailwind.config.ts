@@ -14,10 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Manrope', '-apple-system', 'system-ui', 'sans-serif'],
-        display: ['Sora', '-apple-system', 'system-ui', 'sans-serif'],
-        body: ['Manrope', '-apple-system', 'system-ui', 'sans-serif'],
-        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+        sans: ['Inter', '-apple-system', 'system-ui', 'sans-serif'],
+        display: ['Inter', '-apple-system', 'system-ui', 'sans-serif'],
+        body: ['Inter', '-apple-system', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -72,11 +71,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        covid: {
-          bg: "hsl(var(--covid-bg))",
-          border: "hsl(var(--covid-border))",
-          text: "hsl(var(--covid-text))",
-        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -113,10 +107,10 @@ export default {
         "fade-in": "fade-in 0.3s ease-out",
       },
       boxShadow: {
-        subtle: "0 1px 3px rgba(139,115,85,0.06)",
-        card: "0 1px 3px rgba(139,115,85,0.06)",
-        modal: "0 16px 48px rgba(139,115,85,0.12)",
-        warm: "0 10px 30px rgba(139,115,85,0.12)",
+        subtle: "0 1px 3px rgba(0,0,0,0.06)",
+        card: "0 1px 3px rgba(0,0,0,0.06)",
+        modal: "0 8px 24px rgba(0,0,0,0.08)",
+        warm: "0 1px 3px rgba(0,0,0,0.06)",
       },
     },
   },
