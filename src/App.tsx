@@ -62,6 +62,7 @@ const App = () => (
               <Route path="/verloskundige" element={<Verloskundige />} />
               <Route path="/bloedafname" element={<Bloedafname />} />
               <Route path="/cookiebeleid" element={<Cookiebeleid />} />
+              <Route path="/spoed" element={<Spoed />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </ModalProvider>
