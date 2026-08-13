@@ -119,46 +119,33 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative min-h-[88vh] flex items-center overflow-hidden">
-        {/* Background image with warm overlay */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/placeholder.svg"
-            alt="Reigersbos Medical Center"
-            className="w-full h-full object-cover"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: "rgba(15, 23, 42, 0.72)",
-            }}
-          />
-        </div>
-
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 pt-32">
+      <section style={{ background: "#F8FAFC" }} className="border-b border-border">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-sand">
-              <p className="eyebrow mb-4 text-sand/80">{t("hero.welcome")}</p>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6 text-white">
-                Uw gezondheid,<br />
-                <span className="text-taupe-light">onze zorg.</span>
+            <div>
+              <p className="eyebrow mb-4">{t("hero.welcome")}</p>
+              <h1
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+                style={{ color: "#0F172A", letterSpacing: "-0.025em" }}
+              >
+                Uw gezondheid,<br />onze zorg.
               </h1>
-              <p className="text-lg sm:text-xl text-sand/90 mb-8 max-w-lg leading-relaxed font-body">
+              <p className="text-lg mb-8 max-w-lg" style={{ color: "#374151", lineHeight: 1.7 }}>
                 Reigersbos Medical Center: een kleinschalige huisartspraktijk in Amsterdam-Zuidoost, waar persoonlijke aandacht en kwalitatieve zorg centraal staan.
               </p>
               <div className="flex flex-wrap gap-4">
                 <button
                   onClick={() => openModal("inschrijven")}
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm transition-transform hover:scale-[1.02] active:scale-[0.98]"
-                  style={{ background: "hsl(var(--sand))", color: "hsl(var(--primary))" }}
+                  className="inline-flex items-center gap-2"
+                  style={{ background: "#0F172A", color: "#FFFFFF", borderRadius: "6px", padding: "12px 24px", fontSize: "14px", fontWeight: 600 }}
                 >
                   {t("hero.cta")}
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <a
                   href="tel:0207371426"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm border transition-colors hover:bg-white/10"
-                  style={{ borderColor: "rgba(245,241,232,0.4)", color: "hsl(var(--sand))" }}
+                  className="inline-flex items-center gap-2 no-underline"
+                  style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", color: "#0F172A", borderRadius: "6px", padding: "12px 24px", fontSize: "14px", fontWeight: 600 }}
                 >
                   <Phone className="w-4 h-4" />
                   020 737 14 26
@@ -170,20 +157,24 @@ const Index = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {quickActions.map((action, idx) => {
                 const Icon = action.icon;
-                return (
-                  <button
-                    key={idx}
-                    onClick={action.onClick}
-                    className="group text-left p-5 rounded-2xl bg-white/95 backdrop-blur-md border border-white/20 shadow-subtle transition-all duration-200 hover:-translate-y-1 hover:shadow-warm"
-                  >
+                const inner = (
+                  <>
                     <div className={`w-11 h-11 rounded-xl ${action.color} flex items-center justify-center mb-4`}>
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="font-display font-semibold text-foreground mb-1">{action.label}</h3>
-                    <p className="text-sm text-muted-foreground font-body">{action.desc}</p>
-                    <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                      Direct openen <ArrowRight className="w-3 h-3" />
-                    </div>
+                    <h3 className="font-semibold text-foreground mb-1">{action.label}</h3>
+                    <p className="text-sm text-muted-foreground">{action.desc}</p>
+                  </>
+                );
+                const cls =
+                  "group block text-left p-5 bg-card border border-border shadow-card rounded-[10px] transition-all duration-200 hover:-translate-y-1";
+                return action.href ? (
+                  <Link key={idx} to={action.href} className={cls}>
+                    {inner}
+                  </Link>
+                ) : (
+                  <button key={idx} onClick={action.onClick} className={cls}>
+                    {inner}
                   </button>
                 );
               })}
