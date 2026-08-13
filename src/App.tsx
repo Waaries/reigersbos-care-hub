@@ -28,6 +28,7 @@ import Huisartsenzorg from "./pages/Huisartsenzorg";
 import Verloskundige from "./pages/Verloskundige";
 import Bloedafname from "./pages/Bloedafname";
 import Cookiebeleid from "./pages/Cookiebeleid";
+import Spoed from "./pages/Spoed";
 
 const queryClient = new QueryClient();
 
