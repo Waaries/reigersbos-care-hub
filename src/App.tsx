@@ -28,6 +28,7 @@ import Huisartsenzorg from "./pages/Huisartsenzorg";
 import Verloskundige from "./pages/Verloskundige";
 import Bloedafname from "./pages/Bloedafname";
 import Cookiebeleid from "./pages/Cookiebeleid";
+import Spoed from "./pages/Spoed";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +62,7 @@ const App = () => (
               <Route path="/verloskundige" element={<Verloskundige />} />
               <Route path="/bloedafname" element={<Bloedafname />} />
               <Route path="/cookiebeleid" element={<Cookiebeleid />} />
+              <Route path="/spoed" element={<Spoed />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </ModalProvider>

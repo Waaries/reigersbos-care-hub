@@ -169,9 +169,9 @@ const Footer = () => {
               <li><button onClick={() => openModal("inschrijven")} className={linkCls}>Inschrijven</button></li>
               <li><button onClick={() => openModal("herhaalrecept")} className={linkCls}>Herhaalrecept</button></li>
               <li>
-                <button onClick={() => openModal("spoed")} className="text-sm font-semibold hover:opacity-80 transition-opacity" style={{ color: "hsl(var(--destructive))" }}>
+                <Link to="/spoed" className="text-sm font-semibold hover:opacity-80 transition-opacity" style={{ color: "hsl(var(--destructive))" }}>
                   Spoed
-                </button>
+                </Link>
               </li>
               <li><Link to="/expats" className={linkCls}>Expats</Link></li>
               <li><Link to="/ongedocumenteerden" className={linkCls}>Zonder papieren</Link></li>
