@@ -130,7 +130,7 @@ const Index = () => {
           <div
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(135deg, rgba(139,115,85,0.92) 0%, rgba(139,115,85,0.75) 45%, rgba(139,115,85,0.35) 100%)",
+              background: "rgba(15, 23, 42, 0.72)",
             }}
           />
         </div>
