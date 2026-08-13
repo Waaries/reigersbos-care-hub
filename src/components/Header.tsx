@@ -3,10 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 import { Phone, ChevronDown, Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useModal } from "@/contexts/ModalContext";
 import { languages } from "@/i18n/translations";
 
 const Header = () => {
   const { t, language, setLanguage, isRTL } = useLanguage();
+  const { openModal } = useModal();
+
   const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -156,20 +159,23 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className={`flex items-center justify-between h-24 lg:h-28 ${isRTL ? "flex-row-reverse" : ""}`}>
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-1 flex-shrink-0 group py-2">
-              <img src={logo} alt="Reigersbos Medical Center" className="h-20 lg:h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-105" />
-              <span className="font-serif hidden sm:block leading-none -ml-0.5" style={{
-                color: "hsl(var(--foreground))",
-              }}>
-                <span style={{ fontSize: "22px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                  Reigersbos
-                </span>
-                <br />
-                <span style={{ fontSize: "15px", fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase" }}>
-                  Medical Center
-                </span>
+            <Link to="/" className="flex items-center gap-2 flex-shrink-0 group py-2">
+              <img src={logo} alt="Reigersbos Medical Center" className="h-16 lg:h-20 w-auto object-contain" />
+              <span
+                className="hidden sm:block"
+                style={{
+                  color: "hsl(var(--primary))",
+                  whiteSpace: "nowrap",
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  letterSpacing: "0.05em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Reigersbos Medical Center
               </span>
             </Link>
+
 
             {/* Desktop Nav */}
             <nav className={`hidden lg:flex items-center gap-1 ${isRTL ? "flex-row-reverse" : ""}`}>
@@ -202,26 +208,34 @@ const Header = () => {
                       className={`absolute top-full mt-1 w-52 bg-background border border-border rounded-xl z-50 dropdown-animate ${
                         isRTL ? "right-0" : "left-0"
                       }`}
-                      style={{ boxShadow: "0 4px 20px rgba(139,115,85,0.10)" }}
+                      style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}
                     >
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          to={child.href}
-                          className="block px-4 py-2.5 text-sm transition-colors duration-100 first:rounded-t-xl last:rounded-b-xl font-body"
-                          style={{
-                            color: isActive(child.href) ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))",
-                            fontWeight: isActive(child.href) ? 600 : 500,
-                            background: isActive(child.href) ? "hsl(var(--sand-deep))" : "transparent",
-                          }}
-                          onMouseEnter={(e) => { e.currentTarget.style.background = "hsl(var(--sand-deep))"; }}
-                          onMouseLeave={(e) => {
-                            if (!isActive(child.href)) e.currentTarget.style.background = "transparent";
-                          }}
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
+                      {item.children.map((child) =>
+                        child.modal ? (
+                          <button
+                            key={child.label}
+                            onClick={() => { openModal(child.modal!); setOpenDropdown(null); }}
+                            className="block w-full text-left px-4 py-2.5 text-sm transition-colors duration-100 first:rounded-t-xl last:rounded-b-xl font-body text-muted-foreground hover:bg-secondary"
+                            style={{ fontWeight: 500 }}
+                          >
+                            {child.label}
+                          </button>
+                        ) : (
+                          <Link
+                            key={child.href}
+                            to={child.href!}
+                            className="block px-4 py-2.5 text-sm transition-colors duration-100 first:rounded-t-xl last:rounded-b-xl font-body hover:bg-secondary"
+                            style={{
+                              color: isActive(child.href!) ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))",
+                              fontWeight: isActive(child.href!) ? 600 : 500,
+                              background: isActive(child.href!) ? "hsl(var(--secondary))" : "transparent",
+                            }}
+                          >
+                            {child.label}
+                          </Link>
+                        )
+                      )}
+
                     </div>
                   )}
                 </div>
@@ -289,19 +303,30 @@ const Header = () => {
                 </div>
                 {item.children && mobileExpanded === item.label && (
                   <div className="border-t border-border bg-sand-deep">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        to={child.href}
-                        className="block px-8 py-2.5 text-sm font-body"
-                        style={{
-                          color: isActive(child.href) ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))",
-                          fontWeight: isActive(child.href) ? 600 : 500,
-                        }}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
+                    {item.children.map((child) =>
+                      child.modal ? (
+                        <button
+                          key={child.label}
+                          onClick={() => { openModal(child.modal!); setMobileOpen(false); }}
+                          className="block w-full text-left px-8 py-2.5 text-sm font-body text-muted-foreground"
+                        >
+                          {child.label}
+                        </button>
+                      ) : (
+                        <Link
+                          key={child.href}
+                          to={child.href!}
+                          className="block px-8 py-2.5 text-sm font-body"
+                          style={{
+                            color: isActive(child.href!) ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))",
+                            fontWeight: isActive(child.href!) ? 600 : 500,
+                          }}
+                        >
+                          {child.label}
+                        </Link>
+                      )
+                    )}
+
                   </div>
                 )}
               </div>
