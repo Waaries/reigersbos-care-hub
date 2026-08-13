@@ -238,17 +238,18 @@ const Index = () => {
                 </button>
               </div>
             </div>
-            <div className="relative">
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden bg-sand-deep">
-                <img
-                  src="/placeholder.svg"
-                  alt="Medische zorg"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-background border border-border rounded-2xl p-5 shadow-warm max-w-xs hidden sm:block">
-                <p className="text-xs font-semibold uppercase tracking-wider text-taupe mb-1">Open voor</p>
-                <p className="font-display font-semibold text-foreground">{t("contact.open")}</p>
+            <div>
+              <div
+                className="flex items-center justify-center"
+                style={{
+                  maxHeight: "280px",
+                  height: "280px",
+                  background: "#F8FAFC",
+                  border: "1px dashed #E2E8F0",
+                  borderRadius: "10px",
+                }}
+              >
+                <span style={{ color: "#64748B", fontSize: "13px" }}>[FOTO NOG AAN TE LEVEREN]</span>
               </div>
             </div>
           </div>
